@@ -1,7 +1,5 @@
 # User Stories for Violation Management System
 
-asd
-
 1. [ ] Admin could add student record
 2. [ ] Admin could add violation record
 3. [ ] Admin can view violation records
