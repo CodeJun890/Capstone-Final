@@ -548,7 +548,7 @@ app.post("/login-user", (req, res) => {
             });
             res.cookie("isAdminLoggedIn", true, {
               secure: false,
-              httpOnly: false,
+              httpOnly: true,
               maxAge,
               sameSite: "strict",
             });
@@ -580,7 +580,7 @@ app.post("/login-user", (req, res) => {
             });
             res.cookie("isSubAdminLoggedIn", true, {
               secure: false,
-              httpOnly: false,
+              httpOnly: true,
               maxAge,
               sameSite: "strict",
             });
@@ -605,7 +605,7 @@ app.post("/login-user", (req, res) => {
             });
             res.cookie("isStudentLoggedIn", true, {
               secure: false,
-              httpOnly: false,
+              httpOnly: true,
               maxAge,
               sameSite: "strict",
             });
