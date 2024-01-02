@@ -38,16 +38,14 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 
-app.options("*", cors());
-
-app.use(
+app.options(
+  "*",
   cors({
     origin: [
       "http://discipline-recommender-system.xyz",
       "http://api.discipline-recommender-system.xyz",
     ],
-    methods: ["GET", "POST", "PATCH", "DELETE", "PUT", "OPTIONS"],
-    credentials: false,
+    credentials: true,
   })
 );
 
