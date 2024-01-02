@@ -8,39 +8,15 @@ import axios from "axios";
 const AuthExpired = React.lazy(() =>
   import("./Components/ProtectedRoutes/AuthExpired")
 );
-const LazyUniversityOfficials = React.lazy(() =>
-  import("./Components/Homepage/UniversityOfficials")
-);
 const LazyStudentSignupPage = React.lazy(() =>
   import("./Components/Homepage/StudentSignupPage")
-);
-const LazyBoardOfRegents = React.lazy(() =>
-  import("./Components/Homepage/BoardOfRegents")
 );
 const LazyStudentLogin = React.lazy(() =>
   import("./Components/Homepage/StudentLoginPage")
 );
-const LazyVisionAndMission = React.lazy(() =>
-  import("./Components/Homepage/VisionAndMission")
-);
 
-const UniversitySeal = React.lazy(() =>
-  import("./Components/Homepage/UniversitySeal")
-);
-const CoursesOffered = React.lazy(() =>
-  import("./Components/Homepage/CoursesOffered")
-);
 const ForgotPass = React.lazy(() => import("./Components/Homepage/ForgotPass"));
 
-const TotalStudents = React.lazy(() =>
-  import("./Components/Homepage/TotalStudents")
-);
-const NewsOne = React.lazy(() => import("./Components/Homepage/NewsOne"));
-const NewsTwo = React.lazy(() => import("./Components/Homepage/NewsTwo"));
-const NewsThree = React.lazy(() => import("./Components/Homepage/NewsThree"));
-const CampusHistory = React.lazy(() =>
-  import("./Components/Homepage/CampusHistory")
-);
 const HomeNavbar = React.lazy(() => import("./Components/Homepage/HomeNavbar"));
 const HomeFooter = React.lazy(() => import("./Components/Homepage/HomeFooter"));
 
@@ -180,7 +156,7 @@ export default function App() {
               )
             }
           ></Route>
-          <Route
+          {/* <Route
             path="/about/mission-vision"
             element={
               isAdminLoggedIn == "true" ? (
@@ -212,8 +188,8 @@ export default function App() {
                 </React.Suspense>
               )
             }
-          ></Route>
-          <Route
+          ></Route> */}
+          {/* <Route
             path="/about/university-seal"
             element={
               isAdminLoggedIn == "true" ? (
@@ -247,8 +223,8 @@ export default function App() {
                 </React.Suspense>
               )
             }
-          ></Route>
-          <Route
+          ></Route> */}
+          {/* <Route
             path="/about/university-officials"
             element={
               isAdminLoggedIn == "true" ? (
@@ -281,8 +257,8 @@ export default function App() {
                 </React.Suspense>
               )
             }
-          ></Route>
-          <Route
+          ></Route> */}
+          {/* <Route
             path="/about/board-of-regents"
             element={
               isAdminLoggedIn == "true" ? (
@@ -315,8 +291,8 @@ export default function App() {
                 </React.Suspense>
               )
             }
-          ></Route>
-          <Route
+          ></Route> */}
+          {/* <Route
             path="/courses"
             element={
               isAdminLoggedIn == "true" ? (
@@ -349,8 +325,8 @@ export default function App() {
                 </React.Suspense>
               )
             }
-          ></Route>
-          <Route
+          ></Route> */}
+          {/* <Route
             path="/total-students"
             element={
               isAdminLoggedIn == "true" ? (
@@ -383,8 +359,8 @@ export default function App() {
                 </React.Suspense>
               )
             }
-          ></Route>
-          <Route
+          ></Route> */}
+          {/* <Route
             path="/news-and-updates/1"
             element={
               isAdminLoggedIn == "true" ? (
@@ -417,8 +393,8 @@ export default function App() {
                 </React.Suspense>
               )
             }
-          ></Route>
-          <Route
+          ></Route> */}
+          {/* <Route
             path="/news-and-updates/2"
             element={
               isAdminLoggedIn == "true" ? (
@@ -519,7 +495,7 @@ export default function App() {
                 </React.Suspense>
               )
             }
-          ></Route>
+          ></Route> */}
           <Route
             path="/login"
             element={
