@@ -24,7 +24,7 @@ function StudentLogin() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:4000/login-user", {
+      .post("http://api.discipline-recommender-system.xyz/login-user", {
         identifier,
         password,
         rememberMe,

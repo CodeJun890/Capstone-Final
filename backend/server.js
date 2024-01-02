@@ -40,7 +40,10 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: [
+      "http://discipline-recommender-system.xyz",
+      "http://api.discipline-recommender-system.xyz",
+    ],
     methods: ["GET", "POST", "PATCH", "DELETE", "PUT"],
     credentials: true,
   })
@@ -876,7 +879,7 @@ app.post("/forgot-password-admin", async (req, res) => {
       secret,
       { expiresIn: "1d" }
     );
-    const link = `${process.env.DEV_API_URL}${PORT}/reset-password-admin/${oldUser._id}/${token}`;
+    const link = `http://api.discipline-recommender-system.xyz/reset-password-admin/${oldUser._id}/${token}`;
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -1031,7 +1034,7 @@ app.post("/forgot-password", async (req, res) => {
       secret,
       { expiresIn: "1d" }
     );
-    const link = `${process.env.DEV_API_URL}${PORT}/reset-password/${oldUser._id}/${token}`;
+    const link = `http://api.discipline-recommender-system.xyz/reset-password/${oldUser._id}/${token}`;
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {

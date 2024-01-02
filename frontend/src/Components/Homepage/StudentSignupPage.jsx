@@ -22,7 +22,7 @@ import zxcvbc from "zxcvbn";
 
 function StudentSignupPage() {
   const [programs, setPrograms] = useState([]);
-  const baseUrl = "http://localhost:4000/";
+  const baseUrl = "http://api.discipline-recommender-system.xyz/";
 
   useEffect(() => {
     axios
@@ -2369,10 +2369,13 @@ function StudentSignupPage() {
         setIsPasswordStrong(false);
       } else {
         axios
-          .post("http://localhost:4000/check-existence", {
-            emailAddress,
-            studentNumber,
-          })
+          .post(
+            "http://api.discipline-recommender-system.xyz/check-existence",
+            {
+              emailAddress,
+              studentNumber,
+            }
+          )
           .then((res) => {
             if (res.data.isTaken === true) {
               setIsEmailTaken(res.data.isTaken);
@@ -2431,7 +2434,7 @@ function StudentSignupPage() {
       setLoading(false);
       if (validateForm1() && validateForm2() && validateForm3()) {
         axios
-          .post("http://localhost:4000/signup-student", {
+          .post("http://api.discipline-recommender-system.xyz/signup-student", {
             studentNumber,
             emailAddress,
             password,
