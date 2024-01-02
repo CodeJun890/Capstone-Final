@@ -47,7 +47,7 @@ app.use(
       "http://api.discipline-recommender-system.xyz",
     ],
     methods: ["GET", "POST", "PATCH", "DELETE", "PUT", "OPTIONS"],
-    credentials: true,
+    credentials: false,
   })
 );
 
