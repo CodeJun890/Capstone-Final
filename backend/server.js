@@ -45,6 +45,18 @@ app.options(
       "http://discipline-recommender-system.xyz",
       "http://api.discipline-recommender-system.xyz",
     ],
+    methods: ["GET", "POST", "PATCH", "DELETE", "PUT"],
+    credentials: true,
+  })
+);
+
+app.use(
+  cors({
+    origin: [
+      "http://discipline-recommender-system.xyz",
+      "http://api.discipline-recommender-system.xyz",
+    ],
+    methods: ["GET", "POST", "PATCH", "DELETE", "PUT"],
     credentials: true,
   })
 );
