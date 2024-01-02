@@ -46,7 +46,7 @@ app.use(
       "http://discipline-recommender-system.xyz",
       "http://api.discipline-recommender-system.xyz",
     ],
-    methods: ["GET", "POST", "PATCH", "DELETE", "PUT"],
+    methods: ["GET", "POST", "PATCH", "DELETE", "PUT", "OPTIONS"],
     credentials: true,
   })
 );
