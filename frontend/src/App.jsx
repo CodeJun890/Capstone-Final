@@ -49,7 +49,7 @@ export default function App() {
   const isSubAdminLoggedIn = Cookies.get("isSubAdminLoggedIn");
   const isStudentLoggedIn = Cookies.get("isStudentLoggedIn");
   console.log(Cookies.get());
-  console.log(Cookies.get());
+  console.log(Cookies.get("isStudentLoggedInt"));
   const toggleAdminIsLoggedOut = () => {
     axios
       .post("http://api.discipline-recommender-system.xyz/logout")
