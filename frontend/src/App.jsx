@@ -52,9 +52,9 @@ import SubAdmin from "./Components/SubAdmin/SubAdmin";
 import ScrollToHashElement from "./Components/Homepage/ScrollToHashElement";
 export default function App() {
   const Navigate = useNavigate();
-  const isAdminLoggedIn = Cookies.get("isAdminLoggedIn");
-  const isSubAdminLoggedIn = Cookies.get("isSubAdminLoggedIn");
-  const isStudentLoggedIn = Cookies.get("isStudentLoggedIn");
+  const isAdminLoggedIn = Cookies.get("isAdminLoggedIn") === "true";
+  const isSubAdminLoggedIn = Cookies.get("isSubAdminLoggedIn") === "true";
+  const isStudentLoggedIn = Cookies.get("isStudentLoggedIn") === "true";
 
   const toggleAdminIsLoggedOut = () => {
     axios
@@ -125,13 +125,13 @@ export default function App() {
         isSubAdminLoggedIn === "true" ? null : (
           <HomeNavbar />
         )}
-        {/* {isAdminLoggedIn
+        {isAdminLoggedIn
           ? console.log(isAdminLoggedIn)
           : isSubAdminLoggedIn
           ? console.log(isSubAdminLoggedIn)
           : isStudentLoggedIn
           ? console.log(isStudentLoggedIn)
-          : console.log(null)} */}
+          : console.log(null)}
         <GoToTop />
         <Routes>
           {/* Homepage Routes */}
