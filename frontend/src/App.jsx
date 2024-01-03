@@ -276,7 +276,7 @@ export default function App() {
             }
           />
           <Route
-            path="/dashboard-admin"
+            path="/dashboard-subAdmin"
             element={
               isStudentLoggedIn == "true" ? (
                 <DashboardAdmin />
@@ -310,7 +310,7 @@ export default function App() {
           ></Route>
           {/* Student Routes */}
           <Route
-            path="/student/*"
+            path="/student"
             element={
               isStudentLoggedIn === "true" ? (
                 <Student toggleStudentIsLoggedOut={toggleStudentIsLoggedOut} />
