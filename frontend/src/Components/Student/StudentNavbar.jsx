@@ -399,7 +399,7 @@ export default function StudentNavbar({
                 className="my-auto fw-bold ms-2 text-uppercase cvsu-text"
                 id="system-name"
               >
-                Discipline Recommender System
+                Discipline Recommender
               </p>
               <Offcanvas.Header closeButton></Offcanvas.Header>
             </div>
