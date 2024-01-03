@@ -520,11 +520,11 @@ app.post("/login-user", (req, res) => {
           const status = user.status;
           const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
           const maxAge =
-            expiresIn === "30d"
+            expiresIn == "30d"
               ? 30 * oneDayInMilliseconds
               : oneDayInMilliseconds;
           // Check if the user is an admin or sub-admin
-          if (role === "admin" && status === "enabled") {
+          if (role == "admin" && status == "enabled") {
             const token = jwt.sign(
               {
                 emailAddress: user.emailAddress,
@@ -536,7 +536,7 @@ app.post("/login-user", (req, res) => {
 
             const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
             const maxAge =
-              expiresIn === "30d"
+              expiresIn == "30d"
                 ? 30 * oneDayInMilliseconds
                 : oneDayInMilliseconds;
 
@@ -556,7 +556,7 @@ app.post("/login-user", (req, res) => {
               Status: 200,
               role: role,
             });
-          } else if (role === "sub-admin" && status === "enabled") {
+          } else if (role == "sub-admin" && status == "enabled") {
             const token = jwt.sign(
               {
                 emailAddress: user.emailAddress,
@@ -588,7 +588,7 @@ app.post("/login-user", (req, res) => {
               Status: 200,
               role: role,
             });
-          } else if (role === "student") {
+          } else if (role == "student") {
             const token = jwt.sign(
               {
                 emailAddress: user.emailAddress,
@@ -611,7 +611,7 @@ app.post("/login-user", (req, res) => {
             });
             return res.json({
               Status: 200,
-              role: user.role,
+              role: role,
             });
           } else {
             return res.json({ Status: 403, error: "Not authorized" });
