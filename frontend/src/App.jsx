@@ -129,7 +129,7 @@ export default function App() {
           ? console.log(isSubAdminLoggedIn)
           : isStudentLoggedIn
           ? console.log(isStudentLoggedIn)
-          : console.log(isAdminLoggedIn)}
+          : console.log(Cookies.get())}
         <GoToTop />
         <Routes>
           {/* Homepage Routes */}
