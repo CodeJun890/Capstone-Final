@@ -60,7 +60,7 @@ export default function App() {
     axios
       .post("http://api.discipline-recommender-system.xyz/logout")
       .then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           const getCookie = Cookie.get();
           for (const key in getCookie) {
             Cookie.remove(key);
@@ -79,7 +79,7 @@ export default function App() {
     axios
       .post("http://api.discipline-recommender-system.xyz/logout")
       .then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           const getCookie = Cookie.get();
           for (const key in getCookie) {
             Cookie.remove(key);
@@ -98,7 +98,7 @@ export default function App() {
     axios
       .post("http://api.discipline-recommender-system.xyz/logout")
       .then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           const getCookie = Cookie.get();
           for (const key in getCookie) {
             Cookie.remove(key);
