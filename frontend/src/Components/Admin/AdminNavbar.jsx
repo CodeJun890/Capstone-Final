@@ -209,7 +209,7 @@ export default function AdminNavbar({ setIsToggled, toggleAdminIsLoggedOut }) {
               />
 
               <p className="my-auto fw-bold ms-2 text-uppercase text-center cvsu-text">
-                Discipline Recommender System
+                Discipline Recommender
               </p>
               <Offcanvas.Header closeButton></Offcanvas.Header>
             </div>
@@ -384,7 +384,7 @@ export default function AdminNavbar({ setIsToggled, toggleAdminIsLoggedOut }) {
           />
 
           <p className="my-auto fw-bold ms-2 text-uppercase cvsu-text">
-            Discipline Recommender
+            Discipline Recommender System
           </p>
         </div>
         <header>

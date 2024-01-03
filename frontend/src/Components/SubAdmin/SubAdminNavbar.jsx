@@ -355,7 +355,7 @@ export default function SubAdminNavbar({ setIsToggled }) {
           />
 
           <p className="my-auto fw-bold ms-2 text-uppercase cvsu-text">
-            Violation System
+            Discipline Recommender System
           </p>
         </div>
         <header>
