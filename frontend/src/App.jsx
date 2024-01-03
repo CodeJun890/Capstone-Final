@@ -318,7 +318,7 @@ export default function App() {
           <Route
             path="/student/*"
             element={
-              isStudentLoggedIn === "false" ? (
+              isStudentLoggedIn === "true" ? (
                 <Student toggleStudentIsLoggedOut={toggleStudentIsLoggedOut} />
               ) : (
                 <Forbidden403 />
