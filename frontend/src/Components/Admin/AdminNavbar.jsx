@@ -182,7 +182,7 @@ export default function AdminNavbar({ setIsToggled, toggleAdminIsLoggedOut }) {
                 className="me-2"
               />
               <div className="h5 fw-bold text-upper mt-2" id="system-name">
-                Discipline Recommender System
+                Discipline Recommender
               </div>
             </div>
           </Link>

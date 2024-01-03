@@ -177,7 +177,9 @@ export default function SubAdminNavbar({ setIsToggled }) {
                 style={{ maxWidth: "50px", height: "auto" }}
                 className="me-2"
               />
-              <div className="h5 fw-bold text-upper mt-2">Violation System</div>
+              <div className="h5 fw-bold text-upper mt-2" id="system-name">
+                Discipline Recommender
+              </div>
             </div>
           </Link>
           <button

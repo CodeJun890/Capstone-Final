@@ -369,7 +369,7 @@ export default function StudentNavbar({
                 className="me-2"
               />
               <div className="h5 fw-bold text-upper mt-2">
-                Discipline Recommender System
+                Discipline Recommender
               </div>
             </div>
           </Link>
