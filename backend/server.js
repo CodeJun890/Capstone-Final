@@ -541,14 +541,14 @@ app.post("/login-user", (req, res) => {
                 : oneDayInMilliseconds;
 
             res.cookie("token", token, {
-              secure: false,
+              secure: true,
               httpOnly: true,
               maxAge,
               sameSite: "strict",
               domain: "discipline-recommender-system.xyz",
             });
             res.cookie("isAdminLoggedIn", true, {
-              secure: false,
+              secure: true,
               httpOnly: true,
               maxAge,
               sameSite: "strict",
@@ -575,14 +575,14 @@ app.post("/login-user", (req, res) => {
                 : oneDayInMilliseconds;
 
             res.cookie("token", token, {
-              secure: false,
+              secure: true,
               httpOnly: true,
               maxAge,
               sameSite: "strict",
               domain: "discipline-recommender-system.xyz",
             });
             res.cookie("isSubAdminLoggedIn", true, {
-              secure: false,
+              secure: true,
               httpOnly: true,
               maxAge,
               sameSite: "strict",
@@ -602,14 +602,14 @@ app.post("/login-user", (req, res) => {
               { expiresIn }
             );
             res.cookie("token", token, {
-              secure: false,
-              httpOnly: false,
+              secure: true,
+              httpOnly: true,
               maxAge,
               sameSite: "strict",
               domain: "discipline-recommender-system.xyz",
             });
             res.cookie("isStudentLoggedIn", true, {
-              secure: false,
+              secure: true,
               httpOnly: true,
               maxAge,
               sameSite: "strict",
