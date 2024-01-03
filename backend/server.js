@@ -549,7 +549,7 @@ app.post("/login-user", (req, res) => {
             });
             res.cookie("isAdminLoggedIn", true, {
               secure: false,
-              httpOnly: false,
+              httpOnly: true,
               maxAge,
               sameSite: "strict",
               domain: "discipline-recommender-system.xyz",
@@ -583,7 +583,7 @@ app.post("/login-user", (req, res) => {
             });
             res.cookie("isSubAdminLoggedIn", true, {
               secure: false,
-              httpOnly: false,
+              httpOnly: true,
               maxAge,
               sameSite: "strict",
               domain: "discipline-recommender-system.xyz",
@@ -610,7 +610,7 @@ app.post("/login-user", (req, res) => {
             });
             res.cookie("isStudentLoggedIn", true, {
               secure: false,
-              httpOnly: false,
+              httpOnly: true,
               maxAge,
               sameSite: "strict",
               domain: "discipline-recommender-system.xyz",
