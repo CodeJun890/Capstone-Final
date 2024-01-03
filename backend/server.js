@@ -642,7 +642,7 @@ app.post("/logout", (req, res) => {
       const jti = decoded.jti;
       revokedTokens.add(jti);
       res.clearCookie("token");
-      res.status(200).json({ message: "Logout successful" });
+      return res.status(200).json({ message: "Logout successful" });
     } else {
       res
         .status(400)
