@@ -8,25 +8,23 @@ import { AdminContext } from "../../../Context/AdminContext";
 // Admin Components
 
 import "../../styles.css";
-import { Loading } from "../Admin/Loading";
-import AdminTopbar from "../Admin/AdminTopbar";
-import AdminFooter from "../Admin/AdminFooter";
+import { Loading } from "./Loading";
+import AdminTopbar from "./AdminTopbar";
+import AdminFooter from "./AdminFooter";
 
 const ServerError = React.lazy(() => import("../ProtectedRoutes/ServerError"));
-const AdminNavbar = React.lazy(() => import("../Admin/AdminNavbar"));
-const DashboardAdmin = React.lazy(() => import("../Admin/DashboardAdmin"));
-const ManageStudents = React.lazy(() => import("../Admin/ManageStudents"));
-const ViolationEntry = React.lazy(() => import("../Admin/ViolationEntry"));
-const ManageProgram = React.lazy(() => import("../Admin/ManageProgram"));
-const ManageViolation = React.lazy(() => import("../Admin/ManageViolation"));
-const AcademicYear = React.lazy(() => import("../Admin/AcademicYear"));
+const AdminNavbar = React.lazy(() => import("./AdminNavbar"));
+const DashboardAdmin = React.lazy(() => import("./DashboardAdmin"));
+const ManageStudents = React.lazy(() => import("./ManageStudents"));
+const ViolationEntry = React.lazy(() => import("./ViolationEntry"));
+const ManageProgram = React.lazy(() => import("./ManageProgram"));
+const ManageViolation = React.lazy(() => import("./ManageViolation"));
+const AcademicYear = React.lazy(() => import("./AcademicYear"));
 const PageNotFound404 = React.lazy(() => import("../ProtectedRoutes/404"));
-const UserManagement = React.lazy(() => import("../Admin/UserManagement"));
-const SubAdminReports = React.lazy(() => import("../Admin/SubAdminReports"));
-const ViolationAnalytics = React.lazy(() =>
-  import("../Admin/ViolationAnalytics")
-);
-const StudentRequest = React.lazy(() => import("../Admin/StudentRequest"));
+const UserManagement = React.lazy(() => import("./UserManagement"));
+const SubAdminReports = React.lazy(() => import("./SubAdminReports"));
+const ViolationAnalytics = React.lazy(() => import("./ViolationAnalytics"));
+const StudentRequest = React.lazy(() => import("./StudentRequest"));
 
 export default function Admin({ toggleAdminIsLoggedOut }) {
   const themeValue = localStorage.getItem("theme");
