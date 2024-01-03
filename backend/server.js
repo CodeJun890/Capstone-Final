@@ -35,7 +35,7 @@ connectDB();
 const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
-
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 
 app.options(
@@ -64,6 +64,29 @@ app.use(
 app.use(cookieParser());
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
+
+const verifyToken = (req, res, next) => {
+  const token = req.cookies.token;
+  console.log(token);
+
+  if (!token) {
+    return res.status(401).json({ authenticated: false });
+  }
+
+  jwt.verify(token, process.env.REACT_SERVER_SECRET_KEY, (err, decoded) => {
+    if (err) {
+      return res.status(401).json({ authenticated: false });
+    }
+
+    req.user = decoded;
+    next();
+  });
+};
+
+// Endpoint to check authentication status
+app.get("/auth-status", verifyToken, (req, res) => {
+  res.status(200).json({ authenticated: true, role: req.user.role });
+});
 
 const verifyUserSubAdmin = (req, res, next) => {
   const token = req.cookies.token;
@@ -542,13 +565,13 @@ app.post("/login-user", (req, res) => {
 
             res.cookie("token", token, {
               secure: false,
-              httpOnly: false,
+              httpOnly: true,
               maxAge,
               sameSite: "strict",
             });
             res.cookie("isAdminLoggedIn", true, {
               secure: false,
-              httpOnly: false,
+              httpOnly: true,
               maxAge,
               sameSite: "strict",
             });
@@ -574,7 +597,7 @@ app.post("/login-user", (req, res) => {
 
             res.cookie("token", token, {
               secure: false,
-              httpOnly: false,
+              httpOnly: true,
               maxAge,
               sameSite: "strict",
             });
@@ -599,13 +622,13 @@ app.post("/login-user", (req, res) => {
             );
             res.cookie("token", token, {
               secure: false,
-              httpOnly: false,
+              httpOnly: true,
               maxAge,
               sameSite: "strict",
             });
             res.cookie("isStudentLoggedIn", true, {
               secure: false,
-              httpOnly: false,
+              httpOnly: true,
               maxAge,
               sameSite: "strict",
             });
