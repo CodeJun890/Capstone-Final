@@ -541,16 +541,14 @@ app.post("/login-user", (req, res) => {
                 : oneDayInMilliseconds;
 
             res.cookie("token", token, {
-              secure: false,
               httpOnly: false,
               maxAge,
-              sameSite: "lax",
+              sameSite: "strict",
             });
             res.cookie("isAdminLoggedIn", true, {
-              secure: false,
               httpOnly: false,
               maxAge,
-              sameSite: "lax",
+              sameSite: "strict",
             });
             return res.json({
               Status: 200,
@@ -573,16 +571,14 @@ app.post("/login-user", (req, res) => {
                 : oneDayInMilliseconds;
 
             res.cookie("token", token, {
-              secure: false,
               httpOnly: false,
               maxAge,
-              sameSite: "lax",
+              sameSite: "strict",
             });
             res.cookie("isSubAdminLoggedIn", true, {
-              secure: false,
               httpOnly: false,
               maxAge,
-              sameSite: "lax",
+              sameSite: "strict",
             });
             return res.json({
               Status: 200,
@@ -598,16 +594,14 @@ app.post("/login-user", (req, res) => {
               { expiresIn }
             );
             res.cookie("token", token, {
-              secure: false,
               httpOnly: false,
               maxAge,
-              sameSite: "lax",
+              sameSite: "strict",
             });
             res.cookie("isStudentLoggedIn", true, {
-              secure: false,
               httpOnly: false,
               maxAge,
-              sameSite: "lax",
+              sameSite: "strict",
             });
             return res.json({
               Status: 200,
