@@ -59,8 +59,8 @@ export default function App() {
       .post("http://api.discipline-recommender-system.xyz/logout")
       .then((res) => {
         if (res.status == 200) {
-          const getCookie = Cookies.get();
-          for (const key in getCookie) {
+          const getCookies = Cookies.get();
+          for (const key in getCookies) {
             Cookies.remove(key);
           }
           Navigate("/login");
@@ -78,8 +78,8 @@ export default function App() {
       .post("http://api.discipline-recommender-system.xyz/logout")
       .then((res) => {
         if (res.status == 200) {
-          const getCookie = Cookies.get();
-          for (const key in getCookie) {
+          const getCookies = Cookies.get();
+          for (const key in getCookies) {
             Cookies.remove(key);
           }
           Navigate("/login");
@@ -97,8 +97,8 @@ export default function App() {
       .post("http://api.discipline-recommender-system.xyz/logout")
       .then((res) => {
         if (res.status == 200) {
-          const getCookie = Cookies.get();
-          for (const key in getCookie) {
+          const getCookies = Cookies.get();
+          for (const key in getCookies) {
             Cookies.remove(key);
           }
           Navigate("/login");
