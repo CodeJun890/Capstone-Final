@@ -542,7 +542,7 @@ app.post("/login-user", (req, res) => {
 
             res.cookie("token", token, {
               secure: false,
-              httpOnly: true,
+              httpOnly: false,
               maxAge,
               sameSite: "strict",
               domain: "discipline-recommender-system.xyz",
@@ -576,7 +576,7 @@ app.post("/login-user", (req, res) => {
 
             res.cookie("token", token, {
               secure: false,
-              httpOnly: true,
+              httpOnly: false,
               maxAge,
               sameSite: "strict",
               domain: "discipline-recommender-system.xyz",
@@ -603,7 +603,7 @@ app.post("/login-user", (req, res) => {
             );
             res.cookie("token", token, {
               secure: false,
-              httpOnly: true,
+              httpOnly: false,
               maxAge,
               sameSite: "strict",
               domain: "discipline-recommender-system.xyz",
