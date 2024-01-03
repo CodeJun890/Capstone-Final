@@ -282,7 +282,7 @@ export default function App() {
             }
           />
           <Route
-            path="/subAdmin-dashboard"
+            path="/dashboard-subAdmin"
             element={
               isSubAdminLoggedIn == "true" ? (
                 <DashboardSubAdmin />
@@ -309,7 +309,7 @@ export default function App() {
             }
           />
           <Route
-            path="/admin-dashboard"
+            path="/dashboard-admin"
             element={
               isAdminLoggedIn == "true" ? <DashboardAdmin /> : <Forbidden403 />
             }
