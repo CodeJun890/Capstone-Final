@@ -541,7 +541,7 @@ app.post("/login-user", (req, res) => {
                 : oneDayInMilliseconds;
 
             res.cookie("token", token, {
-              secure: false,
+              secure: true,
               httpOnly: true,
               maxAge,
               sameSite: "strict",
@@ -573,7 +573,7 @@ app.post("/login-user", (req, res) => {
                 : oneDayInMilliseconds;
 
             res.cookie("token", token, {
-              secure: false,
+              secure: true,
               httpOnly: true,
               maxAge,
               sameSite: "strict",
@@ -598,7 +598,7 @@ app.post("/login-user", (req, res) => {
               { expiresIn }
             );
             res.cookie("token", token, {
-              secure: false,
+              secure: true,
               httpOnly: true,
               maxAge,
               sameSite: "strict",
