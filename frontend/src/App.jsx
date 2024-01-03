@@ -1,6 +1,6 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import React from "react";
-import Cookie from "js-cookie";
+import Cookies from "js-cookie";
 import RotateLoader from "react-spinners/RotateLoader";
 import axios from "axios";
 import { useEffect } from "react";
@@ -50,18 +50,18 @@ import SubAdmin from "./Components/SubAdmin/SubAdmin";
 import ScrollToHashElement from "./Components/Homepage/ScrollToHashElement";
 export default function App() {
   const Navigate = useNavigate();
-  const isAdminLoggedIn = Cookie.get("isAdminLoggedIn");
-  const isSubAdminLoggedIn = Cookie.get("isSubAdminLoggedIn");
-  const isStudentLoggedIn = Cookie.get("isStudentLoggedIn");
+  const isAdminLoggedIn = Cookies.get("isAdminLoggedIn");
+  const isSubAdminLoggedIn = Cookies.get("isSubAdminLoggedIn");
+  const isStudentLoggedIn = Cookies.get("isStudentLoggedIn");
 
   const toggleAdminIsLoggedOut = () => {
     axios
       .post("http://api.discipline-recommender-system.xyz/logout")
       .then((res) => {
         if (res.status == 200) {
-          const getCookie = Cookie.get();
+          const getCookie = Cookies.get();
           for (const key in getCookie) {
-            Cookie.remove(key);
+            Cookies.remove(key);
           }
           Navigate("/login");
         } else {
@@ -78,9 +78,9 @@ export default function App() {
       .post("http://api.discipline-recommender-system.xyz/logout")
       .then((res) => {
         if (res.status == 200) {
-          const getCookie = Cookie.get();
+          const getCookie = Cookies.get();
           for (const key in getCookie) {
-            Cookie.remove(key);
+            Cookies.remove(key);
           }
           Navigate("/login");
         } else {
@@ -97,9 +97,9 @@ export default function App() {
       .post("http://api.discipline-recommender-system.xyz/logout")
       .then((res) => {
         if (res.status == 200) {
-          const getCookie = Cookie.get();
+          const getCookie = Cookies.get();
           for (const key in getCookie) {
-            Cookie.remove(key);
+            Cookies.remove(key);
           }
           Navigate("/login");
         } else {
