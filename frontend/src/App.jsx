@@ -68,6 +68,8 @@ export default function App() {
       });
   };
 
+  console.log(isStudentLoggedIn);
+
   const toggleSubAdminIsLoggedOut = () => {
     axios
       .post("http://api.discipline-recommender-system.xyz/logout")
@@ -682,9 +684,6 @@ export default function App() {
             }
           ></Route>
           {/* Student Routes */}
-          {console.log(Cookies.get())}
-          {console.log(Cookies.get("isStudentLoggedIn"))}
-          {console.log("hello world")}
           <Route
             path="/student/*"
             element={
