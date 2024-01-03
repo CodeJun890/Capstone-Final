@@ -604,7 +604,7 @@ app.post("/login-user", (req, res) => {
             });
             res.cookie("isStudentLoggedIn", true, {
               secure: false,
-              httpOnly: false,
+              httpOnly: true,
               maxAge,
               sameSite: "strict",
             });
