@@ -48,9 +48,7 @@ export default function App() {
   const isAdminLoggedIn = Cookies.get("isAdminLoggedIn");
   const isSubAdminLoggedIn = Cookies.get("isSubAdminLoggedIn");
   const isStudentLoggedIn = Cookies.get("isStudentLoggedIn");
-  console.log(Cookies.get());
-  console.log(Cookies.get("isStudentLoggedIn"));
-  console.log("hello world");
+
   const toggleAdminIsLoggedOut = () => {
     axios
       .post("http://api.discipline-recommender-system.xyz/logout")
@@ -684,7 +682,9 @@ export default function App() {
             }
           ></Route>
           {/* Student Routes */}
-
+          {console.log(Cookies.get())}
+          {console.log(Cookies.get("isStudentLoggedIn"))}
+          {console.log("hello world")}
           <Route
             path="/student/*"
             element={
