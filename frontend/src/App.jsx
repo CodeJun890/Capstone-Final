@@ -52,9 +52,9 @@ import SubAdmin from "./Components/SubAdmin/SubAdmin";
 import ScrollToHashElement from "./Components/Homepage/ScrollToHashElement";
 export default function App() {
   const Navigate = useNavigate();
-  // const isAdminLoggedIn = Cookies.get("isAdminLoggedIn");
-  // const isSubAdminLoggedIn = Cookies.get("isSubAdminLoggedIn");
-  // const isStudentLoggedIn = Cookies.get("isStudentLoggedIn");
+  const isAdminLoggedIn = Cookies.get("isAdminLoggedIn");
+  const isSubAdminLoggedIn = Cookies.get("isSubAdminLoggedIn");
+  const isStudentLoggedIn = Cookies.get("isStudentLoggedIn");
   useEffect(() => {
     axios
       .post("http://api.discipline-recommender-system.xyz/auth-status")
