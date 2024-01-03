@@ -518,17 +518,45 @@ app.post("/login-user", (req, res) => {
           const expiresIn = rememberMe ? "30d" : "1d";
           const role = user.role;
           const status = user.status;
-
           const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
           const maxAge =
             expiresIn === "30d"
               ? 30 * oneDayInMilliseconds
               : oneDayInMilliseconds;
+          // Check if the user is an admin or sub-admin
+          if (role === "admin" && status === "enabled") {
+            const token = jwt.sign(
+              {
+                emailAddress: user.emailAddress,
+                role: role, // Use the role from the record
+              },
+              process.env.REACT_SERVER_SECRET_KEY,
+              { expiresIn }
+            );
 
-          if (
-            (role === "admin" || role === "sub-admin") &&
-            status === "enabled"
-          ) {
+            const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
+            const maxAge =
+              expiresIn === "30d"
+                ? 30 * oneDayInMilliseconds
+                : oneDayInMilliseconds;
+
+            res.cookie("token", token, {
+              secure: false,
+              httpOnly: true,
+              maxAge,
+              sameSite: "strict",
+            });
+            res.cookie("isAdminLoggedIn", true, {
+              secure: false,
+              httpOnly: false,
+              maxAge,
+              sameSite: "strict",
+            });
+            return res.json({
+              Status: 200,
+              role: role,
+            });
+          } else if (role === "sub-admin" && status === "enabled") {
             const token = jwt.sign(
               {
                 emailAddress: user.emailAddress,
@@ -538,29 +566,24 @@ app.post("/login-user", (req, res) => {
               { expiresIn }
             );
 
+            const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
+            const maxAge =
+              expiresIn === "30d"
+                ? 30 * oneDayInMilliseconds
+                : oneDayInMilliseconds;
+
             res.cookie("token", token, {
-              secure: false, // Change to true if using HTTPS in production
+              secure: false,
               httpOnly: true,
               maxAge,
               sameSite: "strict",
             });
-
-            if (role === "admin") {
-              res.cookie("isAdminLoggedIn", true, {
-                secure: false, // Change to true if using HTTPS in production
-                httpOnly: false,
-                maxAge,
-                sameSite: "strict",
-              });
-            } else if (role === "sub-admin") {
-              res.cookie("isSubAdminLoggedIn", true, {
-                secure: false, // Change to true if using HTTPS in production
-                httpOnly: false,
-                maxAge,
-                sameSite: "strict",
-              });
-            }
-
+            res.cookie("isSubAdminLoggedIn", true, {
+              secure: false,
+              httpOnly: false,
+              maxAge,
+              sameSite: "strict",
+            });
             return res.json({
               Status: 200,
               role: role,
@@ -574,21 +597,18 @@ app.post("/login-user", (req, res) => {
               process.env.REACT_SERVER_SECRET_KEY,
               { expiresIn }
             );
-
             res.cookie("token", token, {
-              secure: false, // Change to true if using HTTPS in production
+              secure: false,
               httpOnly: true,
               maxAge,
               sameSite: "strict",
             });
-
             res.cookie("isStudentLoggedIn", true, {
-              secure: false, // Change to true if using HTTPS in production
-              httpOnly: true,
+              secure: false,
+              httpOnly: false,
               maxAge,
               sameSite: "strict",
             });
-
             return res.json({
               Status: 200,
               role: user.role,
@@ -597,11 +617,11 @@ app.post("/login-user", (req, res) => {
             return res.json({ Status: 403, error: "Not authorized" });
           }
         } else {
-          return res.json({ Status: 401, error: "Invalid credentials" });
+          return res.json({ Status: 401, error: "The password is incorrect" });
         }
       });
     } else {
-      return res.json({ Status: 404, error: "User not found" });
+      return res.json("No record existed");
     }
   });
 });
