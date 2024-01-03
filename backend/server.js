@@ -520,11 +520,11 @@ app.post("/login-user", (req, res) => {
           const status = user.status;
           const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
           const maxAge =
-            expiresIn == "30d"
+            expiresIn === "30d"
               ? 30 * oneDayInMilliseconds
               : oneDayInMilliseconds;
           // Check if the user is an admin or sub-admin
-          if (role == "admin" && status == "enabled") {
+          if (role === "admin" && status === "enabled") {
             const token = jwt.sign(
               {
                 emailAddress: user.emailAddress,
@@ -536,20 +536,20 @@ app.post("/login-user", (req, res) => {
 
             const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
             const maxAge =
-              expiresIn == "30d"
+              expiresIn === "30d"
                 ? 30 * oneDayInMilliseconds
                 : oneDayInMilliseconds;
 
             res.cookie("token", token, {
-              secure: true,
+              secure: false,
               httpOnly: true,
               maxAge,
               sameSite: "strict",
               domain: "discipline-recommender-system.xyz",
             });
             res.cookie("isAdminLoggedIn", true, {
-              secure: true,
-              httpOnly: true,
+              secure: false,
+              httpOnly: false,
               maxAge,
               sameSite: "strict",
               domain: "discipline-recommender-system.xyz",
@@ -558,7 +558,7 @@ app.post("/login-user", (req, res) => {
               Status: 200,
               role: role,
             });
-          } else if (role == "sub-admin" && status == "enabled") {
+          } else if (role === "sub-admin" && status === "enabled") {
             const token = jwt.sign(
               {
                 emailAddress: user.emailAddress,
@@ -575,15 +575,15 @@ app.post("/login-user", (req, res) => {
                 : oneDayInMilliseconds;
 
             res.cookie("token", token, {
-              secure: true,
+              secure: false,
               httpOnly: true,
               maxAge,
               sameSite: "strict",
               domain: "discipline-recommender-system.xyz",
             });
             res.cookie("isSubAdminLoggedIn", true, {
-              secure: true,
-              httpOnly: true,
+              secure: false,
+              httpOnly: false,
               maxAge,
               sameSite: "strict",
               domain: "discipline-recommender-system.xyz",
@@ -592,7 +592,7 @@ app.post("/login-user", (req, res) => {
               Status: 200,
               role: role,
             });
-          } else if (role == "student") {
+          } else if (role === "student") {
             const token = jwt.sign(
               {
                 emailAddress: user.emailAddress,
@@ -602,22 +602,22 @@ app.post("/login-user", (req, res) => {
               { expiresIn }
             );
             res.cookie("token", token, {
-              secure: true,
+              secure: false,
               httpOnly: true,
               maxAge,
               sameSite: "strict",
               domain: "discipline-recommender-system.xyz",
             });
             res.cookie("isStudentLoggedIn", true, {
-              secure: true,
-              httpOnly: true,
+              secure: false,
+              httpOnly: false,
               maxAge,
               sameSite: "strict",
               domain: "discipline-recommender-system.xyz",
             });
             return res.json({
               Status: 200,
-              role: role,
+              role: user.role,
             });
           } else {
             return res.json({ Status: 403, error: "Not authorized" });
