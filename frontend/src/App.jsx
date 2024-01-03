@@ -129,7 +129,7 @@ export default function App() {
           ? console.log(isSubAdminLoggedIn)
           : isStudentLoggedIn
           ? console.log(isStudentLoggedIn)
-          : console.log("ngek")}
+          : console.log(isAdminLoggedIn)}
         <GoToTop />
         <Routes>
           {/* Homepage Routes */}
