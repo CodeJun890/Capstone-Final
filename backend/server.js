@@ -35,7 +35,7 @@ connectDB();
 const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
-app.use(cookieParser());
+
 app.use(express.urlencoded({ extended: false }));
 
 app.options(
@@ -541,11 +541,13 @@ app.post("/login-user", (req, res) => {
                 : oneDayInMilliseconds;
 
             res.cookie("token", token, {
-              httpOnly: false,
+              secure: false,
+              httpOnly: true,
               maxAge,
               sameSite: "strict",
             });
-            res.cookie("isAdminLoggedIn", "true", {
+            res.cookie("isAdminLoggedIn", true, {
+              secure: false,
               httpOnly: false,
               maxAge,
               sameSite: "strict",
@@ -571,11 +573,13 @@ app.post("/login-user", (req, res) => {
                 : oneDayInMilliseconds;
 
             res.cookie("token", token, {
-              httpOnly: false,
+              secure: false,
+              httpOnly: true,
               maxAge,
               sameSite: "strict",
             });
-            res.cookie("isSubAdminLoggedIn", "true", {
+            res.cookie("isSubAdminLoggedIn", true, {
+              secure: false,
               httpOnly: false,
               maxAge,
               sameSite: "strict",
@@ -594,14 +598,17 @@ app.post("/login-user", (req, res) => {
               { expiresIn }
             );
             res.cookie("token", token, {
+              secure: false,
               httpOnly: false,
               maxAge,
               sameSite: "strict",
             });
-            res.cookie("isStudentLoggedIn", "true", {
+            res.cookie("isStudentLoggedIn", true, {
+              secure: false,
               httpOnly: false,
               maxAge,
               sameSite: "strict",
+              domain: "discipline-recommender-system.xyz",
             });
             return res.json({
               Status: 200,
