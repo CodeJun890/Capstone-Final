@@ -122,7 +122,6 @@ export default function App() {
         <GoToTop />
         <Routes>
           {/* Homepage Routes */}
-
           <Route
             path="/*"
             element={
@@ -632,7 +631,6 @@ export default function App() {
               )
             }
           ></Route>
-
           {/* Sub Admin Routes */}
           <Route
             path="/subAdmin/*"
@@ -683,9 +681,9 @@ export default function App() {
               isAdminLoggedIn == "true" ? <DashboardAdmin /> : <Forbidden403 />
             }
           ></Route>
-
           {/* Student Routes */}
-
+          {console.log(Cookies.get())}
+          {console.log(Cookies.get())}
           <Route
             path="/student/*"
             element={
