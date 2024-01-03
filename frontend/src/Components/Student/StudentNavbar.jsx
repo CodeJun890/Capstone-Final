@@ -478,13 +478,13 @@ export default function StudentNavbar({
                       </a>
                     </li>
                     <li className="nav-links">
-                      <a href="#">
+                      <Link to="/help-support">
                         <FontAwesomeIcon
                           icon={faQuestionCircle}
                           className="icons"
                         />
                         <span className="text-link">Help/Support</span>
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
