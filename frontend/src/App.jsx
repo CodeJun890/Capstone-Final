@@ -62,7 +62,7 @@ export default function App() {
         if (res.status == 200) {
           const getCookie = Cookie.get();
           for (const key in getCookie) {
-            Cookie.remove(key);
+            Cookie.remove(key, { domain: "discipline-recommender-system.xyz" });
           }
           Navigate("/login");
         } else {
@@ -81,7 +81,7 @@ export default function App() {
         if (res.status == 200) {
           const getCookie = Cookie.get();
           for (const key in getCookie) {
-            Cookie.remove(key);
+            Cookie.remove(key, { domain: "discipline-recommender-system.xyz" });
           }
           Navigate("/login");
         } else {
@@ -100,7 +100,7 @@ export default function App() {
         if (res.status == 200) {
           const getCookie = Cookie.get();
           for (const key in getCookie) {
-            Cookie.remove(key);
+            Cookie.remove(key, { domain: "discipline-recommender-system.xyz" });
           }
           Navigate("/login");
         } else {
