@@ -105,7 +105,7 @@ export default function App() {
         console.log(error);
       });
   };
-
+  console.log("heeeey");
   return (
     <>
       <ScrollToHashElement />
@@ -310,7 +310,7 @@ export default function App() {
           ></Route>
           {/* Student Routes */}
           <Route
-            path="/student"
+            path="/student/*"
             element={
               isStudentLoggedIn === "true" ? (
                 <Student toggleStudentIsLoggedOut={toggleStudentIsLoggedOut} />

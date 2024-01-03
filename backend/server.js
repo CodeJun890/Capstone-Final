@@ -508,7 +508,6 @@ app.post("/signup-student", async (req, res) => {
 // login registered student
 app.post("/login-user", (req, res) => {
   const { identifier, password, rememberMe } = req.body;
-
   UserModel.findOne({
     $or: [{ emailAddress: identifier }, { studentNumber: identifier }],
   }).then((user) => {
