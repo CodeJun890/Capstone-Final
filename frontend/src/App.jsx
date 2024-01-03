@@ -1,6 +1,6 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import React from "react";
-import Cookies from "js-cookie";
+import Cookie from "js-cookie";
 import RotateLoader from "react-spinners/RotateLoader";
 import axios from "axios";
 import { useEffect } from "react";
@@ -46,6 +46,8 @@ const DashboardStudent = React.lazy(() => {
 
 //Student Components
 const Student = React.lazy(() => import("./Components/Student/Student"));
+
+import Cookies from "js-cookie";
 import SubAdmin from "./Components/SubAdmin/SubAdmin";
 import ScrollToHashElement from "./Components/Homepage/ScrollToHashElement";
 export default function App() {
@@ -59,9 +61,9 @@ export default function App() {
       .post("http://api.discipline-recommender-system.xyz/logout")
       .then((res) => {
         if (res.status == 200) {
-          const getCookies = Cookies.get();
-          for (const key in getCookies) {
-            Cookies.remove(key);
+          const getCookie = Cookie.get();
+          for (const key in getCookie) {
+            Cookie.remove(key);
           }
           Navigate("/login");
         } else {
@@ -78,9 +80,9 @@ export default function App() {
       .post("http://api.discipline-recommender-system.xyz/logout")
       .then((res) => {
         if (res.status == 200) {
-          const getCookies = Cookies.get();
-          for (const key in getCookies) {
-            Cookies.remove(key);
+          const getCookie = Cookie.get();
+          for (const key in getCookie) {
+            Cookie.remove(key);
           }
           Navigate("/login");
         } else {
@@ -97,9 +99,9 @@ export default function App() {
       .post("http://api.discipline-recommender-system.xyz/logout")
       .then((res) => {
         if (res.status == 200) {
-          const getCookies = Cookies.get();
-          for (const key in getCookies) {
-            Cookies.remove(key);
+          const getCookie = Cookie.get();
+          for (const key in getCookie) {
+            Cookie.remove(key);
           }
           Navigate("/login");
         } else {
@@ -123,13 +125,7 @@ export default function App() {
         isSubAdminLoggedIn === "true" ? null : (
           <HomeNavbar />
         )}
-        {isAdminLoggedIn
-          ? console.log(isAdminLoggedIn)
-          : isSubAdminLoggedIn
-          ? console.log(isSubAdminLoggedIn)
-          : isStudentLoggedIn
-          ? console.log(isStudentLoggedIn)
-          : console.log(Cookies.get())}
+
         <GoToTop />
         <Routes>
           {/* Homepage Routes */}
