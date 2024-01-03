@@ -1,5 +1,6 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import React from "react";
+import Cookie from "js-cookie";
 import RotateLoader from "react-spinners/RotateLoader";
 import axios from "axios";
 import { useEffect } from "react";
@@ -46,14 +47,13 @@ const DashboardStudent = React.lazy(() => {
 //Student Components
 const Student = React.lazy(() => import("./Components/Student/Student"));
 
-import Cookies from "js-cookie";
 import SubAdmin from "./Components/SubAdmin/SubAdmin";
 import ScrollToHashElement from "./Components/Homepage/ScrollToHashElement";
 export default function App() {
   const Navigate = useNavigate();
-  const isAdminLoggedIn = Cookies.get("isAdminLoggedIn");
-  const isSubAdminLoggedIn = Cookies.get("isSubAdminLoggedIn");
-  const isStudentLoggedIn = Cookies.get("isStudentLoggedIn");
+  const isAdminLoggedIn = Cookie.get("isAdminLoggedIn");
+  const isSubAdminLoggedIn = Cookie.get("isSubAdminLoggedIn");
+  const isStudentLoggedIn = Cookie.get("isStudentLoggedIn");
 
   const toggleAdminIsLoggedOut = () => {
     axios
