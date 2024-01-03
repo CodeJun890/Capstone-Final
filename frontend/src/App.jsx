@@ -46,7 +46,6 @@ const DashboardStudent = React.lazy(() => {
 
 //Student Components
 const Student = React.lazy(() => import("./Components/Student/Student"));
-
 import SubAdmin from "./Components/SubAdmin/SubAdmin";
 import ScrollToHashElement from "./Components/Homepage/ScrollToHashElement";
 export default function App() {
