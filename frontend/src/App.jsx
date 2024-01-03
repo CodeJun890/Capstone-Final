@@ -1,6 +1,5 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
 import React from "react";
-import Cookie from "js-cookie";
 import RotateLoader from "react-spinners/RotateLoader";
 import axios from "axios";
 import { useEffect } from "react";
