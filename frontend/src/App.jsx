@@ -55,18 +55,6 @@ export default function App() {
   const isAdminLoggedIn = Cookies.get("isAdminLoggedIn");
   const isSubAdminLoggedIn = Cookies.get("isSubAdminLoggedIn");
   const isStudentLoggedIn = Cookies.get("isStudentLoggedIn");
-  useEffect(() => {
-    axios
-      .post("http://api.discipline-recommender-system.xyz/auth-status")
-      .then((res) => {
-        if (res.status == 200) {
-          console.log(res.data);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
 
   const toggleAdminIsLoggedOut = () => {
     axios
