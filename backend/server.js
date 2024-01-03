@@ -544,13 +544,11 @@ app.post("/login-user", (req, res) => {
               secure: false,
               httpOnly: false,
               maxAge,
-              sameSite: "strict",
             });
             res.cookie("isAdminLoggedIn", true, {
               secure: false,
               httpOnly: false,
               maxAge,
-              sameSite: "strict",
             });
             return res.json({
               Status: 200,
@@ -576,13 +574,11 @@ app.post("/login-user", (req, res) => {
               secure: false,
               httpOnly: false,
               maxAge,
-              sameSite: "strict",
             });
             res.cookie("isSubAdminLoggedIn", true, {
               secure: false,
               httpOnly: false,
               maxAge,
-              sameSite: "strict",
             });
             return res.json({
               Status: 200,
@@ -601,13 +597,11 @@ app.post("/login-user", (req, res) => {
               secure: false,
               httpOnly: false,
               maxAge,
-              sameSite: "strict",
             });
             res.cookie("isStudentLoggedIn", true, {
               secure: false,
               httpOnly: false,
               maxAge,
-              sameSite: "strict",
             });
             return res.json({
               Status: 200,
