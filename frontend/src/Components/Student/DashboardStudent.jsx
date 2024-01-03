@@ -69,7 +69,9 @@ export default function DashboardStudent() {
                       className="img-fluid"
                     />
                   </div>
-                  <Card.Title className="fw-bold">Academic Year</Card.Title>
+                  <Card.Title className="fw-bold text-center">
+                    Academic Year
+                  </Card.Title>
                   <Card.Text className="text-center h2 my-1 fw-bold text-light">
                     {loadingAcadYear ? (
                       <div className="d-flex justify-content-center">
@@ -98,7 +100,9 @@ export default function DashboardStudent() {
                       className="img-fluid"
                     />
                   </div>
-                  <Card.Title className="fw-bold">Course / Program</Card.Title>
+                  <Card.Title className="fw-bold text-center">
+                    Course / Program
+                  </Card.Title>
                   <Card.Text className="text-capitalize h5">
                     {loadingCourse ? (
                       <ClockLoader color="#ffffff" loading={loadingCourse} />
@@ -122,7 +126,9 @@ export default function DashboardStudent() {
                       className="img-fluid"
                     />
                   </div>
-                  <Card.Title className="fw-bold">Total Violations</Card.Title>
+                  <Card.Title className="fw-bold text-center">
+                    Total Violations
+                  </Card.Title>
                   <Card.Text className="h1 fw-bold">
                     {loadingCount ? (
                       <div className="d-flex justify-content-center">

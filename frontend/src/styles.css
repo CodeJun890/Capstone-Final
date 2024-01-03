@@ -1440,6 +1440,10 @@ ul {
     margin: 0;
     padding: 0;
   }
+
+  #system-name {
+    font-size: 1rem;
+  }
 }
 
 @keyframes fadeTop {

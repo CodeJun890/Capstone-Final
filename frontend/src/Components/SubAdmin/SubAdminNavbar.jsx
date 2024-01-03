@@ -202,8 +202,11 @@ export default function SubAdminNavbar({ setIsToggled }) {
                 alt="Cvsu Logo"
               />
 
-              <p className="my-auto fw-bold ms-2 text-uppercase cvsu-text">
-                Violation System
+              <p
+                className="my-auto fw-bold ms-2 text-uppercase cvsu-text"
+                id="system-name"
+              >
+                Discipline Recommender System
               </p>
               <Offcanvas.Header closeButton></Offcanvas.Header>
             </div>

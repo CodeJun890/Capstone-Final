@@ -395,7 +395,10 @@ export default function StudentNavbar({
                 alt="Cvsu Logo"
               />
 
-              <p className="my-auto fw-bold ms-2 text-uppercase cvsu-text">
+              <p
+                className="my-auto fw-bold ms-2 text-uppercase cvsu-text"
+                id="system-name"
+              >
                 Discipline Recommender System
               </p>
               <Offcanvas.Header closeButton></Offcanvas.Header>

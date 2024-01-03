@@ -81,7 +81,7 @@ export default function DashboardAdmin() {
                       className="img-fluid"
                     />
                   </div>
-                  <Card.Title className="lead text-light text-uppercase">
+                  <Card.Title className="lead text-light text-uppercase text-center">
                     Total Registered Student
                   </Card.Title>
                   <Card.Text className="text-center h1 fw-bold text-light">
@@ -102,7 +102,7 @@ export default function DashboardAdmin() {
                     icon={faExclamationTriangle}
                   />
 
-                  <Card.Title className="text-light text-uppercase">
+                  <Card.Title className="text-light text-uppercase text-center">
                     Total Student Violation
                   </Card.Title>
                   <Card.Text className="text-center h1 fw-bold text-light">
@@ -128,7 +128,7 @@ export default function DashboardAdmin() {
                       className="img-fluid"
                     />
                   </div>
-                  <Card.Title className="lead text-light text-uppercase">
+                  <Card.Title className="lead text-light text-uppercase text-center">
                     Total Violation
                   </Card.Title>
                   <Card.Text className="text-center h1 fw-bold text-light">
