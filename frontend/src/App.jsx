@@ -32,7 +32,7 @@ const Forbidden403 = React.lazy(() =>
 );
 
 //Admin Components
-const Admin = React.lazy(() => import("./Components/Admin/Admin"));
+const Admin = React.lazy(() => import("./Components/Homepage/Admin"));
 const DashboardAdmin = React.lazy(() => {
   import("./Components/Admin/DashboardAdmin");
 });
@@ -44,10 +44,10 @@ const DashboardStudent = React.lazy(() => {
 });
 
 //Student Components
-const Student = React.lazy(() => import("./Components/Student/Student"));
+const Student = React.lazy(() => import("./Components/Homepage/Student"));
 
 import Cookies from "js-cookie";
-import SubAdmin from "./Components/SubAdmin/SubAdmin";
+import SubAdmin from "./Components/Homepage/SubAdmin";
 import ScrollToHashElement from "./Components/Homepage/ScrollToHashElement";
 export default function App() {
   const Navigate = useNavigate();

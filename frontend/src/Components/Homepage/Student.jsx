@@ -8,19 +8,25 @@ import { StudentContext } from "../../../Context/StudentContext";
 // Student Components
 
 import "../../styles.css";
-import { Loading } from "./Loading";
+import { Loading } from "../Student/Loading";
 
-const StudentNavbar = React.lazy(() => import("./StudentNavbar"));
-const StudentFooter = React.lazy(() => import("./StudentFooter"));
-const StudentTopbar = React.lazy(() => import("./StudentTopbar"));
-const DashboardStudent = React.lazy(() => import("./DashboardStudent"));
+const StudentNavbar = React.lazy(() => import("../Student/StudentNavbar"));
+const StudentFooter = React.lazy(() => import("../Student/StudentFooter"));
+const StudentTopbar = React.lazy(() => import("../Student/StudentTopbar"));
+const DashboardStudent = React.lazy(() =>
+  import("../Student/DashboardStudent")
+);
 const PageNotFound404 = React.lazy(() => import("../ProtectedRoutes/404"));
-const StudentProfile = React.lazy(() => import("./StudentProfile"));
-const StudentViolation = React.lazy(() => import("./StudentViolation"));
-const HelpAndSupport = React.lazy(() => import("./HelpAndSupport"));
+const StudentProfile = React.lazy(() => import("../Student/StudentProfile"));
+const StudentViolation = React.lazy(() =>
+  import("../Student/StudentViolation")
+);
+const HelpAndSupport = React.lazy(() => import("../Student/HelpAndSupport"));
 const ServerError = React.lazy(() => import("../ProtectedRoutes/ServerError"));
-const GoodMoralRequest = React.lazy(() => import("./GoodMoralRequest"));
-const RequestHistory = React.lazy(() => import("./RequestHistory"));
+const GoodMoralRequest = React.lazy(() =>
+  import("../Student/GoodMoralRequest")
+);
+const RequestHistory = React.lazy(() => import("../Student/RequestHistory"));
 
 export default function Student({ toggleStudentIsLoggedOut }) {
   const themeValue = localStorage.getItem("theme");

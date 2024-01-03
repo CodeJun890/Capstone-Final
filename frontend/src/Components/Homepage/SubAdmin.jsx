@@ -7,22 +7,26 @@ import { SubAdminContext } from "../../../Context/SubAdminContext";
 // Admin Components
 
 import "../../styles.css";
-import { Loading } from "./Loading";
-import SubAdminTopbar from "./SubAdminTopBar";
-import SubAdminFooter from "./SubAdminFooter";
+import { Loading } from "../SubAdmin/Loading";
+import SubAdminTopbar from "../SubAdmin/SubAdminTopBar";
+import SubAdminFooter from "../SubAdmin/SubAdminFooter";
 
-const DashboardSubAdmin = React.lazy(() => import("./DashboardSubAdmin"));
+const DashboardSubAdmin = React.lazy(() =>
+  import("../SubAdmin/DashboardSubAdmin")
+);
 const ServerError = React.lazy(() => import("../ProtectedRoutes/ServerError"));
 const PageNotFound404 = React.lazy(() => import("../ProtectedRoutes/404"));
-const SubAdminNavbar = React.lazy(() => import("./SubAdminNavbar"));
-const ManageStudents = React.lazy(() => import("./ManageStudents"));
-const ManageViolation = React.lazy(() => import("./ManageViolation"));
-const ManageProgram = React.lazy(() => import("./ManageProgram"));
+const SubAdminNavbar = React.lazy(() => import("../SubAdmin/SubAdminNavbar"));
+const ManageStudents = React.lazy(() => import("../SubAdmin/ManageStudents"));
+const ManageViolation = React.lazy(() => import("../SubAdmin/ManageViolation"));
+const ManageProgram = React.lazy(() => import("../SubAdmin/ManageProgram"));
 const StudentIncidentReport = React.lazy(() =>
-  import("./StudentIncidentReport")
+  import("../SubAdmin/StudentIncidentReport")
 );
-const ViolationAnalytics = React.lazy(() => import("./ViolationAnalytics"));
-const StudentRequest = React.lazy(() => import("./StudentRequest"));
+const ViolationAnalytics = React.lazy(() =>
+  import("../SubAdmin/ViolationAnalytics")
+);
+const StudentRequest = React.lazy(() => import("../SubAdmin/StudentRequest"));
 
 export default function SubAdmin({ toggleSubAdminIsLoggedOut }) {
   const themeValue = localStorage.getItem("theme");
