@@ -1421,11 +1421,6 @@ ul {
   }
 }
 
-@media screen and (max-width: 375px) {
-  .top-header-cont h5 {
-    font-size: 0.8rem;
-  }
-}
 @media screen and (max-width: 768px) {
   #action-btn-student-entry {
     flex-direction: column;
