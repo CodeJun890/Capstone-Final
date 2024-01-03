@@ -173,7 +173,9 @@ export default function Student({ toggleStudentIsLoggedOut }) {
                           <Route path="*" element={<PageNotFound404 />} />
                         </Routes>
                       </div>
-                      <StudentFooter isToggled={isToggled} />
+                      <div id="footer-student">
+                        <StudentFooter isToggled={isToggled} />
+                      </div>
                     </div>
                   </div>
                 </StudentContext.Provider>

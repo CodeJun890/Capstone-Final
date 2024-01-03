@@ -1451,6 +1451,12 @@ ul {
   }
 }
 
+@media screen and (max-width: 768px), screen and (max-height: 740px) {
+  #footer-student {
+    display: none;
+  }
+}
+
 @keyframes fadeTop {
   from {
     opacity: 0;
