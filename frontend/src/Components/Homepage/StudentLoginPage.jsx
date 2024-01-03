@@ -31,11 +31,11 @@ function StudentLogin() {
       })
       .then((res) => {
         if (res.data.Status === 200) {
-          if (res.data.role === "student") {
+          if (res.data.role == "student") {
             navigate("/student");
-          } else if (res.data.role === "sub-admin") {
+          } else if (res.data.role == "sub-admin") {
             navigate("/subAdmin");
-          } else if (res.data.role === "admin") {
+          } else if (res.data.role == "admin") {
             navigate("/admin");
           } else {
             navigate("/");
