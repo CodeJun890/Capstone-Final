@@ -125,13 +125,13 @@ export default function App() {
         isSubAdminLoggedIn === "true" ? null : (
           <HomeNavbar />
         )}
-        {isAdminLoggedIn
+        {/* {isAdminLoggedIn
           ? console.log(isAdminLoggedIn)
           : isSubAdminLoggedIn
           ? console.log(isSubAdminLoggedIn)
           : isStudentLoggedIn
           ? console.log(isStudentLoggedIn)
-          : console.log(null)}
+          : console.log(null)} */}
         <GoToTop />
         <Routes>
           {/* Homepage Routes */}
