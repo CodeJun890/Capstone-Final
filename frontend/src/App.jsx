@@ -36,6 +36,12 @@ const Admin = React.lazy(() => import("./Components/Admin/Admin"));
 const DashboardAdmin = React.lazy(() => {
   import("./Components/Admin/DashboardAdmin");
 });
+const DashboardSubAdmin = React.lazy(() => {
+  import("./Components/SubAdmin/DashboardSubAdmin");
+});
+const DashboardStudent = React.lazy(() => {
+  import("./Components/Student/DashboardStudent");
+});
 
 //Student Components
 const Student = React.lazy(() => import("./Components/Student/Student"));
@@ -105,7 +111,7 @@ export default function App() {
         console.log(error);
       });
   };
-  console.log("heeeey");
+
   return (
     <>
       <ScrollToHashElement />
@@ -115,7 +121,7 @@ export default function App() {
       >
         {isAdminLoggedIn == "true" ||
         isStudentLoggedIn == "true" ||
-        isSubAdminLoggedIn ? null : (
+        isSubAdminLoggedIn == "true" ? null : (
           <HomeNavbar />
         )}
 
@@ -276,10 +282,10 @@ export default function App() {
             }
           />
           <Route
-            path="/dashboard-subAdmin"
+            path="/subAdmin-dashboard"
             element={
               isStudentLoggedIn == "true" ? (
-                <DashboardAdmin />
+                <DashboardSubAdmin />
               ) : (
                 <Forbidden403 />
               )
@@ -303,7 +309,7 @@ export default function App() {
             }
           />
           <Route
-            path="/dashboard-admin"
+            path="/admin-dashboard"
             element={
               isAdminLoggedIn == "true" ? <DashboardAdmin /> : <Forbidden403 />
             }
