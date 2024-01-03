@@ -542,13 +542,13 @@ app.post("/login-user", (req, res) => {
 
             res.cookie("token", token, {
               secure: false,
-              httpOnly: true,
+              httpOnly: false,
               maxAge,
               sameSite: "strict",
             });
             res.cookie("isAdminLoggedIn", true, {
               secure: false,
-              httpOnly: true,
+              httpOnly: false,
               maxAge,
               sameSite: "strict",
             });
@@ -574,13 +574,13 @@ app.post("/login-user", (req, res) => {
 
             res.cookie("token", token, {
               secure: false,
-              httpOnly: true,
+              httpOnly: false,
               maxAge,
               sameSite: "strict",
             });
             res.cookie("isSubAdminLoggedIn", true, {
               secure: false,
-              httpOnly: true,
+              httpOnly: false,
               maxAge,
               sameSite: "strict",
             });
@@ -599,13 +599,13 @@ app.post("/login-user", (req, res) => {
             );
             res.cookie("token", token, {
               secure: false,
-              httpOnly: true,
+              httpOnly: false,
               maxAge,
               sameSite: "strict",
             });
             res.cookie("isStudentLoggedIn", true, {
               secure: false,
-              httpOnly: true,
+              httpOnly: false,
               maxAge,
               sameSite: "strict",
             });
