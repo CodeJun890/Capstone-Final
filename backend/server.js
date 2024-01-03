@@ -542,7 +542,7 @@ app.post("/login-user", (req, res) => {
 
             res.cookie("token", token, {
               secure: false,
-              httpOnly: false,
+              httpOnly: true,
               maxAge,
               sameSite: "strict",
             });
@@ -574,7 +574,7 @@ app.post("/login-user", (req, res) => {
 
             res.cookie("token", token, {
               secure: false,
-              httpOnly: false,
+              httpOnly: true,
               maxAge,
               sameSite: "strict",
             });
@@ -599,7 +599,7 @@ app.post("/login-user", (req, res) => {
             );
             res.cookie("token", token, {
               secure: false,
-              httpOnly: false,
+              httpOnly: true,
               maxAge,
               sameSite: "strict",
             });

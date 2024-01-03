@@ -257,40 +257,7 @@ export default function App() {
               )
             }
           />
-          <Route
-            path="/login"
-            element={
-              isAdminLoggedIn == "true" ? (
-                <Admin toggleAdminIsLoggedOut={toggleAdminIsLoggedOut} />
-              ) : isSubAdminLoggedIn == "true" ? (
-                <SubAdmin
-                  toggleSubAdminIsLoggedOut={toggleSubAdminIsLoggedOut}
-                />
-              ) : isStudentLoggedIn == "true" ? (
-                <Student toggleStudentIsLoggedOut={toggleStudentIsLoggedOut} />
-              ) : (
-                <React.Suspense
-                  fallback={
-                    <div className="container d-flex justify-content-center align-items-center">
-                      <div className="mx-auto my-3">
-                        <RotateLoader
-                          className="mx-auto my-3"
-                          color={"#00da36"}
-                          loading
-                          size={20}
-                          aria-label="Loading Spinner"
-                          data-testid="loader"
-                        />
-                        <div className="h4">Loading...</div>
-                      </div>
-                    </div>
-                  }
-                >
-                  <LazyStudentLogin />
-                </React.Suspense>
-              )
-            }
-          ></Route>
+
           {/* Sub Admin Routes */}
           <Route
             path="/subAdmin/*"
@@ -322,7 +289,7 @@ export default function App() {
           <Route
             path="/admin/*"
             element={
-              isAdminLoggedIn == "true" ? (
+              isAdminLoggedIn === "true" ? (
                 <Admin toggleAdminIsLoggedOut={toggleAdminIsLoggedOut} />
               ) : isSubAdminLoggedIn == "true" ? (
                 <SubAdmin
@@ -345,7 +312,7 @@ export default function App() {
           <Route
             path="/student/*"
             element={
-              isStudentLoggedIn == "true" ? (
+              isStudentLoggedIn === "true" ? (
                 <Student toggleStudentIsLoggedOut={toggleStudentIsLoggedOut} />
               ) : (
                 <Forbidden403 />
