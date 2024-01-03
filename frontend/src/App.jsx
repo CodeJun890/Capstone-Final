@@ -52,9 +52,9 @@ import SubAdmin from "./Components/SubAdmin/SubAdmin";
 import ScrollToHashElement from "./Components/Homepage/ScrollToHashElement";
 export default function App() {
   const Navigate = useNavigate();
-  const isAdminLoggedIn = Cookies.get("isAdminLoggedIn") === "true";
-  const isSubAdminLoggedIn = Cookies.get("isSubAdminLoggedIn") === "true";
-  const isStudentLoggedIn = Cookies.get("isStudentLoggedIn") === "true";
+  const isAdminLoggedIn = Cookies.get("isAdminLoggedIn");
+  const isSubAdminLoggedIn = Cookies.get("isSubAdminLoggedIn");
+  const isStudentLoggedIn = Cookies.get("isStudentLoggedIn");
 
   const toggleAdminIsLoggedOut = () => {
     axios
@@ -67,7 +67,7 @@ export default function App() {
           }
           Navigate("/login");
         } else {
-          console.error("Logout failed:", response.data.error);
+          console.error("Logout failed:", res.data.error);
         }
       })
       .catch((error) => {
@@ -86,7 +86,7 @@ export default function App() {
           }
           Navigate("/login");
         } else {
-          console.error("Logout failed:", response.data.error);
+          console.error("Logout failed:", res.data.error);
         }
       })
       .catch((error) => {
@@ -105,7 +105,7 @@ export default function App() {
           }
           Navigate("/login");
         } else {
-          console.error("Logout failed:", response.data.error);
+          console.error("Logout failed:", res.data.error);
         }
       })
       .catch((error) => {
