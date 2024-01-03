@@ -545,12 +545,14 @@ app.post("/login-user", (req, res) => {
               httpOnly: true,
               maxAge,
               sameSite: "strict",
+              domain: "discipline-recommender-system.xyz",
             });
             res.cookie("isAdminLoggedIn", true, {
               secure: false,
               httpOnly: false,
               maxAge,
               sameSite: "strict",
+              domain: "discipline-recommender-system.xyz",
             });
             return res.json({
               Status: 200,
@@ -577,12 +579,14 @@ app.post("/login-user", (req, res) => {
               httpOnly: true,
               maxAge,
               sameSite: "strict",
+              domain: "discipline-recommender-system.xyz",
             });
             res.cookie("isSubAdminLoggedIn", true, {
               secure: false,
               httpOnly: false,
               maxAge,
               sameSite: "strict",
+              domain: "discipline-recommender-system.xyz",
             });
             return res.json({
               Status: 200,
@@ -602,6 +606,7 @@ app.post("/login-user", (req, res) => {
               httpOnly: false,
               maxAge,
               sameSite: "strict",
+              domain: "discipline-recommender-system.xyz",
             });
             res.cookie("isStudentLoggedIn", true, {
               secure: false,
