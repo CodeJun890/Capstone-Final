@@ -1410,6 +1410,10 @@ ul {
     left: 45% !important;
   }
 
+  .navbar-toggler {
+    width: 40px !important;
+    height: 40px !important;
+  }
   .navbar-toggler .navbar-toggler-icon {
     width: 30px !important;
     height: 30px !important;
