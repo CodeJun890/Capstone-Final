@@ -120,9 +120,9 @@ export default function App() {
         className="global-wrap d-flex flex-column justify-content-between"
         style={{ height: "100vh" }}
       >
-        {isAdminLoggedIn == "true" ||
-        isStudentLoggedIn == "true" ||
-        isSubAdminLoggedIn == "true" ? null : (
+        {isAdminLoggedIn === "true" ||
+        isStudentLoggedIn === "true" ||
+        isSubAdminLoggedIn === "true" ? null : (
           <HomeNavbar />
         )}
 
@@ -132,13 +132,13 @@ export default function App() {
           <Route
             path="/*"
             element={
-              isAdminLoggedIn == "true" ? (
+              isAdminLoggedIn === "true" ? (
                 <Admin toggleAdminIsLoggedOut={toggleAdminIsLoggedOut} />
-              ) : isSubAdminLoggedIn == "true" ? (
+              ) : isSubAdminLoggedIn === "true" ? (
                 <SubAdmin
                   toggleSubAdminIsLoggedOut={toggleSubAdminIsLoggedOut}
                 />
-              ) : isStudentLoggedIn == "true" ? (
+              ) : isStudentLoggedIn === "true" ? (
                 <Student toggleStudentIsLoggedOut={toggleStudentIsLoggedOut} />
               ) : (
                 <React.Suspense
@@ -199,13 +199,13 @@ export default function App() {
           <Route
             path="/signup"
             element={
-              isAdminLoggedIn == "true" ? (
+              isAdminLoggedIn === "true" ? (
                 <Admin toggleAdminIsLoggedOut={toggleAdminIsLoggedOut} />
-              ) : isSubAdminLoggedIn == "true" ? (
+              ) : isSubAdminLoggedIn === "true" ? (
                 <SubAdmin
                   toggleSubAdminIsLoggedOut={toggleSubAdminIsLoggedOut}
                 />
-              ) : isStudentLoggedIn == "true" ? (
+              ) : isStudentLoggedIn === "true" ? (
                 <Student toggleStudentIsLoggedOut={toggleStudentIsLoggedOut} />
               ) : (
                 <React.Suspense
@@ -233,13 +233,13 @@ export default function App() {
           <Route
             path="/forgot-password"
             element={
-              isAdminLoggedIn == "true" ? (
+              isAdminLoggedIn === "true" ? (
                 <Admin toggleAdminIsLoggedOut={toggleAdminIsLoggedOut} />
-              ) : isSubAdminLoggedIn == "true" ? (
+              ) : isSubAdminLoggedIn === "true" ? (
                 <SubAdmin
                   toggleSubAdminIsLoggedOut={toggleSubAdminIsLoggedOut}
                 />
-              ) : isStudentLoggedIn == "true" ? (
+              ) : isStudentLoggedIn === "true" ? (
                 <Student toggleStudentIsLoggedOut={toggleStudentIsLoggedOut} />
               ) : (
                 <React.Suspense
@@ -269,13 +269,13 @@ export default function App() {
           <Route
             path="/subAdmin/*"
             element={
-              isAdminLoggedIn == "true" ? (
+              isAdminLoggedIn === "true" ? (
                 <Admin toggleAdminIsLoggedOut={toggleAdminIsLoggedOut} />
-              ) : isSubAdminLoggedIn == "true" ? (
+              ) : isSubAdminLoggedIn === "true" ? (
                 <SubAdmin
                   toggleSubAdminIsLoggedOut={toggleSubAdminIsLoggedOut}
                 />
-              ) : isStudentLoggedIn == "true" ? (
+              ) : isStudentLoggedIn === "true" ? (
                 <Student toggleStudentIsLoggedOut={toggleStudentIsLoggedOut} />
               ) : (
                 <Forbidden403 />
@@ -285,7 +285,7 @@ export default function App() {
           <Route
             path="/subAdmin-dashboard"
             element={
-              isSubAdminLoggedIn == "true" ? (
+              isSubAdminLoggedIn === "true" ? (
                 <DashboardSubAdmin />
               ) : (
                 <Forbidden403 />
@@ -298,11 +298,11 @@ export default function App() {
             element={
               isAdminLoggedIn === "true" ? (
                 <Admin toggleAdminIsLoggedOut={toggleAdminIsLoggedOut} />
-              ) : isSubAdminLoggedIn == "true" ? (
+              ) : isSubAdminLoggedIn === "true" ? (
                 <SubAdmin
                   toggleSubAdminIsLoggedOut={toggleSubAdminIsLoggedOut}
                 />
-              ) : isStudentLoggedIn == "true" ? (
+              ) : isStudentLoggedIn === "true" ? (
                 <Student toggleStudentIsLoggedOut={toggleStudentIsLoggedOut} />
               ) : (
                 <Forbidden403 />
@@ -312,14 +312,14 @@ export default function App() {
           <Route
             path="/admin-dashboard"
             element={
-              isAdminLoggedIn == "true" ? <DashboardAdmin /> : <Forbidden403 />
+              isAdminLoggedIn === "true" ? <DashboardAdmin /> : <Forbidden403 />
             }
           ></Route>
           {/* Student Routes */}
           <Route
             path="/student/*"
             element={
-              isStudentLoggedIn == "true" ? (
+              isStudentLoggedIn === "true" ? (
                 <Student toggleStudentIsLoggedOut={toggleStudentIsLoggedOut} />
               ) : (
                 <Forbidden403 />
@@ -328,14 +328,14 @@ export default function App() {
           />
           <Route path="/session-expired" element={<AuthExpired />} />
         </Routes>
-        {isAdminLoggedIn == "true" ||
-        isStudentLoggedIn == "true" ||
-        isSubAdminLoggedIn == "true" ? null : (
+        {isAdminLoggedIn === "true" ||
+        isStudentLoggedIn === "true" ||
+        isSubAdminLoggedIn === "true" ? null : (
           <ScrollToTop />
         )}
-        {isAdminLoggedIn == "true" ||
-        isStudentLoggedIn == "true" ||
-        isSubAdminLoggedIn == "true" ? null : (
+        {isAdminLoggedIn === "true" ||
+        isStudentLoggedIn === "true" ||
+        isSubAdminLoggedIn === "true" ? null : (
           <HomeFooter />
         )}
       </div>

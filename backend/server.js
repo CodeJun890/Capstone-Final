@@ -545,7 +545,7 @@ app.post("/login-user", (req, res) => {
               maxAge,
               sameSite: "strict",
             });
-            res.cookie("isAdminLoggedIn", true, {
+            res.cookie("isAdminLoggedIn", "true", {
               httpOnly: false,
               maxAge,
               sameSite: "strict",
@@ -575,7 +575,7 @@ app.post("/login-user", (req, res) => {
               maxAge,
               sameSite: "strict",
             });
-            res.cookie("isSubAdminLoggedIn", true, {
+            res.cookie("isSubAdminLoggedIn", "true", {
               httpOnly: false,
               maxAge,
               sameSite: "strict",
@@ -598,7 +598,7 @@ app.post("/login-user", (req, res) => {
               maxAge,
               sameSite: "strict",
             });
-            res.cookie("isStudentLoggedIn", true, {
+            res.cookie("isStudentLoggedIn", "true", {
               httpOnly: false,
               maxAge,
               sameSite: "strict",
