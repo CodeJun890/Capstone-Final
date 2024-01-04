@@ -612,7 +612,7 @@ app.post("/login-user", (req, res) => {
             });
             return res.json({
               Status: 200,
-              role: user.role,
+              role: role,
             });
           } else {
             return res.json({ Status: 403, error: "Not authorized" });
