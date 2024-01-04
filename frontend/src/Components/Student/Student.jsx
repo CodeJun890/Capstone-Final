@@ -89,6 +89,8 @@ export default function Student({ toggleStudentIsLoggedOut }) {
       });
   }, []);
 
+  console.log(userData);
+
   return (
     <>
       {serverError ? (
