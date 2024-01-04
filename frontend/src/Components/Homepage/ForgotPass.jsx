@@ -24,7 +24,6 @@ export default function ForgotPass() {
         })
         .catch((err) => {
           setMessage(err);
-          console.error(err);
         });
     } else {
       formRef.current.reportValidity();
