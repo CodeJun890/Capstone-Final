@@ -15,14 +15,12 @@ const ReportModel = require("./models/Report");
 const { google } = require("googleapis");
 const multer = require("multer");
 const http = require("http");
-const socketIo = require("socket.io");
 var nodemailer = require("nodemailer");
 const { Readable } = require("stream");
 const IncidentModel = require("./models/PendingIncidentReports");
 const RequestModel = require("./models/StudentRequest");
 const HistoryModel = require("./models/RequestHistory");
 const revokedTokens = new Set();
-const path = require("path");
 const app = express();
 const server = http.createServer(app);
 
@@ -515,17 +513,16 @@ app.post("/login-user", (req, res) => {
             expiresIn === "30d"
               ? 30 * oneDayInMilliseconds
               : oneDayInMilliseconds;
-          // Check if the user is an admin or sub-admin
+          // Check if the user is an admin, sub-admin, or student
           if (role === "admin" && status === "enabled") {
             const token = jwt.sign(
               {
                 emailAddress: user.emailAddress,
-                role: role, // Use the role from the record
+                role: role,
               },
               process.env.REACT_SERVER_SECRET_KEY,
               { expiresIn }
             );
-
             const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
             const maxAge =
               expiresIn === "30d"
@@ -546,7 +543,7 @@ app.post("/login-user", (req, res) => {
               sameSite: "strict",
               domain: "discipline-recommender-system.xyz",
             });
-            return res.json({
+            res.json({
               Status: 200,
               role: role,
             });
@@ -580,7 +577,7 @@ app.post("/login-user", (req, res) => {
               sameSite: "strict",
               domain: "discipline-recommender-system.xyz",
             });
-            return res.json({
+            res.json({
               Status: 200,
               role: role,
             });
@@ -607,7 +604,7 @@ app.post("/login-user", (req, res) => {
               sameSite: "strict",
               domain: "discipline-recommender-system.xyz",
             });
-            return res.json({
+            res.json({
               Status: 200,
               role: role,
             });
