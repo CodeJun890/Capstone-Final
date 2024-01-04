@@ -96,6 +96,10 @@ const verifyUserAdmin = (req, res, next) => {
     );
   }
 };
+app.get("/admin", verifyUserAdmin, (req, res) => {
+  const admin = req.adminUser;
+  return res.status(200).json({ adminUser: admin });
+});
 
 const verifyUserSubAdmin = (req, res, next) => {
   const token = req.cookies.token;
@@ -130,6 +134,10 @@ const verifyUserSubAdmin = (req, res, next) => {
     );
   }
 };
+app.get("/subAdmin", verifyUserSubAdmin, (req, res) => {
+  const subAdmin = req.subAdminUser;
+  return res.status(200).json({ subAdminUser: subAdmin });
+});
 const verifyUserStudent = (req, res, next) => {
   const token = req.cookies.token;
   const identifier = req.body.identifier;
@@ -169,14 +177,6 @@ const verifyUserStudent = (req, res, next) => {
   }
 };
 
-app.get("/subAdmin", verifyUserSubAdmin, (req, res) => {
-  const subAdmin = req.subAdminUser;
-  return res.status(200).json({ subAdminUser: subAdmin });
-});
-app.get("/admin", verifyUserAdmin, (req, res) => {
-  const admin = req.adminUser;
-  return res.status(200).json({ adminUser: admin });
-});
 app.get("/student", verifyUserStudent, (req, res) => {
   const student = req.studentUser;
   return res.status(200).json({ studentUser: student });
