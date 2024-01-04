@@ -23,7 +23,7 @@ const IncidentModel = require("./models/PendingIncidentReports");
 const RequestModel = require("./models/StudentRequest");
 const HistoryModel = require("./models/RequestHistory");
 const revokedTokens = new Set();
-
+const path = require("path");
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
@@ -171,6 +171,10 @@ const verifyUserStudent = (req, res, next) => {
     );
   }
 };
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "..frontend/dist", "index.html"));
+});
 
 app.get("/admin", verifyUserAdmin, (req, res) => {
   const admin = req.adminUser;
