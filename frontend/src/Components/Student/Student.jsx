@@ -41,6 +41,7 @@ export default function Student({ toggleStudentIsLoggedOut }) {
   const [requestRecord, setRequestRecord] = useState([]);
   const [currentRequestHistory, setCurrentRequestHistory] = useState("");
   const [viewCurrentRequest, setViewCurrentRequest] = useState([]);
+
   const baseUrl = "http://api.discipline-recommender-system.xyz/";
   axios.defaults.withCredentials = true;
 
@@ -51,6 +52,7 @@ export default function Student({ toggleStudentIsLoggedOut }) {
         if (res.status === 200) {
           setUserData(res.data.studentUser);
           setSuccess(true);
+          console.log(res.data.studentUser);
         }
       })
       .catch((err) => {
