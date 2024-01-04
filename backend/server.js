@@ -493,10 +493,10 @@ app.post("/signup-student", async (req, res) => {
       console.log("Email sent:", info.response);
     }
 
-    res.status(200).json({ Status: 200, student });
+    return res.status(200).json({ Status: 200, student });
   } catch (err) {
     console.error("Error:", err);
-    res.status(400).json(err);
+    return res.status(400).json(err);
   }
 });
 
