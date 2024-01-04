@@ -154,7 +154,7 @@ const verifyUserStudent = (req, res, next) => {
                 return res.status(404).json({ error: "Student not found" });
               }
 
-              req.studentUser = decoded;
+              req.studentUser = student;
               next();
             } catch (error) {
               return res.status(500).json({ error: "Internal server error" });
