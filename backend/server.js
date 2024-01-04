@@ -100,7 +100,6 @@ app.get("/admin", verifyUserAdmin, (req, res) => {
   const admin = req.adminUser;
   return res.status(200).json({ adminUser: admin });
 });
-
 const verifyUserSubAdmin = (req, res, next) => {
   const token = req.cookies.token;
   if (!token) {

@@ -5,7 +5,7 @@ export default function AuthExpired() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/login-student");
+    navigate("/login");
   };
   return (
     <>

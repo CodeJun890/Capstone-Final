@@ -43,26 +43,6 @@ export default function Student({ toggleStudentIsLoggedOut }) {
   const [viewCurrentRequest, setViewCurrentRequest] = useState([]);
   const baseUrl = "http://api.discipline-recommender-system.xyz/";
   axios.defaults.withCredentials = true;
-  const handleLogout = () => {
-    axios
-      .post(baseUrl + "logout")
-      .then((res) => {
-        if (res.status === 200) {
-          const getCookie = Cookies.get();
-          for (const key in getCookie) {
-            Cookies.remove(key);
-          }
-          navigate("/session-expired");
-        } else {
-          console.error("Logout failed:", res.data.error);
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const [userData, setUserData] = useState({});
 
   useEffect(() => {
     axios
@@ -89,6 +69,25 @@ export default function Student({ toggleStudentIsLoggedOut }) {
       });
   }, []);
 
+  const [userData, setUserData] = useState({});
+  const handleLogout = () => {
+    axios
+      .post(baseUrl + "logout")
+      .then((res) => {
+        if (res.status === 200) {
+          const getCookie = Cookies.get();
+          for (const key in getCookie) {
+            Cookies.remove(key);
+          }
+          navigate("/session-expired");
+        } else {
+          console.error("Logout failed:", res.data.error);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <>
       {serverError ? (
