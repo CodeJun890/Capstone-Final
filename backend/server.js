@@ -63,7 +63,7 @@ app.use(
 
 app.use(cookieParser());
 app.set("view engine", "ejs");
-app.use(express.static(path.join(__dirname, "../frontend/build")));
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
 app.use(express.static(__dirname + "/public"));
 
 const verifyUserSubAdmin = (req, res, next) => {
