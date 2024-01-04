@@ -131,7 +131,6 @@ const verifyUserSubAdmin = (req, res, next) => {
 
 const verifyUserStudent = (req, res, next) => {
   const token = req.cookies.token;
-  const identifier = req.body.identifier;
   if (!token) {
     return res.status(400).json({ error: "Token is missing" });
   } else {
@@ -145,12 +144,11 @@ const verifyUserStudent = (req, res, next) => {
           if (decoded.role === "student") {
             try {
               const student = await UserModel.findOne({
-                emailAddress: identifier,
+                emailAddress: decoded.identifier,
               });
               if (!student) {
                 return res.status(404).json({ error: "Student not found" });
               }
-
               req.studentUser = student;
               next();
             } catch (error) {
