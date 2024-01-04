@@ -146,7 +146,7 @@ const verifyUserStudent = (req, res, next) => {
             try {
               const student = await UserModel.findOne({
                 $or: [
-                  { emailAddress: decoded.emailAddress },
+                  { emailAddress: identifier },
                   { studentNumber: identifier },
                 ],
               });
@@ -529,8 +529,7 @@ app.post("/login-user", (req, res) => {
           ) {
             tokenPayload.emailAddress = user.emailAddress;
           } else if (role === "student") {
-            tokenPayload.emailAddress = user.emailAddress;
-            tokenPayload.studentNumber = user.studentNumber;
+            tokenPayload.identifier = identifier;
           } else {
             return res.json({ Status: 403, error: "Not authorized" });
           }
