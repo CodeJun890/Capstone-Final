@@ -32,7 +32,7 @@ const Forbidden403 = React.lazy(() =>
 );
 
 //Admin Components
-const Admin = React.lazy(() => import("./Components/Admin/Admin"));
+
 const DashboardAdmin = React.lazy(() => {
   import("./Components/Admin/DashboardAdmin");
 });
@@ -44,10 +44,11 @@ const DashboardStudent = React.lazy(() => {
 });
 
 //Student Components
+const Admin = React.lazy(() => import("./Components/Admin/Admin"));
 const Student = React.lazy(() => import("./Components/Student/Student"));
+const SubAdmin = React.lazy(() => import("./Components/SubAdmin/SubAdmin"));
 
 import Cookies from "js-cookie";
-import SubAdmin from "./Components/SubAdmin/SubAdmin";
 import ScrollToHashElement from "./Components/Homepage/ScrollToHashElement";
 export default function App() {
   const Navigate = useNavigate();
@@ -66,7 +67,7 @@ export default function App() {
           }
           Navigate("/login");
         } else {
-          console.error("Logout failed:", response.data.error);
+          console.error("Logout failed:", res.data.error);
         }
       })
       .catch((error) => {
@@ -85,7 +86,7 @@ export default function App() {
           }
           Navigate("/login");
         } else {
-          console.error("Logout failed:", response.data.error);
+          console.error("Logout failed:", res.data.error);
         }
       })
       .catch((error) => {
@@ -104,7 +105,7 @@ export default function App() {
           }
           Navigate("/login");
         } else {
-          console.error("Logout failed:", response.data.error);
+          console.error("Logout failed:", res.data.error);
         }
       })
       .catch((error) => {
