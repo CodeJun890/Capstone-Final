@@ -172,10 +172,6 @@ const verifyUserStudent = (req, res, next) => {
   }
 };
 
-app.post("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "..frontend/dist", "index.html"));
-});
-
 app.get("/admin", verifyUserAdmin, (req, res) => {
   const admin = req.adminUser;
   res.status(200).json({ adminUser: admin });
