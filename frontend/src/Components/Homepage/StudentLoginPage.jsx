@@ -42,7 +42,6 @@ function StudentLogin() {
           }
         } else {
           setIsPassCorrect(false);
-          console.log(password);
         }
       })
       .catch((err) => {

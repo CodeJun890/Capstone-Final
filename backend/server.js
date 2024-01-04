@@ -96,7 +96,7 @@ const verifyUserAdmin = (req, res, next) => {
 };
 app.get("/admin", verifyUserAdmin, (req, res) => {
   const admin = req.adminUser;
-  return res.status(200).json({ adminUser: admin });
+  res.status(200).json({ adminUser: admin });
 });
 const verifyUserSubAdmin = (req, res, next) => {
   const token = req.cookies.token;
@@ -133,11 +133,12 @@ const verifyUserSubAdmin = (req, res, next) => {
 };
 app.get("/subAdmin", verifyUserSubAdmin, (req, res) => {
   const subAdmin = req.subAdminUser;
-  return res.status(200).json({ subAdminUser: subAdmin });
+  res.status(200).json({ subAdminUser: subAdmin });
 });
 const verifyUserStudent = (req, res, next) => {
   const token = req.cookies.token;
   const identifier = req.body.identifier;
+  alert(identifier);
   if (!token) {
     return res.status(400).json({ error: "Token is missing" });
   } else {
@@ -175,7 +176,7 @@ const verifyUserStudent = (req, res, next) => {
 };
 app.get("/student", verifyUserStudent, (req, res) => {
   const student = req.studentUser;
-  return res.status(200).json({ studentUser: student });
+  res.status(200).json({ studentUser: student });
 });
 // Delete students
 app.delete("/delete-students/:id", async (req, res) => {
