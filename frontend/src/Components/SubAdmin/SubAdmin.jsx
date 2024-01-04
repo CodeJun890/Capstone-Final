@@ -4,7 +4,7 @@ import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { SubAdminContext } from "../../../Context/SubAdminContext";
-// Admin Components
+// SubAdmin Components
 
 import "../../styles.css";
 import { Loading } from "./Loading";

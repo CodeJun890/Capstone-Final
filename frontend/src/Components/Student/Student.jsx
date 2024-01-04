@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-
+import React from "react";
 import { useEffect, useState } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
@@ -41,7 +40,6 @@ export default function Student({ toggleStudentIsLoggedOut }) {
   const [requestRecord, setRequestRecord] = useState([]);
   const [currentRequestHistory, setCurrentRequestHistory] = useState("");
   const [viewCurrentRequest, setViewCurrentRequest] = useState([]);
-
   const baseUrl = "http://api.discipline-recommender-system.xyz/";
   axios.defaults.withCredentials = true;
 
@@ -52,7 +50,7 @@ export default function Student({ toggleStudentIsLoggedOut }) {
         if (res.status === 200) {
           setUserData(res.data.studentUser);
           setSuccess(true);
-          console.log(res.data.studentUser);
+          console.log("gumana kaso: ", res.data.studentUser);
         }
       })
       .catch((err) => {
