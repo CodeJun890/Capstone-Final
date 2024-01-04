@@ -63,39 +63,6 @@ app.use(cookieParser());
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 
-const verifyUserSubAdmin = (req, res, next) => {
-  const token = req.cookies.token;
-  if (!token) {
-    return res.status(400).json({ error: "Token is missing" });
-  } else {
-    jwt.verify(
-      token,
-      process.env.REACT_SERVER_SECRET_KEY,
-      async (err, decoded) => {
-        if (err) {
-          return res.status(401).json({ error: "Error with token" });
-        } else {
-          if (decoded.role === "sub-admin") {
-            try {
-              const subAdmin = await UserModel.findOne({
-                emailAddress: decoded.emailAddress,
-              });
-              if (!subAdmin) {
-                return res.status(404).json({ error: "Sub Admin not found" });
-              }
-              req.subAdminUser = subAdmin;
-              next();
-            } catch (error) {
-              return res.status(500).json({ error: "Internal server error" });
-            }
-          } else {
-            return res.status(403).json({ error: "Not a admin" });
-          }
-        }
-      }
-    );
-  }
-};
 const verifyUserAdmin = (req, res, next) => {
   const token = req.cookies.token;
   if (!token) {
@@ -130,6 +97,39 @@ const verifyUserAdmin = (req, res, next) => {
   }
 };
 
+const verifyUserSubAdmin = (req, res, next) => {
+  const token = req.cookies.token;
+  if (!token) {
+    return res.status(400).json({ error: "Token is missing" });
+  } else {
+    jwt.verify(
+      token,
+      process.env.REACT_SERVER_SECRET_KEY,
+      async (err, decoded) => {
+        if (err) {
+          return res.status(401).json({ error: "Error with token" });
+        } else {
+          if (decoded.role === "sub-admin") {
+            try {
+              const subAdmin = await UserModel.findOne({
+                emailAddress: decoded.emailAddress,
+              });
+              if (!subAdmin) {
+                return res.status(404).json({ error: "Sub Admin not found" });
+              }
+              req.subAdminUser = subAdmin;
+              next();
+            } catch (error) {
+              return res.status(500).json({ error: "Internal server error" });
+            }
+          } else {
+            return res.status(403).json({ error: "Not a admin" });
+          }
+        }
+      }
+    );
+  }
+};
 const verifyUserStudent = (req, res, next) => {
   const token = req.cookies.token;
   const identifier = req.body.identifier;
@@ -183,9 +183,7 @@ app.get("/student", verifyUserStudent, (req, res) => {
   const student = req.studentUser;
   res.status(200).json({ studentUser: student });
 });
-
 // Delete students
-
 app.delete("/delete-students/:id", async (req, res) => {
   const { id } = req.params;
 
@@ -211,7 +209,6 @@ app.delete("/delete-students/:id", async (req, res) => {
 });
 
 // Delete Multiple students
-
 app.post("/delete-students", async (req, res) => {
   const { selectedRows } = req.body;
 
