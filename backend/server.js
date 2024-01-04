@@ -32,7 +32,7 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 
-app.use(express.urlencoded({ extended: false }));
+// app.use(express.urlencoded({ extended: false }));
 
 app.options(
   "*",
@@ -94,10 +94,7 @@ const verifyUserAdmin = (req, res, next) => {
     );
   }
 };
-app.get("/admin", verifyUserAdmin, (req, res) => {
-  const admin = req.adminUser;
-  res.status(200).json({ adminUser: admin });
-});
+
 const verifyUserSubAdmin = (req, res, next) => {
   const token = req.cookies.token;
   if (!token) {
@@ -131,10 +128,7 @@ const verifyUserSubAdmin = (req, res, next) => {
     );
   }
 };
-app.get("/subAdmin", verifyUserSubAdmin, (req, res) => {
-  const subAdmin = req.subAdminUser;
-  res.status(200).json({ subAdminUser: subAdmin });
-});
+
 const verifyUserStudent = (req, res, next) => {
   const token = req.cookies.token;
   const identifier = req.body.identifier;
@@ -177,6 +171,14 @@ const verifyUserStudent = (req, res, next) => {
 app.get("/student", verifyUserStudent, (req, res) => {
   const student = req.studentUser;
   res.status(200).json({ studentUser: student });
+});
+app.get("/subAdmin", verifyUserSubAdmin, (req, res) => {
+  const subAdmin = req.subAdminUser;
+  res.status(200).json({ subAdminUser: subAdmin });
+});
+app.get("/admin", verifyUserAdmin, (req, res) => {
+  const admin = req.adminUser;
+  res.status(200).json({ adminUser: admin });
 });
 // Delete students
 app.delete("/delete-students/:id", async (req, res) => {
