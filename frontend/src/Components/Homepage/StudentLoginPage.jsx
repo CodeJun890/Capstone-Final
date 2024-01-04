@@ -42,7 +42,7 @@ function StudentLogin() {
           }
         } else {
           setIsPassCorrect(false);
-          console.log(res.data.role);
+          console.log(password);
         }
       })
       .catch((err) => {
