@@ -66,7 +66,7 @@ export default function Student({ toggleStudentIsLoggedOut }) {
 
   useEffect(() => {
     axios
-      .get(baseUrl + "student")
+      .get(baseUrl + "students")
       .then((res) => {
         if (res.status === 200) {
           setUserData(res.data.studentUser);
