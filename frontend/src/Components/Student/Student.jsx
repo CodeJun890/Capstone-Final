@@ -70,6 +70,7 @@ export default function Student({ toggleStudentIsLoggedOut }) {
   }, []);
 
   const [userData, setUserData] = useState({});
+
   const handleLogout = () => {
     axios
       .post(baseUrl + "logout")

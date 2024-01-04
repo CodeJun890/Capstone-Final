@@ -325,6 +325,16 @@ export default function App() {
               )
             }
           />
+          <Route
+            path="/student-dashboard"
+            element={
+              isStudentLoggedIn == "true" ? (
+                <DashboardStudent />
+              ) : (
+                <Forbidden403 />
+              )
+            }
+          ></Route>
           <Route path="/session-expired" element={<AuthExpired />} />
         </Routes>
         {isAdminLoggedIn == "true" ||
