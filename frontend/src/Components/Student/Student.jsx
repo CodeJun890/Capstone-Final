@@ -50,7 +50,7 @@ export default function Student({ toggleStudentIsLoggedOut }) {
         if (res.status === 200) {
           setUserData(res.data.studentUser);
           setSuccess(true);
-          console.log("gumana kaso: ", res.data.studentUser);
+          console.log(res.data.studentUser);
         }
       })
       .catch((err) => {

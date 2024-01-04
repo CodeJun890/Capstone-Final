@@ -132,7 +132,6 @@ const verifyUserSubAdmin = (req, res, next) => {
 const verifyUserStudent = (req, res, next) => {
   const token = req.cookies.token;
   const identifier = req.body.identifier;
-  console.log(identifier);
   if (!token) {
     return res.status(400).json({ error: "Token is missing" });
   } else {
@@ -155,7 +154,7 @@ const verifyUserStudent = (req, res, next) => {
                 return res.status(404).json({ error: "Student not found" });
               }
 
-              req.studentUser = student;
+              req.studentUser = decoded;
               next();
             } catch (error) {
               return res.status(500).json({ error: "Internal server error" });
