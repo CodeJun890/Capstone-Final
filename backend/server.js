@@ -171,12 +171,6 @@ const verifyUserStudent = (req, res, next) => {
     );
   }
 };
-const root = path.join(__dirname, "frontend", "dist");
-app.use(express.static(root));
-
-app.get("/*", (req, res) => {
-  res.sendFile("index.html", { root });
-});
 
 app.get("/admin", verifyUserAdmin, (req, res) => {
   const admin = req.adminUser;
