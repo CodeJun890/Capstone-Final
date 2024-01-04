@@ -14,7 +14,6 @@ const ViolationListModel = require("./models/ViolationList");
 const ReportModel = require("./models/Report");
 const { google } = require("googleapis");
 const multer = require("multer");
-const stream = require("stream");
 const http = require("http");
 const socketIo = require("socket.io");
 var nodemailer = require("nodemailer");
@@ -26,7 +25,6 @@ const revokedTokens = new Set();
 const path = require("path");
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server);
 
 console.log(process.env.NODE_ENV);
 
@@ -171,6 +169,10 @@ const verifyUserStudent = (req, res, next) => {
     );
   }
 };
+
+app.get("*", (req, res) => {
+  res.redirect(path.join(__dirname, "..", "frontend/dist", "index.html"));
+});
 
 app.get("/admin", verifyUserAdmin, (req, res) => {
   const admin = req.adminUser;
