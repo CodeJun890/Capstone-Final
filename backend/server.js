@@ -529,6 +529,7 @@ app.post("/login-user", (req, res) => {
             tokenPayload.emailAddress = user.emailAddress;
           } else if (role === "student") {
             tokenPayload.studentNumber = user.studentNumber;
+            tokenPayload.emailAddress = user.emailAddress;
           } else {
             return res.json({ Status: 403, error: "Not authorized" });
           }
