@@ -172,16 +172,16 @@ const verifyUserStudent = (req, res, next) => {
 
 app.get("/admin", verifyUserAdmin, (req, res) => {
   const admin = req.adminUser;
-  res.status(200).json({ adminUser: admin });
+  return res.status(200).json({ adminUser: admin });
 });
 app.get("/subAdmin", verifyUserSubAdmin, (req, res) => {
   const subAdmin = req.subAdminUser;
-  res.status(200).json({ subAdminUser: subAdmin });
+  return res.status(200).json({ subAdminUser: subAdmin });
 });
 
 app.get("/student", verifyUserStudent, (req, res) => {
   const student = req.studentUser;
-  res.status(200).json({ studentUser: student });
+  return res.status(200).json({ studentUser: student });
 });
 // Delete students
 app.delete("/delete-students/:id", async (req, res) => {
