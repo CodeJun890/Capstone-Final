@@ -33,6 +33,10 @@ function StudentLogin() {
         if (res.data.Status === 200) {
           if (res.data.role === "student") {
             navigate("/student");
+          } else if (res.data.role === "admin") {
+            navigate("/admin");
+          } else if (res.data.role === "subAdmin") {
+            navigate("/subAdmin");
           } else {
             navigate("/");
           }
