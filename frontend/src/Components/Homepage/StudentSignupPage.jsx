@@ -2394,7 +2394,6 @@ function StudentSignupPage() {
     }
   };
   const handleForm2Next = () => {
-    console.log(validateForm2());
     if (validateForm2()) {
       setShowForm1(true);
       setShowForm2(false);
