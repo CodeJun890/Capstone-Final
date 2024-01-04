@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
+import Cookie from "js-cookie";
 import { StudentContext } from "../../../Context/StudentContext";
 // Student Components
 
@@ -76,9 +77,9 @@ export default function Student({ toggleStudentIsLoggedOut }) {
       .post(baseUrl + "logout")
       .then((res) => {
         if (res.status === 200) {
-          const getCookie = Cookies.get();
+          const getCookie = Cookie.get();
           for (const key in getCookie) {
-            Cookies.remove(key);
+            Cookie.remove(key, { domain: "discipline-recommender-system.xyz" });
           }
           navigate("/session-expired");
         } else {
