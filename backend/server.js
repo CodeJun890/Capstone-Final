@@ -517,18 +517,17 @@ app.post("/login-user", (req, res) => {
               ? 30 * oneDayInMilliseconds
               : oneDayInMilliseconds;
 
-          if (status !== "enabled") {
-            return res.json({ Status: 403, error: "Account not enabled" });
-          }
-
           const tokenPayload = {
             role: role,
           };
 
-          if (role === "admin" || role === "sub-admin") {
+          if (
+            (role === "admin" && status === "enabled") ||
+            (role === "sub-admin" && status === "enabled")
+          ) {
             tokenPayload.emailAddress = user.emailAddress;
           } else if (role === "student") {
-            tokenPayload.emailAddress = user.emailAddress;
+            tokenPayload.studentNumber = user.studentNumber;
           } else {
             return res.json({ Status: 403, error: "Not authorized" });
           }
