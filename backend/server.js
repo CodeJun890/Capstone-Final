@@ -63,124 +63,60 @@ app.use(cookieParser());
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 
-const verifyUserAdmin = (req, res, next) => {
+const verifyToken = (req, res, next, role) => {
   const token = req.cookies.token;
   if (!token) {
     return res.status(400).json({ error: "Token is missing" });
-  } else {
-    jwt.verify(
-      token,
-      process.env.REACT_SERVER_SECRET_KEY,
-      async (err, decoded) => {
-        if (err) {
-          return res.status(401).json({ error: "Error with token" });
-        } else {
-          if (decoded.role === "admin") {
-            try {
-              const admin = await UserModel.findOne({
-                emailAddress: decoded.emailAddress,
-              });
-              if (!admin) {
-                return res.status(404).json({ error: "Admin not found" });
-              }
-              req.adminUser = admin;
-              next();
-            } catch (error) {
-              return res.status(500).json({ error: "Internal server error" });
-            }
-          } else {
-            return res.status(403).json({ error: "Not a admin" });
-          }
-        }
-      }
-    );
   }
+
+  jwt.verify(
+    token,
+    process.env.REACT_SERVER_SECRET_KEY,
+    async (err, decoded) => {
+      if (err) {
+        return res.status(401).json({ error: "Error with token" });
+      }
+
+      if (decoded.role !== role) {
+        return res.status(403).json({ error: `Not a ${role}` });
+      }
+
+      try {
+        const user = await UserModel.findOne({
+          emailAddress: decoded.emailAddress,
+          // Include additional conditions if needed for subadmins or students
+        });
+
+        if (!user) {
+          return res.status(404).json({ error: `${role} not found` });
+        }
+
+        req[`${role.toLowerCase()}User`] = user;
+        next();
+      } catch (error) {
+        return res.status(500).json({ error: "Internal server error" });
+      }
+    }
+  );
 };
-app.get("/admin", verifyUserAdmin, (req, res) => {
-  const admin = req.adminUser;
-  return res.status(200).json({ adminUser: admin });
-});
+
+const verifyUserAdmin = (req, res, next) => {
+  verifyToken(req, res, next, "admin");
+};
 
 const verifyUserSubAdmin = (req, res, next) => {
-  const token = req.cookies.token;
-  if (!token) {
-    return res.status(400).json({ error: "Token is missing" });
-  } else {
-    jwt.verify(
-      token,
-      process.env.REACT_SERVER_SECRET_KEY,
-      async (err, decoded) => {
-        if (err) {
-          return res.status(401).json({ error: "Error with token" });
-        } else {
-          if (decoded.role === "sub-admin") {
-            try {
-              const subAdmin = await UserModel.findOne({
-                emailAddress: decoded.emailAddress,
-              });
-              if (!subAdmin) {
-                return res.status(404).json({ error: "Sub Admin not found" });
-              }
-              req.subAdminUser = subAdmin;
-              next();
-            } catch (error) {
-              return res.status(500).json({ error: "Internal server error" });
-            }
-          } else {
-            return res.status(403).json({ error: "Not a admin" });
-          }
-        }
-      }
-    );
-  }
+  verifyToken(req, res, next, "sub-admin");
 };
-app.get("/subAdmin", verifyUserSubAdmin, (req, res) => {
-  const subAdmin = req.subAdminUser;
-  return res.status(200).json({ subAdminUser: subAdmin });
-});
+
 const verifyUserStudent = (req, res, next) => {
-  const token = req.cookies.token;
   const identifier = req.body.identifier;
-  if (!token) {
-    return res.status(400).json({ error: "Token is missing" });
-  } else {
-    jwt.verify(
-      token,
-      process.env.REACT_SERVER_SECRET_KEY,
-      async (err, decoded) => {
-        if (err) {
-          return res.status(401).json({ error: "Error with token" });
-        } else {
-          if (decoded.role === "student") {
-            try {
-              const student = await UserModel.findOne({
-                $or: [
-                  { emailAddress: decoded.emailAddress },
-                  { studentNumber: identifier },
-                ],
-              });
-              if (!student) {
-                return res.status(404).json({ error: "Student not found" });
-              }
-
-              req.studentUser = student;
-              next();
-            } catch (error) {
-              return res.status(500).json({ error: "Internal server error" });
-            }
-          } else {
-            return res.status(403).json({ error: "Not a student" });
-          }
-        }
-      }
-    );
+  if (!identifier) {
+    return res.status(400).json({ error: "Identifier is missing" });
   }
+
+  verifyToken(req, res, next, "student");
 };
 
-app.get("/student", verifyUserStudent, (req, res) => {
-  const student = req.studentUser;
-  return res.status(200).json({ studentUser: student });
-});
 // Delete students
 app.delete("/delete-students/:id", async (req, res) => {
   const { id } = req.params;
