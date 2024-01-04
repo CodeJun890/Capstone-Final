@@ -129,7 +129,7 @@ export default function App() {
         <Routes>
           {/* Homepage Routes */}
           <Route
-            path="/*"
+            path="*"
             element={
               isAdminLoggedIn == "true" ? (
                 <Admin toggleAdminIsLoggedOut={toggleAdminIsLoggedOut} />
