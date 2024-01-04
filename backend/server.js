@@ -173,7 +173,6 @@ const verifyUserStudent = (req, res, next) => {
     );
   }
 };
-
 app.get("/student", verifyUserStudent, (req, res) => {
   const student = req.studentUser;
   return res.status(200).json({ studentUser: student });
@@ -501,8 +500,12 @@ app.post("/login-user", (req, res) => {
 
   UserModel.findOne({
     $or: [{ emailAddress: identifier }, { studentNumber: identifier }],
-  }).then((user) => {
-    if (user) {
+  })
+    .then((user) => {
+      if (!user) {
+        return res.json({ Status: 404, error: "User not found" });
+      }
+
       bcrypt.compare(password, user.password, (err, response) => {
         if (response) {
           const expiresIn = rememberMe ? "30d" : "1d";
@@ -513,112 +516,53 @@ app.post("/login-user", (req, res) => {
             expiresIn === "30d"
               ? 30 * oneDayInMilliseconds
               : oneDayInMilliseconds;
-          // Check if the user is an admin, sub-admin, or student
-          if (role === "admin" && status === "enabled") {
-            const token = jwt.sign(
-              {
-                emailAddress: user.emailAddress,
-                role: role,
-              },
-              process.env.REACT_SERVER_SECRET_KEY,
-              { expiresIn }
-            );
-            const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
-            const maxAge =
-              expiresIn === "30d"
-                ? 30 * oneDayInMilliseconds
-                : oneDayInMilliseconds;
 
-            res.cookie("token", token, {
-              secure: false,
-              httpOnly: false,
-              maxAge,
-              sameSite: "strict",
-              domain: "discipline-recommender-system.xyz",
-            });
-            res.cookie("isAdminLoggedIn", true, {
-              secure: false,
-              httpOnly: false,
-              maxAge,
-              sameSite: "strict",
-              domain: "discipline-recommender-system.xyz",
-            });
-            res.json({
-              Status: 200,
-              role: role,
-            });
-          } else if (role === "sub-admin" && status === "enabled") {
-            const token = jwt.sign(
-              {
-                emailAddress: user.emailAddress,
-                role: role,
-              },
-              process.env.REACT_SERVER_SECRET_KEY,
-              { expiresIn }
-            );
+          if (status !== "enabled") {
+            return res.json({ Status: 403, error: "Account not enabled" });
+          }
 
-            const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
-            const maxAge =
-              expiresIn === "30d"
-                ? 30 * oneDayInMilliseconds
-                : oneDayInMilliseconds;
+          const tokenPayload = {
+            role: role,
+          };
 
-            res.cookie("token", token, {
-              secure: false,
-              httpOnly: false,
-              maxAge,
-              sameSite: "strict",
-              domain: "discipline-recommender-system.xyz",
-            });
-            res.cookie("isSubAdminLoggedIn", true, {
-              secure: false,
-              httpOnly: false,
-              maxAge,
-              sameSite: "strict",
-              domain: "discipline-recommender-system.xyz",
-            });
-            res.json({
-              Status: 200,
-              role: role,
-            });
+          if (role === "admin" || role === "sub-admin") {
+            tokenPayload.emailAddress = user.emailAddress;
           } else if (role === "student") {
-            const token = jwt.sign(
-              {
-                emailAddress: user.emailAddress,
-                role: role,
-              },
-              process.env.REACT_SERVER_SECRET_KEY,
-              { expiresIn }
-            );
-            res.cookie("token", token, {
-              secure: false,
-              httpOnly: false,
-              maxAge,
-              sameSite: "strict",
-              domain: "discipline-recommender-system.xyz",
-            });
-            res.cookie("isStudentLoggedIn", true, {
-              secure: false,
-              httpOnly: false,
-              maxAge,
-              sameSite: "strict",
-              domain: "discipline-recommender-system.xyz",
-            });
-            res.json({
-              Status: 200,
-              role: role,
-            });
+            tokenPayload.studentNumber = user.studentNumber;
           } else {
             return res.json({ Status: 403, error: "Not authorized" });
           }
+
+          const token = jwt.sign(
+            tokenPayload,
+            process.env.REACT_SERVER_SECRET_KEY,
+            { expiresIn }
+          );
+
+          const cookies = {
+            secure: false,
+            httpOnly: false,
+            maxAge,
+            sameSite: "strict",
+            domain: "discipline-recommender-system.xyz",
+          };
+
+          res.cookie("token", token, cookies);
+          res.cookie(`${role.toLowerCase()}LoggedIn`, true, cookies);
+
+          return res.json({
+            Status: 200,
+            role: role,
+          });
         } else {
           return res.json({ Status: 401, error: "The password is incorrect" });
         }
       });
-    } else {
-      return res.json("No record existed");
-    }
-  });
+    })
+    .catch((error) => {
+      console.error("Login error:", error);
+      return res.status(500).json({ error: "Internal server error" });
+    });
 });
 
 // logout user

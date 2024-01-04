@@ -52,9 +52,9 @@ import Cookies from "js-cookie";
 import ScrollToHashElement from "./Components/Homepage/ScrollToHashElement";
 export default function App() {
   const Navigate = useNavigate();
-  const isAdminLoggedIn = Cookies.get("isAdminLoggedIn");
-  const isSubAdminLoggedIn = Cookies.get("isSubAdminLoggedIn");
-  const isStudentLoggedIn = Cookies.get("isStudentLoggedIn");
+  const isAdminLoggedIn = Cookies.get("adminLoggedIn");
+  const isSubAdminLoggedIn = Cookies.get("subadminLoggedIn");
+  const isStudentLoggedIn = Cookies.get("studentLoggedIn");
 
   const toggleAdminIsLoggedOut = () => {
     axios
