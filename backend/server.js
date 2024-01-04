@@ -65,11 +65,6 @@ app.use(cookieParser());
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 
-// Handle all other routes by serving the React app
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "frontend", "index.html"));
-});
-
 const verifyUserSubAdmin = (req, res, next) => {
   const token = req.cookies.token;
   if (!token) {
