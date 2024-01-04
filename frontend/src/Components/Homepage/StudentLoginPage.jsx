@@ -31,7 +31,11 @@ function StudentLogin() {
       })
       .then((res) => {
         if (res.data.Status === 200) {
-          return;
+          if (res.data.role === "student") {
+            navigate("/student");
+          } else {
+            navigate("/");
+          }
         } else {
           setIsPassCorrect(false);
         }
