@@ -657,10 +657,10 @@ app.get("/program/:course", async (req, res) => {
       return res.status(404).json({ error: "Program not found" });
     }
 
-    res.status(200).json(program);
+    return res.status(200).json(program);
   } catch (err) {
     console.error("Error:", err);
-    res.status(400).json(err);
+    return res.status(400).json(err);
   }
 });
 
