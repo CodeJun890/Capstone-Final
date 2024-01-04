@@ -64,7 +64,6 @@ app.use(
 app.use(cookieParser());
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
-app.use(express.static(path.join(__dirname, "..", "frontend")));
 
 // Handle all other routes by serving the React app
 app.get("*", (req, res) => {
