@@ -53,7 +53,7 @@ import ScrollToHashElement from "./Components/Homepage/ScrollToHashElement";
 export default function App() {
   const Navigate = useNavigate();
   const isAdminLoggedIn = Cookies.get("adminLoggedIn");
-  const isSubAdminLoggedIn = Cookies.get("subadminLoggedIn");
+  const isSubAdminLoggedIn = Cookies.get("sub-adminLoggedIn");
   const isStudentLoggedIn = Cookies.get("studentLoggedIn");
 
   const toggleAdminIsLoggedOut = () => {
