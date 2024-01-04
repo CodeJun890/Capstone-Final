@@ -19,7 +19,6 @@ export default function ForgotPass() {
           emailAddress,
         })
         .then((response) => {
-          console.log(response.data);
           setEmailSent(response.data.message);
         })
         .catch((err) => {
