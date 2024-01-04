@@ -144,8 +144,12 @@ const verifyUserStudent = (req, res, next) => {
           if (decoded.role === "student") {
             try {
               const student = await UserModel.findOne({
-                emailAddress: decoded.identifier,
+                $or: [
+                  { emailAddress: decoded.identifier },
+                  { studentNumber: decoded.identifier },
+                ],
               });
+
               if (!student) {
                 return res.status(404).json({ error: "Student not found" });
               }
