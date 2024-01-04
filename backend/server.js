@@ -525,10 +525,12 @@ app.post("/login-user", (req, res) => {
 
           if (
             (role === "admin" && status === "enabled") ||
-            (role === "sub-admin" && status === "enabled") ||
-            role === "student"
+            (role === "sub-admin" && status === "enabled")
           ) {
             tokenPayload.emailAddress = user.emailAddress;
+          } else if (role === "student") {
+            tokenPayload.emailAddress = user.emailAddress;
+            tokenPayload.studentNumber = user.studentNumber;
           } else {
             return res.json({ Status: 403, error: "Not authorized" });
           }
