@@ -598,14 +598,14 @@ app.post("/login-user", (req, res) => {
             );
             res.cookie("token", token, {
               secure: false,
-              httpOnly: false,
+              httpOnly: true,
               maxAge,
               sameSite: "strict",
               domain: "discipline-recommender-system.xyz",
             });
             res.cookie("isStudentLoggedIn", true, {
               secure: false,
-              httpOnly: false,
+              httpOnly: true,
               maxAge,
               sameSite: "strict",
               domain: "discipline-recommender-system.xyz",
