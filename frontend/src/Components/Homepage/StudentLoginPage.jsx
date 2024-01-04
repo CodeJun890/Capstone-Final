@@ -35,7 +35,7 @@ function StudentLogin() {
             navigate("/student");
           } else if (res.data.role === "admin") {
             navigate("/admin");
-          } else if (res.data.role === "subAdmin") {
+          } else if (res.data.role === "sub-admin") {
             navigate("/subAdmin");
           } else {
             navigate("/");
