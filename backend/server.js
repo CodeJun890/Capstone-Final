@@ -171,7 +171,7 @@ const verifyUserStudent = (req, res, next) => {
     );
   }
 };
-const root = path.join(__dirname, "frontend", "src");
+const root = path.join(__dirname, "frontend");
 app.use(express.static(root));
 app.get("*", (req, res) => {
   res.sendFile("index.html", { root });
