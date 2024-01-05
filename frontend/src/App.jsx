@@ -62,6 +62,7 @@ export default function App() {
     if (!isRecognizedRoute) {
       handleUnrecognizedRoute();
     }
+    console.log("hehe");
   }, [isRecognizedRoute]);
 
   const isRecognizedRoute =
