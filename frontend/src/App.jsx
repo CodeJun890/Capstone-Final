@@ -55,20 +55,6 @@ export default function App() {
   const isAdminLoggedIn = Cookies.get("adminLoggedIn");
   const isSubAdminLoggedIn = Cookies.get("sub-adminLoggedIn");
   const isStudentLoggedIn = Cookies.get("studentLoggedIn");
-  useEffect(() => {
-    const handleUnrecognizedRoute = () => {
-      Navigate("/not-found");
-    };
-    if (!isRecognizedRoute) {
-      handleUnrecognizedRoute();
-    }
-    console.log("hehe");
-  }, [isRecognizedRoute]);
-
-  const isRecognizedRoute =
-    isAdminLoggedIn == "true" ||
-    isStudentLoggedIn == "true" ||
-    isSubAdminLoggedIn == "true";
 
   const toggleAdminIsLoggedOut = () => {
     axios
