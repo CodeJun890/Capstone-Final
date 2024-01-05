@@ -349,16 +349,16 @@ export default function App() {
       </div>
     </>
   );
-
-  // A custom component to handle external redirects
-  const NavigateToExternalUrl = ({ url }) => {
-    const navigate = useNavigate();
-
-    useEffect(() => {
-      navigate(url, { replace: true });
-    }, [navigate, url]);
-
-    // You can render something here if needed, or use null
-    return null;
-  };
 }
+
+// A custom component to handle external redirects
+const NavigateToExternalUrl = ({ url }) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate(url, { replace: true });
+  }, [navigate, url]);
+
+  // You can render something here if needed, or use null
+  return null;
+};
