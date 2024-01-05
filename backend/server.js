@@ -545,7 +545,7 @@ app.post("/login-user", (req, res) => {
             httpOnly: false,
             maxAge,
             sameSite: "strict",
-            domain: "discipline-recommender-system.xyz",
+            domain: ".discipline-recommender-system.xyz",
           };
 
           res.cookie("token", token, cookies);
