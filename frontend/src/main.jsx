@@ -1,9 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-
-import { Loading } from "./Components/Homepage/Loading.jsx";
+import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-const App = React.lazy(() => import("./App.jsx"));
+import { Loading } from "./Components/Homepage/Loading.jsx";
+import App from "./App.jsx"; // Import the main App component
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "aos/dist/aos.css";
