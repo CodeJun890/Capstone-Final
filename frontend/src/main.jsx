@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <Routes>
         <Route
-          path="/"
+          path="*"
           element={
             <React.Suspense fallback={<Loading />}>
               <App />
