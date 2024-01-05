@@ -181,7 +181,7 @@ export default function AdminNavbar({ setIsToggled, toggleAdminIsLoggedOut }) {
                 style={{ maxWidth: "50px", height: "auto" }}
                 className="me-2"
               />
-              <div className="h5 fw-bold text-upper mt-2" id="system-name">
+              <div className="h5 fw-bold text-upper mt-2" id="system-name-nav">
                 Discipline Recommender
               </div>
             </div>

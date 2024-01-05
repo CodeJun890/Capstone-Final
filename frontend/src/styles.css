@@ -1437,7 +1437,10 @@ ul {
   }
 
   #system-name {
-    font-size: 0.7rem;
+    font-size: 1rem;
+  }
+  #system-name-nav {
+    font-size: 1rem;
   }
 }
 

@@ -353,7 +353,7 @@ export default function StudentNavbar({
                 style={{ maxWidth: "50px", height: "auto" }}
                 className="me-2"
               />
-              <div className="h5 fw-bold text-upper mt-2">
+              <div className="h5 fw-bold text-upper mt-2" id="system-name-nav">
                 Discipline Recommender
               </div>
             </div>
@@ -380,10 +380,7 @@ export default function StudentNavbar({
                 alt="Cvsu Logo"
               />
 
-              <p
-                className="my-auto fw-bold ms-2 text-uppercase cvsu-text"
-                id="system-name"
-              >
+              <p className="my-auto fw-bold ms-2 text-uppercase cvsu-text">
                 Discipline Recommender
               </p>
               <Offcanvas.Header closeButton></Offcanvas.Header>
