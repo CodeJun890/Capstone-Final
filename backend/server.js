@@ -20,6 +20,7 @@ const { Readable } = require("stream");
 const IncidentModel = require("./models/PendingIncidentReports");
 const RequestModel = require("./models/StudentRequest");
 const HistoryModel = require("./models/RequestHistory");
+const path = require("path");
 const revokedTokens = new Set();
 const app = express();
 const server = http.createServer(app);
@@ -2406,6 +2407,14 @@ app.get("/fetch-all-courses", async (req, res) => {
     console.log(err);
     return res.status(500).json({ error: "Internal Server Error" });
   }
+});
+
+// Serve the static files from the React app
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+// Catch-all route for unrecognized routes
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dost", "index.html"));
 });
 
 mongoose.connection.once("open", () => {
