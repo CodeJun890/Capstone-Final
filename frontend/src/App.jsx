@@ -328,7 +328,14 @@ export default function App() {
           />
 
           <Route path="/session-expired" element={<AuthExpired />} />
+          <Route
+            path="*"
+            element={
+              <NavigateToExternalUrl url="http://discipline-recommender-system.xyz" />
+            }
+          />
         </Routes>
+
         {isAdminLoggedIn == "true" ||
         isStudentLoggedIn == "true" ||
         isSubAdminLoggedIn == "true" ? null : (
@@ -342,4 +349,16 @@ export default function App() {
       </div>
     </>
   );
+
+  // A custom component to handle external redirects
+  const NavigateToExternalUrl = ({ url }) => {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      navigate(url, { replace: true });
+    }, [navigate, url]);
+
+    // You can render something here if needed, or use null
+    return null;
+  };
 }
