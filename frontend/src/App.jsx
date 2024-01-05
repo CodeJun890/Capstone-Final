@@ -62,7 +62,7 @@ export default function App() {
     if (!isRecognizedRoute) {
       handleUnrecognizedRoute();
     }
-  }, []);
+  }, [isRecognizedRoute]);
 
   const isRecognizedRoute =
     isAdminLoggedIn == "true" ||
