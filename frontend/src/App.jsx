@@ -1,5 +1,5 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
-import React from "react";
+import React, { useEffect } from "react";
 import Cookie from "js-cookie";
 import RotateLoader from "react-spinners/RotateLoader";
 import axios from "axios";
@@ -55,6 +55,19 @@ export default function App() {
   const isAdminLoggedIn = Cookies.get("adminLoggedIn");
   const isSubAdminLoggedIn = Cookies.get("sub-adminLoggedIn");
   const isStudentLoggedIn = Cookies.get("studentLoggedIn");
+  useEffect(() => {
+    const handleUnrecognizedRoute = () => {
+      Navigate("/not-found");
+    };
+    if (!isRecognizedRoute) {
+      handleUnrecognizedRoute();
+    }
+  }, []);
+
+  const isRecognizedRoute =
+    isAdminLoggedIn == "true" ||
+    isStudentLoggedIn == "true" ||
+    isSubAdminLoggedIn == "true";
 
   const toggleAdminIsLoggedOut = () => {
     axios
