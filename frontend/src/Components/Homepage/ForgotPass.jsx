@@ -15,7 +15,7 @@ export default function ForgotPass() {
     e.preventDefault();
     if (emailAddress) {
       axios
-        .post("http://api.discipline-recommender-system.xyz/forgot-password", {
+        .post("https://api.discipline-recommender-system.xyz/forgot-password", {
           emailAddress,
         })
         .then((response) => {

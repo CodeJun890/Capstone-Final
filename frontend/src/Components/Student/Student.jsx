@@ -41,7 +41,7 @@ export default function Student({ toggleStudentIsLoggedOut }) {
   const [requestRecord, setRequestRecord] = useState([]);
   const [currentRequestHistory, setCurrentRequestHistory] = useState("");
   const [viewCurrentRequest, setViewCurrentRequest] = useState([]);
-  const baseUrl = "http://api.discipline-recommender-system.xyz/";
+  const baseUrl = "https://api.discipline-recommender-system.xyz/";
   axios.defaults.withCredentials = true;
 
   useEffect(() => {

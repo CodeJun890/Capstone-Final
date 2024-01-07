@@ -67,7 +67,7 @@ export default function Admin({ toggleAdminIsLoggedOut }) {
   const [requestList, setRequestList] = useState([]);
   const [modalShow, setModalShow] = React.useState(false);
 
-  const baseUrl = "http://api.discipline-recommender-system.xyz/";
+  const baseUrl = "https://api.discipline-recommender-system.xyz/";
   axios.defaults.withCredentials = true;
   useEffect(() => {
     axios

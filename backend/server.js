@@ -50,8 +50,8 @@ app.options(
 app.use(
   cors({
     origin: [
-      "http://discipline-recommender-system.xyz",
-      "http://api.discipline-recommender-system.xyz",
+      "https://discipline-recommender-system.xyz",
+      "https://api.discipline-recommender-system.xyz",
     ],
     methods: ["GET", "POST", "PATCH", "DELETE", "PUT"],
     credentials: true,

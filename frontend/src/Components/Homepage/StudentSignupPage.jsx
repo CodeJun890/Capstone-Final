@@ -22,7 +22,7 @@ import zxcvbc from "zxcvbn";
 
 function StudentSignupPage() {
   const [programs, setPrograms] = useState([]);
-  const baseUrl = "http://api.discipline-recommender-system.xyz/";
+  const baseUrl = "https://api.discipline-recommender-system.xyz/";
 
   useEffect(() => {
     axios

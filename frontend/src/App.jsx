@@ -58,7 +58,7 @@ export default function App() {
 
   const toggleAdminIsLoggedOut = () => {
     axios
-      .post("http://api.discipline-recommender-system.xyz/logout")
+      .post("https://api.discipline-recommender-system.xyz/logout")
       .then((res) => {
         if (res.status == 200) {
           const getCookie = Cookie.get();
@@ -77,7 +77,7 @@ export default function App() {
 
   const toggleSubAdminIsLoggedOut = () => {
     axios
-      .post("http://api.discipline-recommender-system.xyz/logout")
+      .post("https://api.discipline-recommender-system.xyz/logout")
       .then((res) => {
         if (res.status == 200) {
           const getCookie = Cookie.get();
@@ -96,7 +96,7 @@ export default function App() {
 
   const toggleStudentIsLoggedOut = () => {
     axios
-      .post("http://api.discipline-recommender-system.xyz/logout")
+      .post("https://api.discipline-recommender-system.xyz/logout")
       .then((res) => {
         if (res.status == 200) {
           const getCookie = Cookie.get();
