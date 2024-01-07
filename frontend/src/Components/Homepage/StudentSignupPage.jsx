@@ -2370,7 +2370,7 @@ function StudentSignupPage() {
       } else {
         axios
           .post(
-            "http://api.discipline-recommender-system.xyz/check-existence",
+            "https://api.discipline-recommender-system.xyz/check-existence",
             {
               emailAddress,
               studentNumber,
@@ -2433,26 +2433,29 @@ function StudentSignupPage() {
       setLoading(false);
       if (validateForm1() && validateForm2() && validateForm3()) {
         axios
-          .post("http://api.discipline-recommender-system.xyz/signup-student", {
-            studentNumber,
-            emailAddress,
-            password,
-            firstName,
-            middleName,
-            lastName,
-            birthDate,
-            course,
-            gender,
-            sectionYear,
-            suffix,
-            phoneNumber,
-            streetAddress,
-            barangay,
-            city,
-            base64: profileImage,
-            province,
-            region,
-          })
+          .post(
+            "https://api.discipline-recommender-system.xyz/signup-student",
+            {
+              studentNumber,
+              emailAddress,
+              password,
+              firstName,
+              middleName,
+              lastName,
+              birthDate,
+              course,
+              gender,
+              sectionYear,
+              suffix,
+              phoneNumber,
+              streetAddress,
+              barangay,
+              city,
+              base64: profileImage,
+              province,
+              region,
+            }
+          )
           .then((res) => {
             if (res.status === 200) {
               Swal.fire({
