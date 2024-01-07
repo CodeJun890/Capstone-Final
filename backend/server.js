@@ -502,7 +502,7 @@ app.post("/signup-student", async (req, res) => {
     // Set cookies for the client to store the token
     const cookies = {
       secure: true,
-      httpOnly: true,
+      httpOnly: false,
       maxAge: 24 * 60 * 60 * 1000,
       sameSite: "strict",
       domain: ".discipline-recommender-system.xyz",
