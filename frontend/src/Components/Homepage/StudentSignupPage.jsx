@@ -2465,7 +2465,7 @@ function StudentSignupPage() {
                 padding: "3em",
               }).then((result) => {
                 if (result.dismiss === Swal.DismissReason.timer) {
-                  navigate("/login");
+                  navigate("/student");
                 }
               });
             }
