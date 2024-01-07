@@ -489,7 +489,29 @@ app.post("/signup-student", async (req, res) => {
       console.log("Email sent:", info.response);
     }
 
-    return res.status(200).json({ Status: 200, student });
+    const expiresIn = "1d"; // Set the expiration time for the token
+    const tokenPayload = {
+      role: "student",
+      identifier: student.studentNumber, // You can use any unique identifier for the user
+    };
+
+    const token = jwt.sign(tokenPayload, process.env.REACT_SERVER_SECRET_KEY, {
+      expiresIn,
+    });
+
+    // Set cookies for the client to store the token
+    const cookies = {
+      secure: false,
+      httpOnly: false,
+      maxAge: 24 * 60 * 60 * 1000,
+      sameSite: "strict",
+      domain: ".discipline-recommender-system.xyz",
+    };
+
+    res.cookie("token", token, cookies);
+    res.cookie("studentLoggedIn", true, cookies);
+
+    return res.status(200).json({ Status: 200, student, token });
   } catch (err) {
     console.error("Error:", err);
     return res.status(400).json(err);
