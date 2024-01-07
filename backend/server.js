@@ -39,8 +39,8 @@ app.options(
   "*",
   cors({
     origin: [
-      "http://discipline-recommender-system.xyz",
-      "http://api.discipline-recommender-system.xyz",
+      "https://discipline-recommender-system.xyz",
+      "https://api.discipline-recommender-system.xyz",
     ],
     methods: ["GET", "POST", "PATCH", "DELETE", "PUT"],
     credentials: true,
@@ -563,7 +563,7 @@ app.post("/login-user", (req, res) => {
           );
 
           const cookies = {
-            secure: false,
+            secure: true,
             httpOnly: false,
             maxAge,
             sameSite: "strict",
@@ -902,7 +902,7 @@ app.post("/forgot-password", async (req, res) => {
       secret,
       { expiresIn: "1d" }
     );
-    const link = `http://api.discipline-recommender-system.xyz/reset-password/${oldUser._id}/${token}`;
+    const link = `https://api.discipline-recommender-system.xyz/reset-password/${oldUser._id}/${token}`;
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -2433,7 +2433,7 @@ app.get("/fetch-all-courses", async (req, res) => {
 
 // Catch-all route for unrecognized routes
 app.get("*", (req, res) => {
-  res.redirect(301, "http://discipline-recommender-system.xyz");
+  res.redirect(301, "https://discipline-recommender-system.xyz");
 });
 
 mongoose.connection.once("open", () => {
