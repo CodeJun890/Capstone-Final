@@ -35,18 +35,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 
-app.options(
-  "*",
-  cors({
-    origin: [
-      "https://discipline-recommender-system.xyz",
-      "https://api.discipline-recommender-system.xyz",
-    ],
-    methods: ["GET", "POST", "PATCH", "DELETE", "PUT"],
-    credentials: true,
-  })
-);
-
+// Set up CORS for all routes
 app.use(
   cors({
     origin: [
@@ -57,6 +46,9 @@ app.use(
     credentials: true,
   })
 );
+
+// Handle preflight OPTIONS requests
+app.options("*", cors());
 
 app.use(cookieParser());
 app.set("view engine", "ejs");
