@@ -43,6 +43,7 @@ app.options(
       "https://api.discipline-recommender-system.xyz",
     ],
     methods: ["GET", "POST", "PATCH", "DELETE", "PUT"],
+    allowedHeaders: "Content-Type",
     credentials: true,
   })
 );
@@ -54,6 +55,7 @@ app.use(
       "https://api.discipline-recommender-system.xyz",
     ],
     methods: ["GET", "POST", "PATCH", "DELETE", "PUT"],
+    allowedHeaders: "Content-Type",
     credentials: true,
   })
 );
