@@ -35,7 +35,8 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 
-app.use(
+app.options(
+  "*",
   cors({
     origin: [
       "https://discipline-recommender-system.xyz",
@@ -46,8 +47,7 @@ app.use(
   })
 );
 
-app.options(
-  "*",
+app.use(
   cors({
     origin: [
       "https://discipline-recommender-system.xyz",
