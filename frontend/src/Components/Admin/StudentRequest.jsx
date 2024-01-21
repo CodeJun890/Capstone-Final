@@ -395,6 +395,22 @@ function ViewGoodMoralRequest({
     setStudentViolation(newData);
   };
 
+  const approveRequest = (id) => {
+    axios
+      .get(baseUrl + `approve-request-student/${id}`)
+      .then((res) => {
+        if (res.status === 200) {
+          Swal.fire({
+            icon: "success",
+            title: "Student Request Approved!",
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <>
       {/*------ View Modal -------- */}
@@ -560,10 +576,17 @@ function ViewGoodMoralRequest({
             Close
           </Button>
           <Button
+            className="me-1"
             variant="danger"
             onClick={() => checkViolation(requestList.student_id)}
           >
             Check for Violation
+          </Button>
+          <Button
+            variant="success"
+            onClick={() => approveRequest(requestList.student_id)}
+          >
+            Approve
           </Button>
         </Modal.Footer>
       </Modal>
