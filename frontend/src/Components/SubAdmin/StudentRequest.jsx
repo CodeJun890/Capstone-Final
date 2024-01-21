@@ -61,6 +61,7 @@ export default function StudentRequest({ isToggled }) {
     },
     {
       name: "Status",
+      width: "400px",
       cell: (row) => (
         <div className="d-flex mt-3 align-items-center justify-content-center">
           <p
