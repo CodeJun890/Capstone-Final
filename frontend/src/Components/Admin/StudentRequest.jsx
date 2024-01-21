@@ -103,6 +103,31 @@ export default function StudentRequest({ isToggled }) {
           >
             Reject
           </div>
+          <div
+            className="btn btn-success btn-sm"
+            onClick={() => {
+              Swal.fire({
+                title: "Approve Request?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes",
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  Swal.fire(
+                    "Approved!",
+                    "Request has been approved.",
+                    "success"
+                  );
+                  handleApproveRequest(row._id);
+                }
+              });
+            }}
+          >
+            Approve
+          </div>
         </div>
       ),
     },
@@ -395,22 +420,6 @@ function ViewGoodMoralRequest({
     setStudentViolation(newData);
   };
 
-  const approveRequest = (id) => {
-    axios
-      .get(baseUrl + `approve-request-student/${id}`)
-      .then((res) => {
-        if (res.status === 200) {
-          Swal.fire({
-            icon: "success",
-            title: "Student Request Approved!",
-          });
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   return (
     <>
       {/*------ View Modal -------- */}
@@ -576,17 +585,10 @@ function ViewGoodMoralRequest({
             Close
           </Button>
           <Button
-            className="me-1"
             variant="danger"
             onClick={() => checkViolation(requestList.student_id)}
           >
             Check for Violation
-          </Button>
-          <Button
-            variant="success"
-            onClick={() => approveRequest(requestList.student_id)}
-          >
-            Approve
           </Button>
         </Modal.Footer>
       </Modal>
