@@ -74,6 +74,7 @@ export default function StudentRequest({ isToggled }) {
     },
     {
       name: "Actions",
+      width: "400px",
       cell: (row) => (
         <div>
           <div
