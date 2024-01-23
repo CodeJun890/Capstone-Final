@@ -982,6 +982,7 @@ function CreateViolationEntry({ setFetchStudentViolationsFlag, ...props }) {
                                     placeholderText="dd/mm/yyyy"
                                     showYearDropdown
                                     scrollableMonthYearDropdown
+                                    maxDate={new Date()}
                                     required
                                   />
                                 </div>

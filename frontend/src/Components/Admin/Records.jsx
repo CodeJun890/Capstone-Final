@@ -172,7 +172,7 @@ export default function Records({ showRecord, setShowRecord }) {
             style={{ cursor: "pointer", fontSize: "1.15rem" }}
             className="text-primary"
           >
-            <Button size="sm" variant="warning">
+            <Button size="sm" variant="primary">
               View
             </Button>
           </div>
@@ -212,7 +212,7 @@ export default function Records({ showRecord, setShowRecord }) {
                 <ReportCSV studentInfo={studentInfo} />
               </div>
             ) : (
-              <Button size="sm" variant="warning">
+              <Button size="sm" variant="success">
                 Download File
               </Button>
             )}
@@ -292,7 +292,7 @@ export default function Records({ showRecord, setShowRecord }) {
               ) : (
                 <Button
                   size="sm"
-                  variant="warning"
+                  variant="success"
                   onClick={() => {
                     handleDownloadIncidentPdf(row.report_id);
                     setLoading(true);
@@ -317,7 +317,7 @@ export default function Records({ showRecord, setShowRecord }) {
         <div>
           {row.evidence_file.length > 0 ? (
             <div
-              className="btn btn-success btn-sm ms-4"
+              className="btn btn-primary btn-sm ms-4"
               onClick={() => handlePublicURLs(row.evidence_file)}
             >
               View File
@@ -478,7 +478,7 @@ export default function Records({ showRecord, setShowRecord }) {
                       <a
                         href={url}
                         target="_blank"
-                        className="btn btn-warning btn-sm mt-1"
+                        className="btn btn-primary btn-sm mt-1"
                       >
                         View File
                       </a>
