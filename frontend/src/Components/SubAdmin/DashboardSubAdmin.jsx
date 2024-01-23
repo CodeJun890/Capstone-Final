@@ -62,31 +62,33 @@ export default function DashboardSubAdmin() {
             </Link>
           </div>
           <div className="row mx-2 justify-content-center align-items-center">
-            <div className="col-md-6 my-3 d-flex align-items-stretch">
-              <Card style={{ backgroundColor: "#2565ae" }}>
-                <Card.Body className="d-flex flex-column justify-content-center align-items-center">
-                  <div className="box-icon mb-2">
-                    <img
-                      src={Student}
-                      alt="Academic year icon"
-                      className="img-fluid"
-                    />
-                  </div>
-                  <Card.Title className="lead text-light text-uppercase text-center">
-                    Total Registered Student
-                  </Card.Title>
-                  <Card.Text className="text-center h1 fw-bold text-light">
-                    {loading ? (
-                      <ClockLoader color="#ffffff" loading={loading} />
-                    ) : (
-                      totalStudents
-                    )}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </div>
-            <div className="col-md-6 my-3 d-flex align-items-stretch">
-              <Link to="/violation-entry">
+            <Link to="/manage-students">
+              <div className="col-md-6 my-3 d-flex align-items-stretch">
+                <Card style={{ backgroundColor: "#2565ae" }}>
+                  <Card.Body className="d-flex flex-column justify-content-center align-items-center">
+                    <div className="box-icon mb-2">
+                      <img
+                        src={Student}
+                        alt="Academic year icon"
+                        className="img-fluid"
+                      />
+                    </div>
+                    <Card.Title className="lead text-light text-uppercase text-center">
+                      Total Registered Student
+                    </Card.Title>
+                    <Card.Text className="text-center h1 fw-bold text-light">
+                      {loading ? (
+                        <ClockLoader color="#ffffff" loading={loading} />
+                      ) : (
+                        totalStudents
+                      )}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </div>
+            </Link>
+            <Link to="/violation-entry">
+              <div className="col-md-6 my-3 d-flex align-items-stretch">
                 <Card style={{ backgroundColor: "#a90f19" }}>
                   <Card.Body className="d-flex flex-column justify-content-center align-items-center">
                     <FontAwesomeIcon
@@ -109,10 +111,10 @@ export default function DashboardSubAdmin() {
                     </Card.Text>
                   </Card.Body>
                 </Card>
-              </Link>
-            </div>
-            <div className="col-md-6 my-3 d-flex align-items-stretch">
-              <Link to="/manage-violations">
+              </div>
+            </Link>
+            <Link to="/manage-violations">
+              <div className="col-md-6 my-3 d-flex align-items-stretch">
                 <Card style={{ background: "#6f2da8" }}>
                   <Card.Body className="d-flex flex-column justify-content-center align-items-center">
                     <div className="box-icon mb-2">
@@ -137,10 +139,10 @@ export default function DashboardSubAdmin() {
                     </Card.Text>
                   </Card.Body>
                 </Card>
-              </Link>
-            </div>
-            <div className="col-md-6 my-3 d-flex align-items-stretch">
-              <Link to="/academic-year">
+              </div>
+            </Link>
+            <Link to="/academic-year">
+              <div className="col-md-6 my-3 d-flex align-items-stretch">
                 <Card className="bg-success">
                   <Card.Body className="d-flex flex-column justify-content-center align-items-center">
                     <div className="box-icon mb-2">
@@ -165,8 +167,8 @@ export default function DashboardSubAdmin() {
                     </Card.Text>
                   </Card.Body>
                 </Card>
-              </Link>
-            </div>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
