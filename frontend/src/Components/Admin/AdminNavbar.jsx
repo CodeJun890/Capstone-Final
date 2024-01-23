@@ -632,7 +632,7 @@ function GenerateGoodMoral(props) {
                 Fill all the information
               </div>
               <div className="row justify-content-center">
-                <div className="col-lg-6 d-flex">
+                <div className="col-lg-6 d-flex w-100">
                   <Form.Group>
                     <Form.Label className="fw-bold" htmlFor="typeGoodmoral">
                       Type of Good Moral
