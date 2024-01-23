@@ -657,7 +657,7 @@ function GenerateGoodMoral(props) {
                   <div className="btn btn-primary mt-4">
                     <FontAwesomeIcon
                       icon={faMagnifyingGlass}
-                      className="ms-1"
+                      className="ms-2"
                     />
                     Search Student
                   </div>
