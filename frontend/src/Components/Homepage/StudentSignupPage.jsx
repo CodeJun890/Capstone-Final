@@ -2,7 +2,6 @@ import CvsuLogo from "../../Assets/cvsu-icon.webp";
 import Upload from "../../Assets/upload.jpg";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Select from "react-select";
 
 import "../../styles.css";
 import { useState, useRef, useEffect } from "react";
