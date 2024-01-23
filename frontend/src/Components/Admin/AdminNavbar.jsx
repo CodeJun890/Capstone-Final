@@ -26,6 +26,7 @@ import {
   faBookOpen,
   faCircleCheck,
   faStamp,
+  faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 
 import Offcanvas from "react-bootstrap/Offcanvas";
@@ -651,6 +652,13 @@ function GenerateGoodMoral(props) {
                       <option value="transfer">Transfer</option>
                     </Form.Select>
                   </Form.Group>
+                  <div className="btn btn-primary">
+                    <FontAwesomeIcon
+                      icon={faMagnifyingGlass}
+                      className="me-1"
+                    />
+                    Search Student
+                  </div>
                 </div>
               </div>
               <div className="row">
