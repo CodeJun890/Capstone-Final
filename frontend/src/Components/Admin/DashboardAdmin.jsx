@@ -71,7 +71,11 @@ export default function DashboardAdmin() {
             </Link>
           </div>
           <div className="row mx-2 justify-content-center align-items-center">
-            <div className="col-md-6 my-3 d-flex align-items-stretch">
+            <Link
+              to="/manage-students"
+              className="col-md-6 my-3 d-flex align-items-stretch"
+              style={{ textDecoration: "none" }}
+            >
               <Card style={{ backgroundColor: "#2565ae" }}>
                 <Card.Body className="d-flex flex-column justify-content-center align-items-center">
                   <div className="box-icon mb-2">
@@ -93,8 +97,12 @@ export default function DashboardAdmin() {
                   </Card.Text>
                 </Card.Body>
               </Card>
-            </div>
-            <div className="col-md-6 my-3 d-flex align-items-stretch">
+            </Link>
+            <Link
+              to="/violation-entry"
+              className="col-md-6 my-3 d-flex align-items-stretch"
+              style={{ textDecoration: "none" }}
+            >
               <Card style={{ backgroundColor: "#a90f19" }}>
                 <Card.Body className="d-flex flex-column justify-content-center align-items-center">
                   <FontAwesomeIcon
@@ -117,8 +125,12 @@ export default function DashboardAdmin() {
                   </Card.Text>
                 </Card.Body>
               </Card>
-            </div>
-            <div className="col-md-6 my-3 d-flex align-items-stretch">
+            </Link>
+            <Link
+              to="/manage-violations"
+              className="col-md-6 my-3 d-flex align-items-stretch"
+              style={{ textDecoration: "none" }}
+            >
               <Card style={{ background: "#6f2da8" }}>
                 <Card.Body className="d-flex flex-column justify-content-center align-items-center">
                   <div className="box-icon mb-2">
@@ -143,8 +155,12 @@ export default function DashboardAdmin() {
                   </Card.Text>
                 </Card.Body>
               </Card>
-            </div>
-            <div className="col-md-6 my-3 d-flex align-items-stretch">
+            </Link>
+            <Link
+              to="/academic-year"
+              className="col-md-6 my-3 d-flex align-items-stretch"
+              style={{ textDecoration: "none" }}
+            >
               <Card className="bg-success">
                 <Card.Body className="d-flex flex-column justify-content-center align-items-center">
                   <div className="box-icon mb-2">
@@ -168,7 +184,7 @@ export default function DashboardAdmin() {
                   </Card.Text>
                 </Card.Body>
               </Card>
-            </div>
+            </Link>
           </div>
         </div>
       </div>

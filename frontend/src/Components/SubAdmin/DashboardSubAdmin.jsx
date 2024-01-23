@@ -65,6 +65,7 @@ export default function DashboardSubAdmin() {
             <Link
               to="/manage-students"
               className="col-md-6 my-3 d-flex align-items-stretch"
+              style={{ textDecoration: "none" }}
             >
               <Card style={{ backgroundColor: "#2565ae" }}>
                 <Card.Body className="d-flex flex-column justify-content-center align-items-center">
@@ -89,10 +90,7 @@ export default function DashboardSubAdmin() {
               </Card>
             </Link>
 
-            <Link
-              to="/violation-entry"
-              className="col-md-6 my-3 d-flex align-items-stretch"
-            >
+            <div className="col-md-6 my-3 d-flex align-items-stretch">
               <Card style={{ backgroundColor: "#a90f19" }}>
                 <Card.Body className="d-flex flex-column justify-content-center align-items-center">
                   <FontAwesomeIcon
@@ -115,12 +113,8 @@ export default function DashboardSubAdmin() {
                   </Card.Text>
                 </Card.Body>
               </Card>
-            </Link>
-
-            <Link
-              to="/manage-violations"
-              className="col-md-6 my-3 d-flex align-items-stretch"
-            >
+            </div>
+            <div className="col-md-6 my-3 d-flex align-items-stretch">
               <Card style={{ background: "#6f2da8" }}>
                 <Card.Body className="d-flex flex-column justify-content-center align-items-center">
                   <div className="box-icon mb-2">
@@ -145,12 +139,9 @@ export default function DashboardSubAdmin() {
                   </Card.Text>
                 </Card.Body>
               </Card>
-            </Link>
+            </div>
 
-            <Link
-              to="/academic-year"
-              className="col-md-6 my-3 d-flex align-items-stretch"
-            >
+            <div className="col-md-6 my-3 d-flex align-items-stretch">
               <Card className="bg-success">
                 <Card.Body className="d-flex flex-column justify-content-center align-items-center">
                   <div className="box-icon mb-2">
@@ -172,7 +163,7 @@ export default function DashboardSubAdmin() {
                   </Card.Text>
                 </Card.Body>
               </Card>
-            </Link>
+            </div>
           </div>
         </div>
       </div>
