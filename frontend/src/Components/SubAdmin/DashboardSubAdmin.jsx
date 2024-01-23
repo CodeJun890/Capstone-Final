@@ -94,7 +94,7 @@ export default function DashboardSubAdmin() {
                   />
 
                   <Card.Title className="text-light text-uppercase text-center">
-                    Total Student Violation
+                    Student Violation List
                   </Card.Title>
                   <Card.Text className="text-center h1 fw-bold text-light">
                     {loadingViolations ? (
@@ -120,7 +120,7 @@ export default function DashboardSubAdmin() {
                     />
                   </div>
                   <Card.Title className="lead text-light text-uppercase text-center">
-                    Total Violation
+                    List of Violations
                   </Card.Title>
                   <Card.Text className="text-center h1 fw-bold text-light">
                     {loadingViolations ? (
