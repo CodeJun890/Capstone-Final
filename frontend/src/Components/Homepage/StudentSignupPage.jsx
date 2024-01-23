@@ -2803,22 +2803,32 @@ function StudentSignupPage() {
                             >
                               Sex
                             </label>
-                            <Form.Select
-                              id="gender"
-                              aria-label="Default select example"
-                              value={gender}
-                              name="gender"
-                              onChange={(e) => setGender(e.target.value)}
-                              required
-                            >
-                              <option value="" hidden>
-                                Select your sex
-                              </option>
-                              <option value="N/A" hidden defaultValue />
-                              <option value="Male">Male</option>
-                              <option value="Female">Female</option>
-                            </Form.Select>
+                            <div>
+                              <Form.Check
+                                inline
+                                type="radio"
+                                label="Male"
+                                id="male"
+                                name="gender"
+                                value="Male"
+                                checked={gender === "Male"}
+                                onChange={() => setGender("Male")}
+                                required
+                              />
+                              <Form.Check
+                                inline
+                                type="radio"
+                                label="Female"
+                                id="female"
+                                name="gender"
+                                value="Female"
+                                checked={gender === "Female"}
+                                onChange={() => setGender("Female")}
+                                required
+                              />
+                            </div>
                           </div>
+
                           <div className="input_wrap">
                             <label
                               htmlFor="birthDate"
