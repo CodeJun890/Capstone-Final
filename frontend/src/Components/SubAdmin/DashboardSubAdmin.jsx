@@ -62,113 +62,117 @@ export default function DashboardSubAdmin() {
             </Link>
           </div>
           <div className="row mx-2 justify-content-center align-items-center">
-            <div className="col-md-6 my-3 d-flex align-items-stretch">
-              <Link to="/manage-students">
-                <Card style={{ backgroundColor: "#2565ae" }}>
-                  <Card.Body className="d-flex flex-column justify-content-center align-items-center">
-                    <div className="box-icon mb-2">
-                      <img
-                        src={Student}
-                        alt="Academic year icon"
-                        className="img-fluid"
-                      />
-                    </div>
-                    <Card.Title className="lead text-light text-uppercase text-center">
-                      Total Registered Student
-                    </Card.Title>
-                    <Card.Text className="text-center h1 fw-bold text-light">
-                      {loading ? (
-                        <ClockLoader color="#ffffff" loading={loading} />
-                      ) : (
-                        totalStudents
-                      )}
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Link>
-            </div>
-            <div className="col-md-6 my-3 d-flex align-items-stretch">
-              <Link to="/violation-entry">
-                <Card style={{ backgroundColor: "#a90f19" }}>
-                  <Card.Body className="d-flex flex-column justify-content-center align-items-center">
-                    <FontAwesomeIcon
-                      className="display-5 text-light mb-2"
-                      icon={faExclamationTriangle}
+            <Link
+              to="/manage-students"
+              className="col-md-6 my-3 d-flex align-items-stretch"
+            >
+              <Card style={{ backgroundColor: "#2565ae" }}>
+                <Card.Body className="d-flex flex-column justify-content-center align-items-center">
+                  <div className="box-icon mb-2">
+                    <img
+                      src={Student}
+                      alt="Academic year icon"
+                      className="img-fluid"
                     />
+                  </div>
+                  <Card.Title className="lead text-light text-uppercase text-center">
+                    Total Registered Student
+                  </Card.Title>
+                  <Card.Text className="text-center h1 fw-bold text-light">
+                    {loading ? (
+                      <ClockLoader color="#ffffff" loading={loading} />
+                    ) : (
+                      totalStudents
+                    )}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Link>
 
-                    <Card.Title className="text-light text-uppercase text-center">
-                      Student Violation List
-                    </Card.Title>
-                    <Card.Text className="text-center h1 fw-bold text-light">
-                      {loadingViolations ? (
-                        <ClockLoader
-                          color="#ffffff"
-                          loading={loadingViolations}
-                        />
-                      ) : (
-                        totalStudentViolation
-                      )}
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Link>
-            </div>
-            <div className="col-md-6 my-3 d-flex align-items-stretch">
-              <Link to="/manage-violations">
-                <Card style={{ background: "#6f2da8" }}>
-                  <Card.Body className="d-flex flex-column justify-content-center align-items-center">
-                    <div className="box-icon mb-2">
-                      <img
-                        src={Violation}
-                        alt="Academic year icon"
-                        className="img-fluid"
+            <Link
+              to="/violation-entry"
+              className="col-md-6 my-3 d-flex align-items-stretch"
+            >
+              <Card style={{ backgroundColor: "#a90f19" }}>
+                <Card.Body className="d-flex flex-column justify-content-center align-items-center">
+                  <FontAwesomeIcon
+                    className="display-5 text-light mb-2"
+                    icon={faExclamationTriangle}
+                  />
+
+                  <Card.Title className="text-light text-uppercase text-center">
+                    Student Violation List
+                  </Card.Title>
+                  <Card.Text className="text-center h1 fw-bold text-light">
+                    {loadingViolations ? (
+                      <ClockLoader
+                        color="#ffffff"
+                        loading={loadingViolations}
                       />
-                    </div>
-                    <Card.Title className="lead text-light text-uppercase text-center">
-                      List of Violations
-                    </Card.Title>
-                    <Card.Text className="text-center h1 fw-bold text-light">
-                      {loadingViolations ? (
-                        <ClockLoader
-                          color="#ffffff"
-                          loading={loadingViolations}
-                        />
-                      ) : (
-                        totalViolations
-                      )}
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Link>
-            </div>
-            <div className="col-md-6 my-3 d-flex align-items-stretch">
-              <Link to="/academic-year">
-                <Card className="bg-success">
-                  <Card.Body className="d-flex flex-column justify-content-center align-items-center">
-                    <div className="box-icon mb-2">
-                      <img
-                        src={Academic}
-                        alt="Academic year icon"
-                        className="img-fluid"
+                    ) : (
+                      totalStudentViolation
+                    )}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Link>
+
+            <Link
+              to="/manage-violations"
+              className="col-md-6 my-3 d-flex align-items-stretch"
+            >
+              <Card style={{ background: "#6f2da8" }}>
+                <Card.Body className="d-flex flex-column justify-content-center align-items-center">
+                  <div className="box-icon mb-2">
+                    <img
+                      src={Violation}
+                      alt="Academic year icon"
+                      className="img-fluid"
+                    />
+                  </div>
+                  <Card.Title className="lead text-light text-uppercase text-center">
+                    List of Violations
+                  </Card.Title>
+                  <Card.Text className="text-center h1 fw-bold text-light">
+                    {loadingViolations ? (
+                      <ClockLoader
+                        color="#ffffff"
+                        loading={loadingViolations}
                       />
-                    </div>
-                    <Card.Title className="text-light text-uppercase text-center">
-                      Academic Year
-                    </Card.Title>
-                    <Card.Text className="text-center h2 my-1 fw-bold text-light">
-                      {loadingAcadYear ? (
-                        <ClockLoader
-                          color="#ffffff"
-                          loading={loadingAcadYear}
-                        />
-                      ) : (
-                        currentAcademicYear
-                      )}
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Link>
-            </div>
+                    ) : (
+                      totalViolations
+                    )}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Link>
+
+            <Link
+              to="/academic-year"
+              className="col-md-6 my-3 d-flex align-items-stretch"
+            >
+              <Card className="bg-success">
+                <Card.Body className="d-flex flex-column justify-content-center align-items-center">
+                  <div className="box-icon mb-2">
+                    <img
+                      src={Academic}
+                      alt="Academic year icon"
+                      className="img-fluid"
+                    />
+                  </div>
+                  <Card.Title className="text-light text-uppercase text-center">
+                    Academic Year
+                  </Card.Title>
+                  <Card.Text className="text-center h2 my-1 fw-bold text-light">
+                    {loadingAcadYear ? (
+                      <ClockLoader color="#ffffff" loading={loadingAcadYear} />
+                    ) : (
+                      currentAcademicYear
+                    )}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </Link>
           </div>
         </div>
       </div>
