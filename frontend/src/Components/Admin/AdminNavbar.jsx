@@ -632,7 +632,7 @@ function GenerateGoodMoral(props) {
                 Fill all the information
               </div>
               <div className="row justify-content-center">
-                <div className="col-lg-6">
+                <div className="col-lg-6 d-flex">
                   <Form.Group>
                     <Form.Label className="fw-bold" htmlFor="typeGoodmoral">
                       Type of Good Moral
@@ -655,7 +655,7 @@ function GenerateGoodMoral(props) {
                   <div className="btn btn-primary">
                     <FontAwesomeIcon
                       icon={faMagnifyingGlass}
-                      className="me-1"
+                      className="ms-1"
                     />
                     Search Student
                   </div>
