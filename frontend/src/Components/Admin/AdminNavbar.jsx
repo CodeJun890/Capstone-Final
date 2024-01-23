@@ -631,8 +631,8 @@ function GenerateGoodMoral(props) {
               <div className="h4 alert alert-success text-uppercase fw-bold text-center">
                 Fill all the information
               </div>
-              <div className="row justify-content-center">
-                <div className="col-lg-8 ">
+              <div className="row justify-content-center align-items-center">
+                <div className="col-lg-4 ">
                   <Form.Group>
                     <Form.Label className="fw-bold" htmlFor="typeGoodmoral">
                       Type of Good Moral
