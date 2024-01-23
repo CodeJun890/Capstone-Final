@@ -62,8 +62,8 @@ export default function DashboardSubAdmin() {
             </Link>
           </div>
           <div className="row mx-2 justify-content-center align-items-center">
-            <Link to="/manage-students">
-              <div className="col-md-6 my-3 d-flex align-items-stretch">
+            <div className="col-md-6 my-3 d-flex align-items-stretch">
+              <Link to="/manage-students">
                 <Card style={{ backgroundColor: "#2565ae" }}>
                   <Card.Body className="d-flex flex-column justify-content-center align-items-center">
                     <div className="box-icon mb-2">
@@ -85,10 +85,10 @@ export default function DashboardSubAdmin() {
                     </Card.Text>
                   </Card.Body>
                 </Card>
-              </div>
-            </Link>
-            <Link to="/violation-entry">
-              <div className="col-md-6 my-3 d-flex align-items-stretch">
+              </Link>
+            </div>
+            <div className="col-md-6 my-3 d-flex align-items-stretch">
+              <Link to="/violation-entry">
                 <Card style={{ backgroundColor: "#a90f19" }}>
                   <Card.Body className="d-flex flex-column justify-content-center align-items-center">
                     <FontAwesomeIcon
@@ -111,10 +111,10 @@ export default function DashboardSubAdmin() {
                     </Card.Text>
                   </Card.Body>
                 </Card>
-              </div>
-            </Link>
-            <Link to="/manage-violations">
-              <div className="col-md-6 my-3 d-flex align-items-stretch">
+              </Link>
+            </div>
+            <div className="col-md-6 my-3 d-flex align-items-stretch">
+              <Link to="/manage-violations">
                 <Card style={{ background: "#6f2da8" }}>
                   <Card.Body className="d-flex flex-column justify-content-center align-items-center">
                     <div className="box-icon mb-2">
@@ -139,10 +139,10 @@ export default function DashboardSubAdmin() {
                     </Card.Text>
                   </Card.Body>
                 </Card>
-              </div>
-            </Link>
-            <Link to="/academic-year">
-              <div className="col-md-6 my-3 d-flex align-items-stretch">
+              </Link>
+            </div>
+            <div className="col-md-6 my-3 d-flex align-items-stretch">
+              <Link to="/academic-year">
                 <Card className="bg-success">
                   <Card.Body className="d-flex flex-column justify-content-center align-items-center">
                     <div className="box-icon mb-2">
@@ -167,8 +167,8 @@ export default function DashboardSubAdmin() {
                     </Card.Text>
                   </Card.Body>
                 </Card>
-              </div>
-            </Link>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
