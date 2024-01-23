@@ -140,27 +140,32 @@ export default function DashboardSubAdmin() {
               </Link>
             </div>
             <div className="col-md-6 my-3 d-flex align-items-stretch">
-              <Card className="bg-success">
-                <Card.Body className="d-flex flex-column justify-content-center align-items-center">
-                  <div className="box-icon mb-2">
-                    <img
-                      src={Academic}
-                      alt="Academic year icon"
-                      className="img-fluid"
-                    />
-                  </div>
-                  <Card.Title className="text-light text-uppercase text-center">
-                    Academic Year
-                  </Card.Title>
-                  <Card.Text className="text-center h2 my-1 fw-bold text-light">
-                    {loadingAcadYear ? (
-                      <ClockLoader color="#ffffff" loading={loadingAcadYear} />
-                    ) : (
-                      currentAcademicYear
-                    )}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
+              <Link to="/academic-year">
+                <Card className="bg-success">
+                  <Card.Body className="d-flex flex-column justify-content-center align-items-center">
+                    <div className="box-icon mb-2">
+                      <img
+                        src={Academic}
+                        alt="Academic year icon"
+                        className="img-fluid"
+                      />
+                    </div>
+                    <Card.Title className="text-light text-uppercase text-center">
+                      Academic Year
+                    </Card.Title>
+                    <Card.Text className="text-center h2 my-1 fw-bold text-light">
+                      {loadingAcadYear ? (
+                        <ClockLoader
+                          color="#ffffff"
+                          loading={loadingAcadYear}
+                        />
+                      ) : (
+                        currentAcademicYear
+                      )}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Link>
             </div>
           </div>
         </div>
