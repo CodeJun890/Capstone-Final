@@ -9,6 +9,7 @@ import {
   faUserPen,
   faTrashAlt,
   faClipboardList,
+  faPenToSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import Button from "react-bootstrap/esm/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
@@ -73,7 +74,7 @@ export default function ManageProgram({ isToggled }) {
               handleEditProgramList(row._id);
             }}
           >
-            <FontAwesomeIcon icon={faUserPen} />
+            <FontAwesomeIcon icon={faPenToSquare} />
           </div>
           <div
             className="h6 btn-delete text-danger"
