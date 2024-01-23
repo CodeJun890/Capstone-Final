@@ -653,8 +653,8 @@ function GenerateGoodMoral(props) {
                     </Form.Select>
                   </Form.Group>
                 </div>
-                <div className="col-lg-4 mt-2">
-                  <div className="btn btn-primary">
+                <div className="col-lg-4">
+                  <div className="btn btn-primary mt-3">
                     <FontAwesomeIcon
                       icon={faMagnifyingGlass}
                       className="ms-1"
