@@ -2,7 +2,7 @@ import CvsuLogo from "../../Assets/cvsu-icon.webp";
 import Upload from "../../Assets/upload.jpg";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import { Select } from "react-select";
 import "../../styles.css";
 import { useState, useRef, useEffect } from "react";
 import InputGroup from "react-bootstrap/InputGroup";
@@ -2972,26 +2972,26 @@ function StudentSignupPage() {
                         >
                           Region
                         </label>
-
-                        <Form.Select
+                        <Select
                           className="form-control form-control-lg bg-light fs-6"
                           id="region"
                           name="region"
-                          value={region}
-                          onChange={changeRegion}
+                          value={regionsWithProvinces.find(
+                            (reg) => reg.region === region
+                          )}
+                          options={regionsWithProvinces.map((reg) => ({
+                            label: reg.region,
+                            value: reg.region,
+                          }))}
+                          onChange={(selectedOption) =>
+                            changeRegion(selectedOption.value)
+                          }
+                          isSearchable
+                          placeholder="[Select Region]"
                           required
-                        >
-                          <option value="" hidden>
-                            [Select Region]
-                          </option>
-                          <option value="N/A" defaultValue hidden />
-                          {regionsWithProvinces.map((reg, index) => (
-                            <option key={index} value={reg.region}>
-                              {reg.region}
-                            </option>
-                          ))}
-                        </Form.Select>
+                        />
                       </div>
+
                       <div className="input_wrap">
                         <label
                           htmlFor="province"
@@ -2999,27 +2999,26 @@ function StudentSignupPage() {
                         >
                           Province
                         </label>
-
-                        <Form.Select
+                        <Select
                           className="form-control form-control-lg bg-light fs-6"
-                          placeholder="Ex. Trece Martires City"
                           id="province"
                           name="province"
-                          value={province}
-                          onChange={changeProvince}
+                          value={provinces.find(
+                            (p) => p.provinceName === province
+                          )}
+                          options={provinces.map((p) => ({
+                            label: p.provinceName,
+                            value: p.provinceName,
+                          }))}
+                          onChange={(selectedOption) =>
+                            changeProvince(selectedOption.value)
+                          }
+                          isSearchable
+                          placeholder="[Select Province]"
                           required
-                        >
-                          <option value="" hidden>
-                            [Select Province]
-                          </option>
-                          <option value="N/A" defaultValue hidden />
-                          {provinces.map((province, index) => (
-                            <option key={index} value={province.provinceName}>
-                              {province.provinceName}
-                            </option>
-                          ))}
-                        </Form.Select>
+                        />
                       </div>
+
                       <div className="input_wrap">
                         <label
                           htmlFor="city"
@@ -3027,26 +3026,19 @@ function StudentSignupPage() {
                         >
                           City / Municipality
                         </label>
-                        <Form.Select
-                          type="text"
+                        <Select
                           className="form-control form-control-lg bg-light fs-6"
-                          placeholder="Ex. Trece Martires City"
                           id="city"
                           name="city"
-                          value={city}
-                          onChange={(e) => setCity(e.target.value)}
+                          value={{ label: city, value: city }}
+                          options={cities.map((c) => ({ label: c, value: c }))}
+                          onChange={(selectedOption) =>
+                            setCity(selectedOption.value)
+                          }
+                          isSearchable
+                          placeholder="[Select City/Municipality]"
                           required
-                        >
-                          <option value="" hidden>
-                            [Select City/Municipality]
-                          </option>
-                          <option value="N/A" defaultValue hidden />
-                          {cities.map((city, index) => (
-                            <option key={index} value={city}>
-                              {city}
-                            </option>
-                          ))}
-                        </Form.Select>
+                        />
                       </div>
                       <div className="input_wrap">
                         <label
