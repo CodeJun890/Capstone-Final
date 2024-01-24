@@ -648,6 +648,7 @@ function GenerateGoodMoral(props) {
         onHide={() => {
           props.onHide();
           clearFields();
+          setSelectedStudentDetails("");
         }}
       >
         <Modal.Header className="bg-success" closeButton>
