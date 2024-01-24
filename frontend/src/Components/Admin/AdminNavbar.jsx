@@ -773,7 +773,11 @@ function GenerateGoodMoral(props) {
                         <Form.Select
                           id="gender"
                           aria-label="Default select example"
-                          value={selectedStudentDetails.gender ?? gender}
+                          value={(
+                            selectedStudentDetails.gender ||
+                            gender ||
+                            ""
+                          ).trim()}
                           onChange={(e) =>
                             setSelectedStudentDetails((prevRecords) => ({
                               ...prevRecords,
@@ -827,14 +831,17 @@ function GenerateGoodMoral(props) {
                         <Form.Select
                           id="typeGoodmoral"
                           aria-label="Default select example"
-                          value={selectedStudentDetails.gender ?? gender}
+                          value={(
+                            selectedStudentDetails.gender ||
+                            gender ||
+                            ""
+                          ).trim()}
                           onChange={(e) =>
                             setSelectedStudentDetails((prevRecords) => ({
                               ...prevRecords,
                               gender: e.target.value,
                             }))
                           }
-                          required
                         >
                           <option value="" hidden>
                             Select Gender
