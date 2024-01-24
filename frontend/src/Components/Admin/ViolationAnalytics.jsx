@@ -40,7 +40,7 @@ export default function ViolationAnalytics() {
       }
     };
     fetchCourses();
-  }, [selectedAcademicYear, selectedSemester]);
+  }, [selectedAcademicYear, selectedSemester, academicYear]);
 
   useEffect(() => {
     axios
@@ -107,16 +107,17 @@ export default function ViolationAnalytics() {
                 value={academicYear.map(
                   (year) => year.academicYear + " | " + year.semester
                 )}
-                defaultValue={academicYear.map(
-                  (year) => year.academicYear + " | " + year.semester
-                )}
                 onChange={(e) => {
                   const [selectedAcademicYear, selectedSemester] =
                     e.target.value.split(" | ");
                   setAcademicYear([
                     {
-                      academicYear: selectedAcademicYear,
-                      semester: selectedSemester,
+                      academicYear:
+                        selectedAcademicYear ||
+                        academicYear.map((year) => year.academicYear),
+                      semester:
+                        selectedSemester ||
+                        academicYear.map((year) => year.semester),
                     },
                   ]);
                   setSelectedSemester(selectedSemester);
