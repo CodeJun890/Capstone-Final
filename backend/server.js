@@ -283,60 +283,6 @@ app.use("/fetch-total-violation", async (req, res) => {
   }
 });
 
-app.get(
-  "/fetch-student-violation-count-based-on-acadyear",
-  async (req, res) => {
-    const { selectedAcademicYear, selectedSemester } = req.body;
-
-    try {
-      // Convert selectedAcademicYear to ObjectId if it's stored as a string
-      const academicYearObjectId =
-        mongoose.Types.ObjectId(selectedAcademicYear);
-
-      // Aggregate to count the number of students who committed violations for the specified academic year and semester
-      const violationCountByStudent = await ViolationModel.aggregate([
-        {
-          $match: {
-            academicYear: academicYearObjectId,
-            // Add other conditions if needed, e.g., selectedSemester
-            // selectedSemester: selectedSemester,
-          },
-        },
-        {
-          $group: {
-            _id: "$student_id",
-            count: { $sum: 1 },
-          },
-        },
-      ]);
-
-      // Populate additional information about the students from the 'student' and 'program' collections
-      const populatedViolationCountByStudent = await Promise.all(
-        violationCountByStudent.map(async (item) => {
-          const studentInfo = await StudentModel.findById(item._id);
-          const programInfo = await ProgramModel.findOne({
-            program_code: studentInfo.course,
-          });
-
-          return {
-            student_id: item._id,
-            count: item.count,
-            name: studentInfo.name, // Adjust based on your actual schema
-            program: programInfo ? programInfo.program_name : "N/A", // Assuming 'program_name' is a field in your 'ProgramModel'
-          };
-        })
-      );
-
-      res
-        .status(200)
-        .json({ violationCountByStudent: populatedViolationCountByStudent });
-    } catch (err) {
-      console.log(err);
-      res.status(500).json({ error: "Server Error" });
-    }
-  }
-);
-
 app.use("/fetch-students", async (req, res) => {
   try {
     const openAcademicYear = await AcademicYear.findOne({ status: "OPEN" });
