@@ -39,6 +39,7 @@ export default function ViolationAnalytics() {
         console.log(error);
       }
     };
+    console.log("naulit");
     fetchCourses();
   }, [selectedAcademicYear, selectedSemester, academicYear]);
 
