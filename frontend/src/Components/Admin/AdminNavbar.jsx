@@ -734,11 +734,7 @@ function GenerateGoodMoral(props) {
                       <Form.Group className="mt-1" controlId="firstname">
                         <Form.Label className="fw-bold">Firstname</Form.Label>
                         <Form.Control
-                          value={(
-                            selectedStudentDetails.gender ||
-                            gender ||
-                            ""
-                          ).trim()}
+                          value={selectedStudentDetails.firstName ?? firstname}
                           onChange={(e) =>
                             setSelectedStudentDetails((prevRecords) => ({
                               ...prevRecords,
@@ -787,7 +783,7 @@ function GenerateGoodMoral(props) {
                           required
                         >
                           <option value="" hidden>
-                            {selectedStudentDetails.gender ?? "Select Gender"}
+                            Select Gender
                           </option>
                           <option value="Male">MALE</option>
                           <option value="Female">FEMALE</option>
