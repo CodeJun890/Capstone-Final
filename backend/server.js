@@ -2386,18 +2386,24 @@ app.get("/fetch-all-courses", async (req, res) => {
         $lookup: {
           from: "academicyears",
           localField: "academicYear",
-          foreignField: "academicYear",
-          as: "year",
+          foreignField: "_id",
+          as: "academicYearInfo",
         },
       },
       {
-        $unwind: "$year",
+        $unwind: "$academicYearInfo",
+      },
+      {
+        $match: {
+          "academicYearInfo.academicYear": academicYear, // Match academicYear from the request
+        },
       },
       {
         $group: {
           _id: {
             program_code: "$user.course",
-            academicYear: "$year.academicYear",
+            academicYear: "$academicYearInfo.academicYear",
+            semester: "$academicYearInfo.semester",
           },
           student_count: { $sum: 1 },
         },
@@ -2407,6 +2413,7 @@ app.get("/fetch-all-courses", async (req, res) => {
           _id: 0,
           program_code: "$_id.program_code",
           academicYear: "$_id.academicYear",
+          semester: "$_id.semester",
           student_count: 1,
         },
       },
@@ -2414,11 +2421,16 @@ app.get("/fetch-all-courses", async (req, res) => {
 
     const coursesWithoutViolation = allCourses.map((course) => {
       const matchingCourse = coursesWithCount.find(
-        (item) => item.program_code === course
+        (item) =>
+          item.program_code === course &&
+          item.academicYear === academicYear &&
+          item.semester === semester
       );
       return (
         matchingCourse || {
           program_code: course,
+          academicYear: academicYear,
+          semester: semester,
           student_count: 0,
         }
       );
