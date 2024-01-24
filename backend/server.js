@@ -2432,20 +2432,17 @@ app.get("/fetch-all-courses", async (req, res) => {
       },
     ]);
 
-    const coursesWithoutViolation = allCourses.filter(
-      (course) => !coursesWithCount.some((item) => item.program_code === course)
-    );
+    const coursesWithoutViolation = allCourses.map((course) => ({
+      program_code: course,
+      acad_year: academicYear,
+      semester: semester,
+      student_count: 0,
+    }));
 
-    coursesWithoutViolation.forEach((course) => {
-      coursesWithCount.push({
-        program_code: course,
-        acad_year: academicYear,
-        semester: semester,
-        student_count: 0,
-      });
-    });
+    // Merge coursesWithCount and coursesWithoutViolation
+    const mergedCourses = coursesWithCount.concat(coursesWithoutViolation);
 
-    return res.status(200).json({ courses: coursesWithCount, allCourses });
+    return res.status(200).json({ courses: mergedCourses, allCourses });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ error: "Internal Server Error" });
