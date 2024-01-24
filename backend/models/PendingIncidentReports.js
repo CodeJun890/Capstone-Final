@@ -12,7 +12,7 @@ const pendingIncidentSchema = new mongoose.Schema(
     },
     student_id: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "student",
+      ref: "user",
     },
     violation_id: {
       type: mongoose.Schema.Types.ObjectId,
