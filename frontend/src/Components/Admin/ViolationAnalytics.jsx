@@ -17,12 +17,8 @@ ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 export default function ViolationAnalytics() {
   const { baseUrl, academicYear, setAcademicYear } = useContext(AdminContext);
   const [courses, setCourses] = useState([]);
-  const [selectedSemester, setSelectedSemester] = useState(
-    academicYear.map((year) => year.semester)
-  );
-  const [selectedAcademicYear, setSelectedAcademicYear] = useState(
-    academicYear.map((year) => year.academicYear)
-  );
+  const [selectedSemester, setSelectedSemester] = useState("");
+  const [selectedAcademicYear, setSelectedAcademicYear] = useState("");
   const [allAcademicYear, setAllAcademicYear] = useState([]);
 
   useEffect(() => {
@@ -111,6 +107,11 @@ export default function ViolationAnalytics() {
                 value={academicYear.map(
                   (year) => year.academicYear + " | " + year.semester
                 )}
+                defaultValue={
+                  allAcademicYear.length > 0
+                    ? `${allAcademicYear[0].academicYear} | ${allAcademicYear[0].semester}`
+                    : ""
+                }
                 onChange={(e) => {
                   const [selectedAcademicYear, selectedSemester] =
                     e.target.value.split(" | ");
