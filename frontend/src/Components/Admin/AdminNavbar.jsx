@@ -714,7 +714,10 @@ function GenerateGoodMoral(props) {
                           onChange={(e) => setGender(e.target.value)}
                           required
                         >
-                          <option value="" hidden>
+                          <option
+                            value={selectedStudentDetails.gender ?? ""}
+                            hidden
+                          >
                             Select Gender
                           </option>
                           <option value="MALE">MALE</option>
