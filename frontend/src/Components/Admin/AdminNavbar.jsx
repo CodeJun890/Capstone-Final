@@ -564,7 +564,6 @@ function GenerateGoodMoral(props) {
         .then((res) => {
           if (res.status === 200) {
             setSelectedStudentDetails(res.data.student);
-            console.log(res.data.student);
           }
         })
         .catch((err) => {
