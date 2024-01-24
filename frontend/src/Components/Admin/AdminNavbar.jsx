@@ -717,8 +717,8 @@ function GenerateGoodMoral(props) {
                           <option value="" hidden>
                             Select Gender
                           </option>
-                          <option value="MALE">MALE</option>
-                          <option value="FEMALE">FEMALE</option>
+                          <option value="Male">MALE</option>
+                          <option value="Female">FEMALE</option>
                         </Form.Select>
                       </Form.Group>
                       <Form.Group className="mt-1" controlId="firstname">
