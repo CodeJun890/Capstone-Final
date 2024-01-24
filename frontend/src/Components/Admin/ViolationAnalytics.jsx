@@ -21,6 +21,7 @@ export default function ViolationAnalytics() {
   const [selectedSemester, setSelectedSemester] = useState("");
   const [selectedAcademicYear, setSelectedAcademicYear] = useState("");
   const [allAcademicYear, setAllAcademicYear] = useState([]);
+
   useEffect(() => {
     axios(baseUrl + "fetch-all-courses")
       .then((res) => {
@@ -88,7 +89,7 @@ export default function ViolationAnalytics() {
 
         <div className="container">
           <div className="row justify-content-center align-items-center">
-            <div className="col-lg-6">
+            <div className="col-lg-6 ">
               <Form.Select
                 id="ay-code"
                 value={academicYear}

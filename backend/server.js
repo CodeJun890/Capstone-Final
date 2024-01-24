@@ -2392,37 +2392,34 @@ app.get("/fetch-all-courses", async (req, res) => {
         $unwind: "$program",
       },
       {
-        $group: {
-          _id: {
-            program_code: "$program.program_code",
-            student_id: "$user._id",
-          },
-          student_count: { $sum: 1 },
+        $lookup: {
+          from: "academicyears",
+          localField: "user.academic_year",
+          foreignField: "_id",
+          as: "academicYearDetails",
         },
       },
       {
+        $unwind: "$academicYearDetails",
+      },
+      {
         $group: {
-          _id: "$_id.program_code",
+          _id: {
+            program_code: "$program.program_code",
+            academic_year_id: "$user.academic_year",
+          },
           student_count: { $sum: 1 },
         },
       },
       {
         $project: {
           _id: 0,
-          program_code: "$_id",
+          program_code: "$_id.program_code",
+          academic_year: "$academicYearDetails.academic_year_field", // Replace with the actual field name
           student_count: 1,
         },
       },
     ]);
-
-    const coursesWithoutViolation = allCourses.filter(
-      (course) => !coursesWithCount.some((item) => item.program_code === course)
-    );
-
-    // Append courses without violations to the result
-    coursesWithoutViolation.forEach((course) => {
-      coursesWithCount.push({ program_code: course, student_count: 0 });
-    });
 
     return res.status(200).json({ courses: coursesWithCount, allCourses });
   } catch (err) {
