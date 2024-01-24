@@ -2416,7 +2416,7 @@ app.get("/fetch-all-courses", async (req, res) => {
           _id: {
             program_code: "$program.program_code",
             acad_year: "$acadYear.academicYear",
-            semester: "$acadYear.semester",
+            semester: "$acadYear.semester", // Include semester in the grouping
           },
           student_count: { $sum: 1 },
         },
