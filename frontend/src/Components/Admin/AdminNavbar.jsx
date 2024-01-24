@@ -710,7 +710,7 @@ function GenerateGoodMoral(props) {
                         <Form.Select
                           id="gender"
                           aria-label="Default select example"
-                          value={selectedStudentDetails.gender ?? ""}
+                          value={selectedStudentDetails.gender ?? gender}
                           onChange={(e) => setGender(e.target.value)}
                           required
                         >
@@ -724,7 +724,7 @@ function GenerateGoodMoral(props) {
                       <Form.Group className="mt-1" controlId="firstname">
                         <Form.Label className="fw-bold">Firstname</Form.Label>
                         <Form.Control
-                          value={selectedStudentDetails.firstName ?? ""}
+                          value={selectedStudentDetails.firstName ?? firstname}
                           onChange={(e) => setFirstname(e.target.value)}
                           required
                         />
@@ -732,7 +732,9 @@ function GenerateGoodMoral(props) {
                       <Form.Group className="mt-1" controlId="middlename">
                         <Form.Label className="fw-bold">Middlename</Form.Label>
                         <Form.Control
-                          value={selectedStudentDetails.middleName ?? ""}
+                          value={
+                            selectedStudentDetails.middleName ?? middlename
+                          }
                           onChange={(e) => setMiddlename(e.target.value)}
                         />
                       </Form.Group>
@@ -747,7 +749,7 @@ function GenerateGoodMoral(props) {
                         <Form.Select
                           id="gender"
                           aria-label="Default select example"
-                          value={selectedStudentDetails.gender ?? ""}
+                          value={selectedStudentDetails.gender ?? gender}
                           onChange={(e) => setGender(e.target.value)}
                           required
                         >
@@ -761,7 +763,7 @@ function GenerateGoodMoral(props) {
                       <Form.Group className="mt-1" controlId="firstname">
                         <Form.Label className="fw-bold">Firstname</Form.Label>
                         <Form.Control
-                          value={selectedStudentDetails.firstName ?? ""}
+                          value={selectedStudentDetails.firstName ?? firstname}
                           onChange={(e) => setFirstname(e.target.value)}
                           required
                         />
@@ -769,7 +771,9 @@ function GenerateGoodMoral(props) {
                       <Form.Group className="mt-1" controlId="middlename">
                         <Form.Label className="fw-bold">Middlename</Form.Label>
                         <Form.Control
-                          value={selectedStudentDetails.middleName ?? ""}
+                          value={
+                            selectedStudentDetails.middleName ?? middlename
+                          }
                           onChange={(e) => setMiddlename(e.target.value)}
                         />
                       </Form.Group>
@@ -784,7 +788,7 @@ function GenerateGoodMoral(props) {
                         <Form.Select
                           id="typeGoodmoral"
                           aria-label="Default select example"
-                          value={selectedStudentDetails.gender ?? ""}
+                          value={selectedStudentDetails.gender ?? gender}
                           onChange={(e) => setGender(e.target.value)}
                           required
                         >
@@ -798,7 +802,7 @@ function GenerateGoodMoral(props) {
                       <Form.Group className="mt-1" controlId="firstname">
                         <Form.Label className="fw-bold">Firstname</Form.Label>
                         <Form.Control
-                          value={selectedStudentDetails.firstName ?? ""}
+                          value={selectedStudentDetails.firstName ?? firstname}
                           onChange={(e) => setFirstname(e.target.value)}
                           required
                         />
@@ -806,7 +810,9 @@ function GenerateGoodMoral(props) {
                       <Form.Group className="mt-1" controlId="middlename">
                         <Form.Label className="fw-bold">Middlename</Form.Label>
                         <Form.Control
-                          value={selectedStudentDetails.middleName ?? ""}
+                          value={
+                            selectedStudentDetails.middleName ?? middlename
+                          }
                           onChange={(e) => setMiddlename(e.target.value)}
                         />
                       </Form.Group>
@@ -819,7 +825,7 @@ function GenerateGoodMoral(props) {
                       <Form.Group className="mt-1" controlId="lastname">
                         <Form.Label className="fw-bold">Lastname</Form.Label>
                         <Form.Control
-                          value={selectedStudentDetails.lastName ?? ""}
+                          value={selectedStudentDetails.lastName ?? lastname}
                           onChange={(e) => setLastname(e.target.value)}
                           required
                         />
@@ -844,7 +850,7 @@ function GenerateGoodMoral(props) {
                       <Form.Group className="mt-1" controlId="lastname">
                         <Form.Label className="fw-bold">Lastname</Form.Label>
                         <Form.Control
-                          value={selectedStudentDetails.lastName ?? ""}
+                          value={selectedStudentDetails.lastName ?? lastname}
                           onChange={(e) => setLastname(e.target.value)}
                           required
                         />
@@ -900,7 +906,7 @@ function GenerateGoodMoral(props) {
                       <Form.Group className="mt-1" controlId="lastname">
                         <Form.Label className="fw-bold">Lastname</Form.Label>
                         <Form.Control
-                          value={selectedStudentDetails.lastName ?? ""}
+                          value={selectedStudentDetails.lastName ?? lastname}
                           onChange={(e) => setLastname(e.target.value)}
                           required
                         />
