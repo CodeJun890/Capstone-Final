@@ -2400,7 +2400,7 @@ app.get("/fetch-all-courses", async (req, res) => {
       {
         $lookup: {
           from: "academicyears",
-          localField: "user.academicYear",
+          localField: "academicYear",
           foreignField: "academicYear",
           as: "acadYear",
         },
@@ -2441,7 +2441,7 @@ app.get("/fetch-all-courses", async (req, res) => {
         program_code: course,
         acad_year: academicYear,
         semester: semester,
-        student_count: 1,
+        student_count: 0,
       });
     });
 
