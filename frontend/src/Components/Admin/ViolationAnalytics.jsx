@@ -117,12 +117,14 @@ export default function ViolationAnalytics() {
                     },
                   ]);
                   setSelectedSemester(
-                    selectedSemester ??
-                      academicYear.map((year) => year.semester)
+                    academicYear.map(
+                      (year) => year.semester ?? selectedSemester
+                    )
                   );
                   setSelectedAcademicYear(
-                    selectedAcademicYear ??
-                      academicYear.map((year) => year.academicYear)
+                    academicYear.map(
+                      (year) => year.academicYear ?? selectedAcademicYear
+                    )
                   );
                 }}
               >
