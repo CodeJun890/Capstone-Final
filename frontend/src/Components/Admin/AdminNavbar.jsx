@@ -32,6 +32,7 @@ import {
 import Offcanvas from "react-bootstrap/Offcanvas";
 
 import { useState, useContext, useRef, useEffect } from "react";
+import StudentListModal from "./StudentListModal";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Swal from "sweetalert2";
@@ -533,6 +534,7 @@ export default function AdminNavbar({ setIsToggled, toggleAdminIsLoggedOut }) {
 }
 
 function GenerateGoodMoral(props) {
+  const {baseUrl, currentStudent, setSelectedStudentDetails, selectedStudentDetails} = useContext(AdminContext)
   const [isPickedGraduate, setIsPickedGraduate] = useState(false);
   const [isPickedScholarship, setIsPickedScholarship] = useState(false);
   const [isPickedTransfer, setIsPickedTransfer] = useState(false);
@@ -548,7 +550,23 @@ function GenerateGoodMoral(props) {
   const [schoolYear, setSchoolYear] = useState("");
   const [generating, setGenerating] = useState(false);
   const [gender, setGender] = useState("");
-
+  const [showStudentListModal, setShowStudentListModal] = useState(false);
+  
+  useEffect(() => {
+    const fetchData = async () => {
+      if(currentStudent){
+        try{
+          axios.get(baseUrl `students/${currentStudent}`)
+          .then(res => {
+            if(res.status == 200){
+              setSelectedStudentDetails(res.data.student);
+            }
+          })
+        }
+      }
+    }
+  })
+  
   const handleType = (e) => {
     const data = e.target.value;
     switch (data) {
@@ -604,8 +622,18 @@ function GenerateGoodMoral(props) {
     setGenerating(false);
   };
 
+  const selectStudentDetails = () => {
+    setShowStudentListModal(true);
+  };
+
   return (
     <>
+      {showStudentListModal ? (
+        <StudentListModal
+          showStudentListModal={showStudentListModal}
+          setShowStudentListModal={setShowStudentListModal}
+        />
+      ) : null}
       <Modal
         {...props}
         size="xl"
@@ -657,6 +685,7 @@ function GenerateGoodMoral(props) {
                   <div className="btn btn-primary mt-4">
                     <FontAwesomeIcon
                       icon={faMagnifyingGlass}
+                      onClick={selectStudentDetails}
                       className="me-2"
                     />
                     Search Student
@@ -674,7 +703,7 @@ function GenerateGoodMoral(props) {
                         <Form.Select
                           id="gender"
                           aria-label="Default select example"
-                          value={gender}
+                          value={selectedStudentDetails.gender ?? ""}
                           onChange={(e) => setGender(e.target.value)}
                           required
                         >
@@ -688,7 +717,7 @@ function GenerateGoodMoral(props) {
                       <Form.Group className="mt-1" controlId="firstname">
                         <Form.Label className="fw-bold">Firstname</Form.Label>
                         <Form.Control
-                          value={firstname}
+                          value={selectedStudentDetails.firstName ?? ""}
                           onChange={(e) => setFirstname(e.target.value)}
                           required
                         />
@@ -696,7 +725,7 @@ function GenerateGoodMoral(props) {
                       <Form.Group className="mt-1" controlId="middlename">
                         <Form.Label className="fw-bold">Middlename</Form.Label>
                         <Form.Control
-                          value={middlename}
+                          value={selectedStudentDetails.middleName ?? ""}
                           onChange={(e) => setMiddlename(e.target.value)}
                         />
                       </Form.Group>
@@ -711,7 +740,7 @@ function GenerateGoodMoral(props) {
                         <Form.Select
                           id="gender"
                           aria-label="Default select example"
-                          value={gender}
+                          value={selectedStudentDetails.gender ?? ""}
                           onChange={(e) => setGender(e.target.value)}
                           required
                         >
@@ -725,7 +754,7 @@ function GenerateGoodMoral(props) {
                       <Form.Group className="mt-1" controlId="firstname">
                         <Form.Label className="fw-bold">Firstname</Form.Label>
                         <Form.Control
-                          value={firstname}
+                          value={selectedStudentDetails.firstName ?? ""}
                           onChange={(e) => setFirstname(e.target.value)}
                           required
                         />
@@ -733,7 +762,7 @@ function GenerateGoodMoral(props) {
                       <Form.Group className="mt-1" controlId="middlename">
                         <Form.Label className="fw-bold">Middlename</Form.Label>
                         <Form.Control
-                          value={middlename}
+                          value={selectedStudentDetails.middleName ?? ""}
                           onChange={(e) => setMiddlename(e.target.value)}
                         />
                       </Form.Group>
@@ -748,7 +777,7 @@ function GenerateGoodMoral(props) {
                         <Form.Select
                           id="typeGoodmoral"
                           aria-label="Default select example"
-                          value={gender}
+                          value={selectedStudentDetails.gender ?? ""}
                           onChange={(e) => setGender(e.target.value)}
                           required
                         >
@@ -762,7 +791,7 @@ function GenerateGoodMoral(props) {
                       <Form.Group className="mt-1" controlId="firstname">
                         <Form.Label className="fw-bold">Firstname</Form.Label>
                         <Form.Control
-                          value={firstname}
+                          value={selectedStudentDetails.firstName ?? ""}
                           onChange={(e) => setFirstname(e.target.value)}
                           required
                         />
@@ -770,7 +799,7 @@ function GenerateGoodMoral(props) {
                       <Form.Group className="mt-1" controlId="middlename">
                         <Form.Label className="fw-bold">Middlename</Form.Label>
                         <Form.Control
-                          value={middlename}
+                          value={selectedStudentDetails.middleName ?? ""}
                           onChange={(e) => setMiddlename(e.target.value)}
                         />
                       </Form.Group>
@@ -783,7 +812,7 @@ function GenerateGoodMoral(props) {
                       <Form.Group className="mt-1" controlId="lastname">
                         <Form.Label className="fw-bold">Lastname</Form.Label>
                         <Form.Control
-                          value={lastname}
+                          value={selectedStudentDetails.lastName ?? ""}
                           onChange={(e) => setLastname(e.target.value)}
                           required
                         />
@@ -808,7 +837,7 @@ function GenerateGoodMoral(props) {
                       <Form.Group className="mt-1" controlId="lastname">
                         <Form.Label className="fw-bold">Lastname</Form.Label>
                         <Form.Control
-                          value={lastname}
+                          value={selectedStudentDetails.lastName ??}
                           onChange={(e) => setLastname(e.target.value)}
                           required
                         />
@@ -864,7 +893,7 @@ function GenerateGoodMoral(props) {
                       <Form.Group className="mt-1" controlId="lastname">
                         <Form.Label className="fw-bold">Lastname</Form.Label>
                         <Form.Control
-                          value={lastname}
+                          value={selectedStudentDetails.lastName ?? ""}
                           onChange={(e) => setLastname(e.target.value)}
                           required
                         />
