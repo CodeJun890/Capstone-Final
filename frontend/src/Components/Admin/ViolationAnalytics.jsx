@@ -34,6 +34,7 @@ export default function ViolationAnalytics() {
 
         if (response.status === 200) {
           setCourses(response.data.courses);
+          console.log(response.data.course);
         }
       } catch (error) {
         console.log(error);
