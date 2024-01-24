@@ -564,6 +564,7 @@ function GenerateGoodMoral(props) {
           const res = await axios.get(baseUrl`students/${currentStudent}`);
           if (res.status === 200) {
             setSelectedStudentDetails(res.data.student);
+            console.log(res.data.student);
           }
         }
       } catch (error) {
