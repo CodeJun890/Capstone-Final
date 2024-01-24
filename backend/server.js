@@ -2441,7 +2441,7 @@ app.get("/fetch-all-courses", async (req, res) => {
         program_code: course,
         acad_year: academicYear,
         semester: semester,
-        student_count: 0,
+        student_count: 1,
       });
     });
 
