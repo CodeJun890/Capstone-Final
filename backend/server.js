@@ -2449,7 +2449,9 @@ app.get("/fetch-all-courses", async (req, res) => {
       );
     });
 
-    return res.status(200).json({ courses: coursesWithCount, allCourses });
+    return res
+      .status(200)
+      .json({ courses: coursesWithoutViolation, allCourses });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ error: "Internal Server Error" });
