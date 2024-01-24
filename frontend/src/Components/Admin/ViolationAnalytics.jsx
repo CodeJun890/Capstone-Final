@@ -17,8 +17,12 @@ ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 export default function ViolationAnalytics() {
   const { baseUrl, academicYear, setAcademicYear } = useContext(AdminContext);
   const [courses, setCourses] = useState([]);
-  const [selectedSemester, setSelectedSemester] = useState("");
-  const [selectedAcademicYear, setSelectedAcademicYear] = useState("");
+  const [selectedSemester, setSelectedSemester] = useState(
+    academicYear.map((year) => year.semester)
+  );
+  const [selectedAcademicYear, setSelectedAcademicYear] = useState(
+    academicYear.map((year) => year.academicYear)
+  );
   const [allAcademicYear, setAllAcademicYear] = useState([]);
 
   useEffect(() => {
@@ -39,9 +43,8 @@ export default function ViolationAnalytics() {
         console.log(error);
       }
     };
-    console.log("naulit");
     fetchCourses();
-  }, [selectedAcademicYear, selectedSemester, academicYear]);
+  }, [selectedAcademicYear, selectedSemester]);
 
   useEffect(() => {
     axios
