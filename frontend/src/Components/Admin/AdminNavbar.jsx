@@ -559,19 +559,18 @@ function GenerateGoodMoral(props) {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (currentStudent) {
-        axios
-          .get(baseUrl`students/${currentStudent}`)
-          .then((res) => {
-            if (res.status === 200) {
-              setSelectedStudentDetails(res.data.student);
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+      try {
+        if (currentStudent) {
+          const res = await axios.get(baseUrl`students/${currentStudent}`);
+          if (res.status === 200) {
+            setSelectedStudentDetails(res.data.student);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
     };
+
     fetchData();
   }, [currentStudent]);
 
