@@ -39,7 +39,7 @@ export default function ViolationAnalytics() {
         console.log(error);
       }
     };
-    console.log(selectedAcademicYear + "|" + selectedSemester);
+    console.log(selectedAcademicYear + "|asd" + selectedSemester);
     fetchCourses();
   }, [selectedAcademicYear, selectedSemester]);
 
