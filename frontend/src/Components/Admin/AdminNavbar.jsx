@@ -632,7 +632,6 @@ function GenerateGoodMoral(props) {
 
   const selectStudentDetails = () => {
     setShowStudentListModal(true);
-    console.log("lahhh");
   };
 
   return (
