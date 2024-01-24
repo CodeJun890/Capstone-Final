@@ -2409,10 +2409,12 @@ app.get("/fetch-all-courses", async (req, res) => {
         $unwind: "$acadYear",
       },
       {
+        $match: matchQuery,
+      },
+      {
         $group: {
           _id: {
             program_code: "$program.program_code",
-            student_id: "$user._id",
             acad_year: "$acadYear.academicYear",
             semester: "$acadYear.semester",
           },
@@ -2420,22 +2422,11 @@ app.get("/fetch-all-courses", async (req, res) => {
         },
       },
       {
-        $group: {
-          _id: {
-            program_code: "$_id.program_code",
-            acad_year: "$_id.acad_year",
-          },
-          student_count: { $sum: "$student_count" },
-        },
-      },
-      {
-        $match: matchQuery,
-      },
-      {
         $project: {
           _id: 0,
           program_code: "$_id.program_code",
           acad_year: "$_id.acad_year",
+          semester: "$_id.semester",
           student_count: 1,
         },
       },
@@ -2446,7 +2437,12 @@ app.get("/fetch-all-courses", async (req, res) => {
     );
 
     coursesWithoutViolation.forEach((course) => {
-      coursesWithCount.push({ program_code: course, student_count: 0 });
+      coursesWithCount.push({
+        program_code: course,
+        acad_year: academicYear,
+        semester: semester,
+        student_count: 0,
+      });
     });
 
     return res.status(200).json({ courses: coursesWithCount, allCourses });
