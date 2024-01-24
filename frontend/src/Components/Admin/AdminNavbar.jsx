@@ -534,12 +534,8 @@ export default function AdminNavbar({ setIsToggled, toggleAdminIsLoggedOut }) {
 }
 
 function GenerateGoodMoral(props) {
-  const {
-    baseUrl,
-    currentStudent,
-    setSelectedStudentDetails,
-    selectedStudentDetails,
-  } = useContext(AdminContext);
+  const { currentStudent, setSelectedStudentDetails, selectedStudentDetails } =
+    useContext(AdminContext);
   const [isPickedGraduate, setIsPickedGraduate] = useState(false);
   const [isPickedScholarship, setIsPickedScholarship] = useState(false);
   const [isPickedTransfer, setIsPickedTransfer] = useState(false);
@@ -560,6 +556,7 @@ function GenerateGoodMoral(props) {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const baseUrl = "https://api.discipline-recommender-system.xyz/";
         if (currentStudent) {
           const res = await axios.get(baseUrl`students/${currentStudent}`);
           if (res.status === 200) {
