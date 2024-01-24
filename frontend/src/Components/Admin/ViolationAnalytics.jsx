@@ -107,11 +107,9 @@ export default function ViolationAnalytics() {
                 value={academicYear.map(
                   (year) => year.academicYear + " | " + year.semester
                 )}
-                defaultValue={
-                  allAcademicYear.length > 0
-                    ? `${allAcademicYear[0].academicYear} | ${allAcademicYear[0].semester}`
-                    : ""
-                }
+                defaultValue={academicYear.map(
+                  (year) => year.academicYear + " | " + year.semester
+                )}
                 onChange={(e) => {
                   const [selectedAcademicYear, selectedSemester] =
                     e.target.value.split(" | ");
