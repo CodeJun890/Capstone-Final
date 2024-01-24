@@ -2370,48 +2370,47 @@ app.get("/fetch-all-courses", async (req, res) => {
 
     const allCourses = await ProgramModel.distinct("program_code");
 
-    console.log("All Courses:", allCourses);
-
     const coursesWithCount = await ViolationModel.aggregate([
       {
-        $match: {
-          academicYear: academicYear,
-          semester: semester,
+        $lookup: {
+          from: "users",
+          localField: "student_id",
+          foreignField: "_id",
+          as: "user",
         },
       },
       {
-        $group: {
-          _id: "$student_id",
-          program_code: { $first: "$program_code" }, // Assuming you want to keep the program_code associated with the student
-          violations: { $addToSet: "$_id" }, // Use $addToSet to get distinct violation IDs for each student
+        $unwind: "$user",
+      },
+      {
+        $lookup: {
+          from: "academicyears",
+          localField: "academicYear",
+          foreignField: "academicYear",
+          as: "year",
         },
       },
       {
+        $unwind: "$year",
+      },
+      {
         $group: {
-          _id: "$program_code",
+          _id: {
+            program_code: "$user.course",
+            academicYear: "$year.academicYear",
+          },
           student_count: { $sum: 1 },
-          violations: { $addToSet: "$violations" }, // Collect distinct violations per program_code
         },
       },
       {
         $project: {
           _id: 0,
-          program_code: "$_id",
+          program_code: "$_id.program_code",
+          academicYear: "$_id.academicYear",
           student_count: 1,
-          total_violations: {
-            $size: {
-              $reduce: {
-                input: "$violations",
-                initialValue: [],
-                in: { $concatArrays: ["$$value", "$$this"] },
-              },
-            },
-          },
         },
       },
     ]);
-
-    console.log("Courses with Count:", coursesWithCount);
 
     const coursesWithoutViolation = allCourses.map((course) => {
       const matchingCourse = coursesWithCount.find(
@@ -2421,12 +2420,9 @@ app.get("/fetch-all-courses", async (req, res) => {
         matchingCourse || {
           program_code: course,
           student_count: 0,
-          total_violations: 0,
         }
       );
     });
-
-    console.log("Courses Without Violation:", coursesWithoutViolation);
 
     return res
       .status(200)
