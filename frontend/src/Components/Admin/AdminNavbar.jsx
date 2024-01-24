@@ -712,26 +712,30 @@ function GenerateGoodMoral(props) {
                           id="gender"
                           aria-label="Default select example"
                           value={selectedStudentDetails.gender ?? gender}
-                          onChange={(e) => setGender(e.target.value)}
+                          onChange={(e) =>
+                            setSelectedStudentDetails((prevRecords) => ({
+                              ...prevRecords,
+                              gender: e.target.value,
+                            }))
+                          }
                         >
-                          {selectedStudentDetails.gender ? (
-                            selectedStudentDetails.gender
-                          ) : (
-                            <>
-                              <option value="" hidden>
-                                Select Gender
-                              </option>
-                              <option value="Male">MALE</option>
-                              <option value="Female">FEMALE</option>
-                            </>
-                          )}
+                          <option value="" hidden>
+                            Select Gender
+                          </option>
+                          <option value="Male">MALE</option>
+                          <option value="Female">FEMALE</option>
                         </Form.Select>
                       </Form.Group>
                       <Form.Group className="mt-1" controlId="firstname">
                         <Form.Label className="fw-bold">Firstname</Form.Label>
                         <Form.Control
                           value={selectedStudentDetails.firstName ?? firstname}
-                          onChange={(e) => setFirstname(e.target.value)}
+                          onChange={(e) =>
+                            setSelectedStudentDetails((prevRecords) => ({
+                              ...prevRecords,
+                              firstName: e.target.value,
+                            }))
+                          }
                           required
                         />
                       </Form.Group>
@@ -741,7 +745,12 @@ function GenerateGoodMoral(props) {
                           value={
                             selectedStudentDetails.middleName ?? middlename
                           }
-                          onChange={(e) => setMiddlename(e.target.value)}
+                          onChange={(e) =>
+                            setSelectedStudentDetails((prevRecords) => ({
+                              ...prevRecords,
+                              middleName: e.target.value,
+                            }))
+                          }
                         />
                       </Form.Group>
                     </>
@@ -756,7 +765,12 @@ function GenerateGoodMoral(props) {
                           id="gender"
                           aria-label="Default select example"
                           value={selectedStudentDetails.gender ?? gender}
-                          onChange={(e) => setGender(e.target.value)}
+                          onChange={(e) =>
+                            setSelectedStudentDetails((prevRecords) => ({
+                              ...prevRecords,
+                              gender: e.target.value,
+                            }))
+                          }
                           required
                         >
                           <option value="" hidden>
@@ -770,7 +784,12 @@ function GenerateGoodMoral(props) {
                         <Form.Label className="fw-bold">Firstname</Form.Label>
                         <Form.Control
                           value={selectedStudentDetails.firstName ?? firstname}
-                          onChange={(e) => setFirstname(e.target.value)}
+                          onChange={(e) =>
+                            setSelectedStudentDetails((prevRecords) => ({
+                              ...prevRecords,
+                              firstName: e.target.value,
+                            }))
+                          }
                           required
                         />
                       </Form.Group>
@@ -780,7 +799,12 @@ function GenerateGoodMoral(props) {
                           value={
                             selectedStudentDetails.middleName ?? middlename
                           }
-                          onChange={(e) => setMiddlename(e.target.value)}
+                          onChange={(e) =>
+                            setSelectedStudentDetails((prevRecords) => ({
+                              ...prevRecords,
+                              middleName: e.target.value,
+                            }))
+                          }
                         />
                       </Form.Group>
                     </>
@@ -795,7 +819,12 @@ function GenerateGoodMoral(props) {
                           id="typeGoodmoral"
                           aria-label="Default select example"
                           value={selectedStudentDetails.gender ?? gender}
-                          onChange={(e) => setGender(e.target.value)}
+                          onChange={(e) =>
+                            setSelectedStudentDetails((prevRecords) => ({
+                              ...prevRecords,
+                              gender: e.target.value,
+                            }))
+                          }
                           required
                         >
                           <option value="" hidden>
@@ -809,7 +838,12 @@ function GenerateGoodMoral(props) {
                         <Form.Label className="fw-bold">Firstname</Form.Label>
                         <Form.Control
                           value={selectedStudentDetails.firstName ?? firstname}
-                          onChange={(e) => setFirstname(e.target.value)}
+                          onChange={(e) =>
+                            setSelectedStudentDetails((prevRecords) => ({
+                              ...prevRecords,
+                              firstName: e.target.value,
+                            }))
+                          }
                           required
                         />
                       </Form.Group>
@@ -819,7 +853,12 @@ function GenerateGoodMoral(props) {
                           value={
                             selectedStudentDetails.middleName ?? middlename
                           }
-                          onChange={(e) => setMiddlename(e.target.value)}
+                          onChange={(e) =>
+                            setSelectedStudentDetails((prevRecords) => ({
+                              ...prevRecords,
+                              middleName: e.target.value,
+                            }))
+                          }
                         />
                       </Form.Group>
                     </>
@@ -832,7 +871,12 @@ function GenerateGoodMoral(props) {
                         <Form.Label className="fw-bold">Lastname</Form.Label>
                         <Form.Control
                           value={selectedStudentDetails.lastName ?? lastname}
-                          onChange={(e) => setLastname(e.target.value)}
+                          onChange={(e) =>
+                            setSelectedStudentDetails((prevRecords) => ({
+                              ...prevRecords,
+                              lastName: e.target.value,
+                            }))
+                          }
                           required
                         />
                       </Form.Group>
@@ -857,7 +901,12 @@ function GenerateGoodMoral(props) {
                         <Form.Label className="fw-bold">Lastname</Form.Label>
                         <Form.Control
                           value={selectedStudentDetails.lastName ?? lastname}
-                          onChange={(e) => setLastname(e.target.value)}
+                          onChange={(e) =>
+                            setSelectedStudentDetails((prevRecords) => ({
+                              ...prevRecords,
+                              lastName: e.target.value,
+                            }))
+                          }
                           required
                         />
                       </Form.Group>
@@ -913,7 +962,12 @@ function GenerateGoodMoral(props) {
                         <Form.Label className="fw-bold">Lastname</Form.Label>
                         <Form.Control
                           value={selectedStudentDetails.lastName ?? lastname}
-                          onChange={(e) => setLastname(e.target.value)}
+                          onChange={(e) =>
+                            setSelectedStudentDetails((prevRecords) => ({
+                              ...prevRecords,
+                              lastName: e.target.value,
+                            }))
+                          }
                           required
                         />
                       </Form.Group>
