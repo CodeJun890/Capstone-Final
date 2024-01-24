@@ -779,7 +779,6 @@ function GenerateGoodMoral(props) {
                               gender: e.target.value,
                             }))
                           }
-                          required
                         >
                           <option value="" hidden>
                             {selectedStudentDetails.gender ?? "Select Gender"}
@@ -833,7 +832,6 @@ function GenerateGoodMoral(props) {
                               gender: e.target.value,
                             }))
                           }
-                          required
                         >
                           <option value="" hidden>
                             Select Gender
