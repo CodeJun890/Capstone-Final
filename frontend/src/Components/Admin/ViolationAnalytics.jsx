@@ -110,18 +110,12 @@ export default function ViolationAnalytics() {
                 onChange={(e) => {
                   const [selectedAcademicYear, selectedSemester] =
                     e.target.value.split(" | ");
-                  setAcademicYear([
-                    {
-                      academicYear: selectedAcademicYear,
-                      semester: selectedSemester,
-                    },
-                  ]);
                   setSelectedSemester(
-                    selectedSemester ||
+                    selectedSemester ??
                       academicYear.map((year) => year.semester)
                   );
                   setSelectedAcademicYear(
-                    selectedAcademicYear ||
+                    selectedAcademicYear ??
                       academicYear.map((year) => year.academicYear)
                   );
                 }}
