@@ -558,9 +558,6 @@ function GenerateGoodMoral(props) {
   const [showStudentListModal, setShowStudentListModal] = useState(false);
   const pdfButtonRef = useRef();
   useEffect(() => {
-    pdfButtonRef.current.click();
-  }, []);
-  useEffect(() => {
     if (currentStudent) {
       axios
         .get(baseUrl + `students/${currentStudent}`)
@@ -669,7 +666,7 @@ function GenerateGoodMoral(props) {
                 Fill all the information
               </div>
               <div className="row justify-content-center align-items-center">
-                <div className="col-lg-4 ">
+                <div className="col-lg-4">
                   <Form.Group>
                     <Form.Label className="fw-bold" htmlFor="typeGoodmoral">
                       Type of Good Moral
@@ -1064,6 +1061,7 @@ function GenerateGoodMoral(props) {
                         useEffect(() => {
                           if (!loading) {
                             setGenerating(false);
+                            pdfButtonRef.current.click();
                           }
                         }, [loading]);
 
@@ -1105,6 +1103,7 @@ function GenerateGoodMoral(props) {
                         useEffect(() => {
                           if (!loading) {
                             setGenerating(false);
+                            pdfButtonRef.current.click();
                           }
                         }, [loading]);
 
@@ -1146,6 +1145,7 @@ function GenerateGoodMoral(props) {
                         useEffect(() => {
                           if (!loading) {
                             setGenerating(false);
+                            pdfButtonRef.current.click();
                           }
                         }, [loading]);
 
