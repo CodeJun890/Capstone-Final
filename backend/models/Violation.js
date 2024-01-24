@@ -40,7 +40,7 @@ const violationSchema = new mongoose.Schema(
     assigned_by: {
       type: String,
     },
-    evidence_file: []
+    evidence_file: [],
   },
   { timestamps: true }
 );
