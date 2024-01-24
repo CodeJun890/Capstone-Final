@@ -52,6 +52,14 @@ export default function ViolationAnalytics() {
           );
           setAllAcademicYear(res.data.acadYear);
           setAcademicYear(openAcademicYears);
+
+          // Set default values for selectedAcademicYear and selectedSemester
+          if (openAcademicYears.length > 0) {
+            const defaultYear = openAcademicYears[0].academicYear;
+            const defaultSemester = openAcademicYears[0].semester;
+            setSelectedAcademicYear(defaultYear);
+            setSelectedSemester(defaultSemester);
+          }
         }
       })
       .catch((err) => {
@@ -116,16 +124,8 @@ export default function ViolationAnalytics() {
                       semester: selectedSemester,
                     },
                   ]);
-                  setSelectedSemester(
-                    academicYear.map(
-                      (year) => year.semester ?? selectedSemester
-                    )
-                  );
-                  setSelectedAcademicYear(
-                    academicYear.map(
-                      (year) => year.academicYear ?? selectedAcademicYear
-                    )
-                  );
+                  setSelectedSemester(selectedSemester);
+                  setSelectedAcademicYear(selectedAcademicYear);
                 }}
               >
                 <option value="" hidden>
