@@ -2434,6 +2434,7 @@ app.get("/fetch-all-courses", async (req, res) => {
         $project: {
           _id: 0,
           program_code: "$_id.program_code",
+          acad_year: "$_id.acad_year",
           student_count: 1,
         },
       },
