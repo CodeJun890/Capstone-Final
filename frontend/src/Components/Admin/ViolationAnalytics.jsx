@@ -23,10 +23,14 @@ export default function ViolationAnalytics() {
   const [allAcademicYear, setAllAcademicYear] = useState([]);
 
   useEffect(() => {
-    axios(baseUrl + "fetch-all-courses")
+    axios
+      .get(baseUrl + "fetch-student-violation-based-on-acadyear", {
+        selectedAcademicYear,
+        selectedSemester,
+      })
       .then((res) => {
         if (res.status === 200) {
-          setCourses(res.data.courses);
+          setCourses(violationCountByStudent);
         }
       })
       .catch((err) => {
