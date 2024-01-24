@@ -2366,11 +2366,11 @@ app.post("/fetch-student-and-violations-info", async (req, res) => {
 
 app.get("/fetch-all-courses", async (req, res) => {
   try {
-    const { academicYear } = req.query; // Extract academicYear from query parameters
+    const { academicYear, semester } = req.query;
 
-    const matchQuery = academicYear
-      ? { "acadYear.academicYear": academicYear } // Include academic year in the match query if provided
-      : {};
+    const matchQuery = {};
+    if (academicYear) matchQuery["acadYear.academicYear"] = academicYear;
+    if (semester) matchQuery["acadYear.semester"] = semester;
 
     const allCourses = await ProgramModel.distinct("program_code");
 
@@ -2422,13 +2422,13 @@ app.get("/fetch-all-courses", async (req, res) => {
         $group: {
           _id: {
             program_code: "$_id.program_code",
-            acad_year: "$_id.acad_year", // Include academic year in the final grouping
+            acad_year: "$_id.acad_year",
           },
-          student_count: { $sum: "$student_count" }, // Sum up the student counts
+          student_count: { $sum: "$student_count" },
         },
       },
       {
-        $match: matchQuery, // Apply the match query for academic year filtering
+        $match: matchQuery,
       },
       {
         $project: {
@@ -2443,7 +2443,6 @@ app.get("/fetch-all-courses", async (req, res) => {
       (course) => !coursesWithCount.some((item) => item.program_code === course)
     );
 
-    // Append courses without violations to the result
     coursesWithoutViolation.forEach((course) => {
       coursesWithCount.push({ program_code: course, student_count: 0 });
     });

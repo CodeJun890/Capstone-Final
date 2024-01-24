@@ -27,7 +27,8 @@ export default function ViolationAnalytics() {
       try {
         const response = await axios.get(baseUrl + "fetch-all-courses", {
           params: {
-            academicYear: selectedAcademicYear, // Pass the selected academic year as a query parameter
+            academicYear: selectedAcademicYear,
+            semester: selectedSemester,
           },
         });
 
@@ -40,7 +41,7 @@ export default function ViolationAnalytics() {
     };
 
     fetchCourses();
-  }, [selectedAcademicYear]);
+  }, [selectedAcademicYear, selectedSemester]);
 
   useEffect(() => {
     axios
