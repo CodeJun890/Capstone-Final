@@ -2370,7 +2370,7 @@ app.get("/fetch-all-courses", async (req, res) => {
 
     const allCourses = await ProgramModel.distinct("program_code");
 
-    const coursesWithCount = await ViolationModel.aggregate([
+    const studentsWithViolation = await ViolationModel.aggregate([
       {
         $lookup: {
           from: "users",
@@ -2395,42 +2395,34 @@ app.get("/fetch-all-courses", async (req, res) => {
       },
       {
         $match: {
-          "academicYearInfo.academicYear": academicYear, // Match academicYear from the request
+          "academicYearInfo.academicYear": academicYear,
+          "academicYearInfo.semester": semester,
         },
       },
       {
         $group: {
-          _id: {
-            program_code: "$user.course",
-            academicYear: "$academicYearInfo.academicYear",
-            semester: "$academicYearInfo.semester",
-          },
+          _id: "$user._id",
+          program_code: { $first: "$user.course" },
           student_count: { $sum: 1 },
         },
       },
       {
         $project: {
           _id: 0,
-          program_code: "$_id.program_code",
-          academicYear: "$_id.academicYear",
-          semester: "$_id.semester",
+          student_id: "$_id",
+          program_code: 1,
           student_count: 1,
         },
       },
     ]);
 
     const coursesWithoutViolation = allCourses.map((course) => {
-      const matchingCourse = coursesWithCount.find(
-        (item) =>
-          item.program_code === course &&
-          item.academicYear === academicYear &&
-          item.semester === semester
+      const matchingStudent = studentsWithViolation.find(
+        (item) => item.program_code === course
       );
       return (
-        matchingCourse || {
+        matchingStudent || {
           program_code: course,
-          academicYear: academicYear,
-          semester: semester,
           student_count: 0,
         }
       );
