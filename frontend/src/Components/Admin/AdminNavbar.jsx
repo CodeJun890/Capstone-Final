@@ -713,7 +713,6 @@ function GenerateGoodMoral(props) {
                           aria-label="Default select example"
                           value={selectedStudentDetails.gender ?? gender}
                           onChange={(e) => setGender(e.target.value)}
-                          required
                         >
                           <option value="" hidden>
                             Select Gender
