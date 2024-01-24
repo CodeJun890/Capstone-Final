@@ -734,13 +734,12 @@ function GenerateGoodMoral(props) {
                         <Form.Label className="fw-bold">Firstname</Form.Label>
                         <Form.Control
                           value={selectedStudentDetails.firstName ?? firstname}
-                          onChange={(e) => {
-                            console.log("Selected Gender:", e.target.value);
+                          onChange={(e) =>
                             setSelectedStudentDetails((prevRecords) => ({
                               ...prevRecords,
                               firstName: e.target.value,
-                            }));
-                          }}
+                            }))
+                          }
                           required
                         />
                       </Form.Group>
