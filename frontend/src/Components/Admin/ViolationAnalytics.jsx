@@ -40,7 +40,7 @@ export default function ViolationAnalytics() {
       }
     };
     fetchCourses();
-  }, [selectedAcademicYear, selectedSemester]);
+  }, [selectedAcademicYear, selectedSemester, academicYear]);
 
   useEffect(() => {
     axios
