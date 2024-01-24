@@ -818,9 +818,7 @@ function GenerateGoodMoral(props) {
                         <Form.Select
                           id="typeGoodmoral"
                           aria-label="Default select example"
-                          value={
-                            selectedStudentDetails.gender ?? (gender || "")
-                          }
+                          value={selectedStudentDetails.gender ?? gender}
                           onChange={(e) =>
                             setSelectedStudentDetails((prevRecords) => ({
                               ...prevRecords,
@@ -829,7 +827,10 @@ function GenerateGoodMoral(props) {
                           }
                           required
                         >
-                          <option value="" hidden>
+                          <option
+                            value={selectedStudentDetails.gender ?? gender}
+                            hidden
+                          >
                             Select Gender
                           </option>
                           <option value="Male">MALE</option>
