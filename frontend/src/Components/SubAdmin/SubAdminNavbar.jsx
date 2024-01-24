@@ -13,7 +13,7 @@ import {
   faAngleDoubleRight,
   faThLarge,
   faCircleCheck,
-  faSignOut,
+  faMagnifyingGlass,
   faMoon,
   faSun,
   faPenToSquare,
