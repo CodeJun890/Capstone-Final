@@ -2366,6 +2366,12 @@ app.post("/fetch-student-and-violations-info", async (req, res) => {
 
 app.get("/fetch-all-courses", async (req, res) => {
   try {
+    const { academicYear } = req.query; // Extract academicYear from query parameters
+
+    const matchQuery = academicYear
+      ? { "acadYear.academicYear": academicYear } // Include academic year in the match query if provided
+      : {};
+
     const allCourses = await ProgramModel.distinct("program_code");
 
     const coursesWithCount = await ViolationModel.aggregate([
@@ -2392,24 +2398,42 @@ app.get("/fetch-all-courses", async (req, res) => {
         $unwind: "$program",
       },
       {
+        $lookup: {
+          from: "academicyears",
+          localField: "academicYear",
+          foreignField: "academicYear",
+          as: "acadYear",
+        },
+      },
+      {
+        $unwind: "$acadYear",
+      },
+      {
         $group: {
           _id: {
             program_code: "$program.program_code",
             student_id: "$user._id",
+            acad_year: "$acadYear.academicYear",
           },
           student_count: { $sum: 1 },
         },
       },
       {
         $group: {
-          _id: "$_id.program_code",
-          student_count: { $sum: 1 },
+          _id: {
+            program_code: "$_id.program_code",
+            acad_year: "$_id.acad_year", // Include academic year in the final grouping
+          },
+          student_count: { $sum: "$student_count" }, // Sum up the student counts
         },
+      },
+      {
+        $match: matchQuery, // Apply the match query for academic year filtering
       },
       {
         $project: {
           _id: 0,
-          program_code: "$_id",
+          program_code: "$_id.program_code",
           student_count: 1,
         },
       },
