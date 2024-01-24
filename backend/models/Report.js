@@ -11,7 +11,7 @@ const reportSchema = new mongoose.Schema(
     },
     student_id: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "student",
+      ref: "user",
     },
     incident_date: {
       type: Date,
