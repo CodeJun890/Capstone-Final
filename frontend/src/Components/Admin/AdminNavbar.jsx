@@ -964,11 +964,15 @@ function GenerateGoodMoral(props) {
                     <PDFDownloadLink
                       document={
                         <GraduateGoodMoral
-                          firstName={firstname}
-                          middleName={middlename}
-                          lastName={lastname}
+                          firstName={
+                            selectedStudentDetails.firstName ?? firstname
+                          }
+                          middleName={
+                            selectedStudentDetails.middleName ?? middlename
+                          }
+                          lastName={selectedStudentDetails.lastName ?? lastname}
                           date={date}
-                          gender={gender}
+                          gender={selectedStudentDetails.gender ?? gender}
                           semester={semester}
                           schoolYear={schoolYear}
                         />
@@ -998,11 +1002,15 @@ function GenerateGoodMoral(props) {
                     <PDFDownloadLink
                       document={
                         <ScholarshipGoodMoral
-                          firstName={firstname}
-                          middleName={middlename}
-                          lastName={lastname}
+                          firstName={
+                            selectedStudentDetails.firstName ?? firstname
+                          }
+                          middleName={
+                            selectedStudentDetails.middleName ?? middlename
+                          }
+                          lastName={selectedStudentDetails.lastName ?? lastname}
                           date={date}
-                          gender={gender}
+                          gender={selectedStudentDetails.gender ?? gender}
                           semester={semester}
                           schoolYear={schoolYear}
                         />
@@ -1032,11 +1040,15 @@ function GenerateGoodMoral(props) {
                     <PDFDownloadLink
                       document={
                         <TransferGoodMoral
-                          firstName={firstname}
-                          middleName={middlename}
-                          lastName={lastname}
+                          firstName={
+                            selectedStudentDetails.firstName ?? firstname
+                          }
+                          middleName={
+                            selectedStudentDetails.middleName ?? middlename
+                          }
+                          lastName={selectedStudentDetails.lastName ?? lastname}
                           date={date}
-                          gender={gender}
+                          gender={selectedStudentDetails.gender ?? gender}
                           semester={semester}
                           schoolYear={schoolYear}
                         />
