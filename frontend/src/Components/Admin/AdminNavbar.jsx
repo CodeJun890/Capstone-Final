@@ -710,14 +710,11 @@ function GenerateGoodMoral(props) {
                         <Form.Select
                           id="gender"
                           aria-label="Default select example"
-                          value={selectedStudentDetails.gender ?? ""}
+                          value={selectedStudentDetails.sex ?? ""}
                           onChange={(e) => setGender(e.target.value)}
                           required
                         >
-                          <option
-                            value={selectedStudentDetails.gender ?? ""}
-                            hidden
-                          >
+                          <option value="" hidden>
                             Select Gender
                           </option>
                           <option value="MALE">MALE</option>
