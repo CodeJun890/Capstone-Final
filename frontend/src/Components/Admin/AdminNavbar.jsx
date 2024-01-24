@@ -1072,6 +1072,7 @@ function GenerateGoodMoral(props) {
                   onClick={() => {
                     props.onHide();
                     clearFields();
+                    setSelectedStudentDetails("");
                   }}
                 >
                   Close
