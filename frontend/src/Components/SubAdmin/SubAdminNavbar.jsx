@@ -477,6 +477,12 @@ export default function SubAdminNavbar({ setIsToggled }) {
 }
 
 function GenerateGoodMoral(props) {
+  const {
+    baseUrl,
+    currentStudent,
+    setSelectedStudentDetails,
+    selectedStudentDetails,
+  } = useContext(SubAdminContext);
   const [isPickedGraduate, setIsPickedGraduate] = useState(false);
   const [isPickedScholarship, setIsPickedScholarship] = useState(false);
   const [isPickedTransfer, setIsPickedTransfer] = useState(false);
@@ -492,6 +498,21 @@ function GenerateGoodMoral(props) {
   const [schoolYear, setSchoolYear] = useState("");
   const [generating, setGenerating] = useState(false);
   const [gender, setGender] = useState("");
+  const [showStudentListModal, setShowStudentListModal] = useState(false);
+  useEffect(() => {
+    if (currentStudent) {
+      axios
+        .get(baseUrl + `students/${currentStudent}`)
+        .then((res) => {
+          if (res.status === 200) {
+            setSelectedStudentDetails(res.data.student);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, [currentStudent]);
 
   const handleType = (e) => {
     const data = e.target.value;
@@ -548,6 +569,10 @@ function GenerateGoodMoral(props) {
     setGenerating(false);
   };
 
+  const selectStudentDetails = () => {
+    setShowStudentListModal(true);
+  };
+
   return (
     <>
       <Modal
@@ -576,7 +601,7 @@ function GenerateGoodMoral(props) {
                 Fill all the information
               </div>
               <div className="row justify-content-center">
-                <div className="col-lg-6">
+                <div className="col-lg-4">
                   <Form.Group>
                     <Form.Label className="fw-bold" htmlFor="typeGoodmoral">
                       Type of Good Moral
@@ -596,6 +621,18 @@ function GenerateGoodMoral(props) {
                       <option value="transfer">Transfer</option>
                     </Form.Select>
                   </Form.Group>
+                </div>
+                <div className="col-lg-4 text-end text-md-start">
+                  <div
+                    className="btn btn-primary mt-4"
+                    onClick={selectStudentDetails}
+                  >
+                    <FontAwesomeIcon
+                      icon={faMagnifyingGlass}
+                      className="me-2"
+                    />
+                    Search Student
+                  </div>
                 </div>
               </div>
               <div className="row">
@@ -940,11 +977,15 @@ function GenerateGoodMoral(props) {
                     <PDFDownloadLink
                       document={
                         <GraduateGoodMoral
-                          firstName={firstname}
-                          middleName={middlename}
-                          lastName={lastname}
+                          firstName={
+                            selectedStudentDetails.firstName ?? firstname
+                          }
+                          middleName={
+                            selectedStudentDetails.middleName ?? middlename
+                          }
+                          lastName={selectedStudentDetails.lastName ?? lastname}
                           date={date}
-                          gender={gender}
+                          gender={selectedStudentDetails.gender ?? gender}
                           semester={semester}
                           schoolYear={schoolYear}
                         />
@@ -974,11 +1015,15 @@ function GenerateGoodMoral(props) {
                     <PDFDownloadLink
                       document={
                         <ScholarshipGoodMoral
-                          firstName={firstname}
-                          middleName={middlename}
-                          lastName={lastname}
+                          firstName={
+                            selectedStudentDetails.firstName ?? firstname
+                          }
+                          middleName={
+                            selectedStudentDetails.middleName ?? middlename
+                          }
+                          lastName={selectedStudentDetails.lastName ?? lastname}
                           date={date}
-                          gender={gender}
+                          gender={selectedStudentDetails.gender ?? gender}
                           semester={semester}
                           schoolYear={schoolYear}
                         />
@@ -1008,11 +1053,15 @@ function GenerateGoodMoral(props) {
                     <PDFDownloadLink
                       document={
                         <TransferGoodMoral
-                          firstName={firstname}
-                          middleName={middlename}
-                          lastName={lastname}
+                          firstName={
+                            selectedStudentDetails.firstName ?? firstname
+                          }
+                          middleName={
+                            selectedStudentDetails.middleName ?? middlename
+                          }
+                          lastName={selectedStudentDetails.lastName ?? lastname}
                           date={date}
-                          gender={gender}
+                          gender={selectedStudentDetails.gender ?? gender}
                           semester={semester}
                           schoolYear={schoolYear}
                         />
