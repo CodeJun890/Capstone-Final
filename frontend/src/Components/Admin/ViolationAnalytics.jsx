@@ -15,9 +15,8 @@ import {
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 export default function ViolationAnalytics() {
-  const { baseUrl } = useContext(AdminContext);
+  const { baseUrl, academicYear, setAcademicYear } = useContext(AdminContext);
   const [courses, setCourses] = useState([]);
-  const [academicYear, setAcademicYear] = useState("");
   const [selectedSemester, setSelectedSemester] = useState("");
   const [selectedAcademicYear, setSelectedAcademicYear] = useState("");
   const [allAcademicYear, setAllAcademicYear] = useState([]);
@@ -106,7 +105,9 @@ export default function ViolationAnalytics() {
             <div className="col-lg-6 ">
               <Form.Select
                 id="ay-code"
-                value={currentAcadYear}
+                value={academicYear.map(
+                  (year) => year.academicYear + " | " + year.semester
+                )}
                 onChange={(e) => {
                   setAcademicYear(e.target.value);
                   const [selectedAcademicYear, selectedSemester] =
