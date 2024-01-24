@@ -112,16 +112,18 @@ export default function ViolationAnalytics() {
                     e.target.value.split(" | ");
                   setAcademicYear([
                     {
-                      academicYear:
-                        selectedAcademicYear ??
-                        academicYear.map((year) => year.academicYear),
-                      semester:
-                        selectedSemester ??
-                        academicYear.map((year) => year.semester),
+                      academicYear: selectedAcademicYear,
+                      semester: selectedSemester,
                     },
                   ]);
-                  setSelectedSemester(selectedSemester);
-                  setSelectedAcademicYear(selectedAcademicYear);
+                  setSelectedSemester(
+                    selectedSemester ||
+                      academicYear.map((year) => year.semester)
+                  );
+                  setSelectedAcademicYear(
+                    selectedAcademicYear ||
+                      academicYear.map((year) => year.academicYear)
+                  );
                 }}
               >
                 <option value="" hidden>
