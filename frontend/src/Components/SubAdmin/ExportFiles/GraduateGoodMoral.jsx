@@ -210,7 +210,7 @@ export default function GraduateGoodMoral({
                 >
                   This certification is issued upon the request of{" "}
                   <Text style={{ fontFamily: "Arial-Bold" }}>
-                    {gender == "MALE" ? `Mr. ${lastName}` : `Ms. ${lastName}`}{" "}
+                    {gender == "Male" ? `Mr. ${lastName}` : `Ms. ${lastName}`}{" "}
                   </Text>
                   for further studies purposes only.
                 </Text>
