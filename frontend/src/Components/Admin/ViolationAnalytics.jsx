@@ -23,16 +23,24 @@ export default function ViolationAnalytics() {
   const [allAcademicYear, setAllAcademicYear] = useState([]);
 
   useEffect(() => {
-    axios(baseUrl + "fetch-all-courses")
-      .then((res) => {
-        if (res.status === 200) {
-          setCourses(res.data.courses);
+    const fetchCourses = async () => {
+      try {
+        const response = await axios.get(baseUrl + "fetch-all-courses", {
+          params: {
+            academicYear: selectedAcademicYear, // Pass the selected academic year as a query parameter
+          },
+        });
+
+        if (response.status === 200) {
+          setCourses(response.data.courses);
         }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchCourses();
+  }, [selectedAcademicYear]);
 
   useEffect(() => {
     axios
