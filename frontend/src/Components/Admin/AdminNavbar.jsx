@@ -714,11 +714,17 @@ function GenerateGoodMoral(props) {
                           value={selectedStudentDetails.gender ?? gender}
                           onChange={(e) => setGender(e.target.value)}
                         >
-                          <option value="" hidden>
-                            Select Gender
-                          </option>
-                          <option value="Male">MALE</option>
-                          <option value="Female">FEMALE</option>
+                          {selectedStudentDetails.gender ? (
+                            selectedStudentDetails.gender
+                          ) : (
+                            <>
+                              <option value="" hidden>
+                                Select Gender
+                              </option>
+                              <option value="Male">MALE</option>
+                              <option value="Female">FEMALE</option>
+                            </>
+                          )}
                         </Form.Select>
                       </Form.Group>
                       <Form.Group className="mt-1" controlId="firstname">
