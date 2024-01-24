@@ -29,7 +29,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { useState, useContext, useRef, useEffect } from "react";
 
 import Swal from "sweetalert2";
-
+import StudentListModal from "./StudentListModal";
 import { SubAdminContext } from "../../../Context/SubAdminContext";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
