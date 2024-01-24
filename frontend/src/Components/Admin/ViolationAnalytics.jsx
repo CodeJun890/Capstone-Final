@@ -52,7 +52,7 @@ export default function ViolationAnalytics() {
             (year) => year.status === "OPEN"
           );
           setAllAcademicYear(res.data.acadYear);
-          setCurrentAcadYear(openAcademicYears);
+          setAcademicYear(openAcademicYears);
         }
       })
       .catch((err) => {
