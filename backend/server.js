@@ -2368,11 +2368,9 @@ app.get("/fetch-all-courses", async (req, res) => {
   try {
     const { academicYear, semester } = req.query;
 
-    const matchQuery = {};
-    if (academicYear) matchQuery["acadYear.academicYear"] = academicYear;
-    if (semester) matchQuery["acadYear.semester"] = semester;
-
     const allCourses = await ProgramModel.distinct("program_code");
+
+    console.log("All Courses:", allCourses);
 
     const coursesWithCount = await ViolationModel.aggregate([
       {
@@ -2387,36 +2385,9 @@ app.get("/fetch-all-courses", async (req, res) => {
         $unwind: "$user",
       },
       {
-        $lookup: {
-          from: "programs",
-          localField: "user.course",
-          foreignField: "program_code",
-          as: "program",
-        },
-      },
-      {
-        $unwind: "$program",
-      },
-      {
-        $lookup: {
-          from: "academicyears",
-          localField: "academicYear",
-          foreignField: "academicYear",
-          as: "acadYear",
-        },
-      },
-      {
-        $unwind: "$acadYear",
-      },
-      {
-        $match: matchQuery,
-      },
-      {
         $group: {
           _id: {
-            program_code: "$program.program_code",
-            acad_year: "$acadYear.academicYear",
-            semester: "$acadYear.semester",
+            program_code: "$user.course", // Assuming the field in the users collection representing the course is named "course"
           },
           student_count: { $sum: 1 },
         },
@@ -2425,8 +2396,6 @@ app.get("/fetch-all-courses", async (req, res) => {
         $project: {
           _id: 0,
           program_code: "$_id.program_code",
-          acad_year: "$_id.acad_year",
-          semester: "$_id.semester",
           student_count: 1,
         },
       },
@@ -2434,16 +2403,11 @@ app.get("/fetch-all-courses", async (req, res) => {
 
     const coursesWithoutViolation = allCourses.map((course) => {
       const matchingCourse = coursesWithCount.find(
-        (item) =>
-          item.program_code === course &&
-          item.acad_year === academicYear &&
-          item.semester === semester
+        (item) => item.program_code === course
       );
       return (
         matchingCourse || {
           program_code: course,
-          acad_year: academicYear,
-          semester: semester,
           student_count: 0,
         }
       );
@@ -2451,7 +2415,7 @@ app.get("/fetch-all-courses", async (req, res) => {
 
     return res
       .status(200)
-      .json({ courses: coursesWithoutViolation, allCourses, coursesWithCount });
+      .json({ courses: coursesWithoutViolation, allCourses });
   } catch (err) {
     console.log(err);
     return res.status(500).json({ error: "Internal Server Error" });
