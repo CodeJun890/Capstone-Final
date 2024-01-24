@@ -21,6 +21,7 @@ export default function ViolationAnalytics() {
   const [selectedSemester, setSelectedSemester] = useState("");
   const [selectedAcademicYear, setSelectedAcademicYear] = useState("");
   const [allAcademicYear, setAllAcademicYear] = useState([]);
+  const [currentAcadYear, setCurrentAcadYear] = useState("");
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -48,7 +49,11 @@ export default function ViolationAnalytics() {
       .get(baseUrl + "fetch-academic-year")
       .then((res) => {
         if (res.status === 200) {
+          const openAcademicYears = res.data.acadYear.filter(
+            (year) => year.status === "OPEN"
+          );
           setAllAcademicYear(res.data.acadYear);
+          setCurrentAcadYear(openAcademicYears);
         }
       })
       .catch((err) => {
@@ -101,7 +106,7 @@ export default function ViolationAnalytics() {
             <div className="col-lg-6 ">
               <Form.Select
                 id="ay-code"
-                value={academicYear}
+                value={currentAcadYear}
                 onChange={(e) => {
                   setAcademicYear(e.target.value);
                   const [selectedAcademicYear, selectedSemester] =
