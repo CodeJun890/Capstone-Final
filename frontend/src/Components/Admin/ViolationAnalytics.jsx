@@ -113,10 +113,10 @@ export default function ViolationAnalytics() {
                   setAcademicYear([
                     {
                       academicYear:
-                        selectedAcademicYear ||
+                        selectedAcademicYear ??
                         academicYear.map((year) => year.academicYear),
                       semester:
-                        selectedSemester ||
+                        selectedSemester ??
                         academicYear.map((year) => year.semester),
                     },
                   ]);
