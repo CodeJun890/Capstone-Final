@@ -85,33 +85,7 @@ export default function ViolationAnalytics() {
         <div className="display-6 fw-bold text-center rounded px-5 py-2 mt-5 mb-3">
           Student Violation Analysis
         </div>
-        <div className="form-control">
-          <Form.Select
-            id="ay-code"
-            value={academicYear}
-            onChange={(e) => {
-              setAcademicYear(e.target.value);
-
-              const [selectedAcademicYear, selectedSemester] =
-                e.target.value.split(" | ");
-              setSelectedSemester(selectedSemester);
-              setSelectedAcademicYear(selectedAcademicYear);
-            }}
-          >
-            <option value="" hidden>
-              Select Academic Year
-            </option>
-            {allAcademicYear &&
-              allAcademicYear.map((year, index) => (
-                <option
-                  key={index}
-                  value={`${year.academicYear} | ${year.semester}`}
-                >
-                  {year.academicYear} | {year.semester}
-                </option>
-              ))}
-          </Form.Select>
-        </div>
+        <input type="text" className="form-control" />
         <div style={{ width: "65vw" }}>
           <Bar data={data} options={options} />
         </div>
