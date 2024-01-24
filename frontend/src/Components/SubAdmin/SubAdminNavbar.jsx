@@ -575,6 +575,12 @@ function GenerateGoodMoral(props) {
 
   return (
     <>
+      {showStudentListModal ? (
+        <StudentListModal
+          showStudentListModal={showStudentListModal}
+          setShowStudentListModal={setShowStudentListModal}
+        />
+      ) : null}
       <Modal
         {...props}
         size="xl"
@@ -624,7 +630,7 @@ function GenerateGoodMoral(props) {
                 </div>
                 <div className="col-lg-4 text-end text-md-start">
                   <div
-                    className="btn btn-primary mt-4"
+                    className="btn btn-primary mt-5"
                     onClick={selectStudentDetails}
                   >
                     <FontAwesomeIcon

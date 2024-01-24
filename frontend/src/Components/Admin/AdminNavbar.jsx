@@ -689,7 +689,7 @@ function GenerateGoodMoral(props) {
                 </div>
                 <div className="col-lg-4 text-end text-md-start">
                   <div
-                    className="btn btn-primary mt-4"
+                    className="btn btn-primary mt-5"
                     onClick={selectStudentDetails}
                   >
                     <FontAwesomeIcon
