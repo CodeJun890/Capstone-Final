@@ -86,30 +86,36 @@ export default function ViolationAnalytics() {
           Student Violation Analysis
         </div>
 
-        <Form.Select
-          id="ay-code"
-          value={academicYear}
-          onChange={(e) => {
-            setAcademicYear(e.target.value);
-            const [selectedAcademicYear, selectedSemester] =
-              e.target.value.split(" | ");
-            setSelectedSemester(selectedSemester);
-            setSelectedAcademicYear(selectedAcademicYear);
-          }}
-        >
-          <option value="" hidden>
-            Select Academic Year
-          </option>
-          {allAcademicYear &&
-            allAcademicYear.map((year, index) => (
-              <option
-                key={index}
-                value={`${year.academicYear} | ${year.semester}`}
+        <div className="container">
+          <div className="row justify-content-center align-items-center">
+            <div className="col-lg-6">
+              <Form.Select
+                id="ay-code"
+                value={academicYear}
+                onChange={(e) => {
+                  setAcademicYear(e.target.value);
+                  const [selectedAcademicYear, selectedSemester] =
+                    e.target.value.split(" | ");
+                  setSelectedSemester(selectedSemester);
+                  setSelectedAcademicYear(selectedAcademicYear);
+                }}
               >
-                {year.academicYear} | {year.semester}
-              </option>
-            ))}
-        </Form.Select>
+                <option value="" hidden>
+                  Select Academic Year
+                </option>
+                {allAcademicYear &&
+                  allAcademicYear.map((year, index) => (
+                    <option
+                      key={index}
+                      value={`${year.academicYear} | ${year.semester}`}
+                    >
+                      {year.academicYear} | {year.semester}
+                    </option>
+                  ))}
+              </Form.Select>
+            </div>
+          </div>
+        </div>
 
         <div style={{ width: "65vw" }}>
           <Bar data={data} options={options} />
