@@ -557,6 +557,7 @@ function GenerateGoodMoral(props) {
   const [gender, setGender] = useState("");
   const [showStudentListModal, setShowStudentListModal] = useState(false);
   const pdfButtonRef = useRef();
+
   useEffect(() => {
     if (currentStudent) {
       axios

@@ -499,6 +499,7 @@ function GenerateGoodMoral(props) {
   const [generating, setGenerating] = useState(false);
   const [gender, setGender] = useState("");
   const [showStudentListModal, setShowStudentListModal] = useState(false);
+  const pdfButtonRef = useRef();
   useEffect(() => {
     if (currentStudent) {
       axios
@@ -1002,13 +1003,17 @@ function GenerateGoodMoral(props) {
                         useEffect(() => {
                           if (!loading) {
                             setGenerating(false);
+                            pdfButtonRef.current.click();
                           }
                         }, [loading]);
 
                         return loading ? (
                           "Loading document..."
                         ) : (
-                          <div className="btn btn-danger ms-2 text-capitalize btn-sm">
+                          <div
+                            className="btn btn-danger ms-2 text-capitalize btn-sm"
+                            ref={pdfButtonRef}
+                          >
                             Goodmoral.pdf
                           </div>
                         );
@@ -1040,13 +1045,17 @@ function GenerateGoodMoral(props) {
                         useEffect(() => {
                           if (!loading) {
                             setGenerating(false);
+                            pdfButtonRef.current.click();
                           }
                         }, [loading]);
 
                         return loading ? (
                           "Loading document..."
                         ) : (
-                          <div className="btn btn-danger ms-2 text-capitalize btn-sm">
+                          <div
+                            className="btn btn-danger ms-2 text-capitalize btn-sm"
+                            ref={pdfButtonRef}
+                          >
                             Goodmoral.pdf
                           </div>
                         );
@@ -1078,13 +1087,17 @@ function GenerateGoodMoral(props) {
                         useEffect(() => {
                           if (!loading) {
                             setGenerating(false);
+                            pdfButtonRef.current.click();
                           }
                         }, [loading]);
 
                         return loading ? (
                           "Loading document..."
                         ) : (
-                          <div className="btn btn-danger ms-2 text-capitalize btn-sm">
+                          <div
+                            className="btn btn-danger ms-2 text-capitalize btn-sm"
+                            ref={pdfButtonRef}
+                          >
                             Goodmoral.pdf
                           </div>
                         );
