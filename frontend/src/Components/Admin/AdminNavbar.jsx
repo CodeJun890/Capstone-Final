@@ -534,7 +534,12 @@ export default function AdminNavbar({ setIsToggled, toggleAdminIsLoggedOut }) {
 }
 
 function GenerateGoodMoral(props) {
-  const {baseUrl, currentStudent, setSelectedStudentDetails, selectedStudentDetails} = useContext(AdminContext)
+  const {
+    baseUrl,
+    currentStudent,
+    setSelectedStudentDetails,
+    selectedStudentDetails,
+  } = useContext(AdminContext);
   const [isPickedGraduate, setIsPickedGraduate] = useState(false);
   const [isPickedScholarship, setIsPickedScholarship] = useState(false);
   const [isPickedTransfer, setIsPickedTransfer] = useState(false);
@@ -551,22 +556,25 @@ function GenerateGoodMoral(props) {
   const [generating, setGenerating] = useState(false);
   const [gender, setGender] = useState("");
   const [showStudentListModal, setShowStudentListModal] = useState(false);
-  
+
   useEffect(() => {
     const fetchData = async () => {
-      if(currentStudent){
-        try{
-          axios.get(baseUrl `students/${currentStudent}`)
-          .then(res => {
-            if(res.status == 200){
+      if (currentStudent) {
+        axios
+          .get(baseUrl`students/${currentStudent}`)
+          .then((res) => {
+            if (res.status == 200) {
               setSelectedStudentDetails(res.data.student);
             }
           })
-        }
+          .catch((err) => {
+            console.log(err);
+          });
       }
-    }
-  })
-  
+    };
+    fetchData();
+  }, [currentStudent]);
+
   const handleType = (e) => {
     const data = e.target.value;
     switch (data) {
@@ -837,7 +845,7 @@ function GenerateGoodMoral(props) {
                       <Form.Group className="mt-1" controlId="lastname">
                         <Form.Label className="fw-bold">Lastname</Form.Label>
                         <Form.Control
-                          value={selectedStudentDetails.lastName ??}
+                          value={selectedStudentDetails.lastName ?? ""}
                           onChange={(e) => setLastname(e.target.value)}
                           required
                         />
