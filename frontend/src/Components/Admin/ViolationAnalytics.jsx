@@ -20,7 +20,6 @@ export default function ViolationAnalytics() {
   const [selectedSemester, setSelectedSemester] = useState("");
   const [selectedAcademicYear, setSelectedAcademicYear] = useState("");
   const [allAcademicYear, setAllAcademicYear] = useState([]);
-  const [currentAcadYear, setCurrentAcadYear] = useState("");
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -109,9 +108,14 @@ export default function ViolationAnalytics() {
                   (year) => year.academicYear + " | " + year.semester
                 )}
                 onChange={(e) => {
-                  setAcademicYear(e.target.value);
                   const [selectedAcademicYear, selectedSemester] =
                     e.target.value.split(" | ");
+                  setAcademicYear([
+                    {
+                      academicYear: selectedAcademicYear,
+                      semester: selectedSemester,
+                    },
+                  ]);
                   setSelectedSemester(selectedSemester);
                   setSelectedAcademicYear(selectedAcademicYear);
                 }}
