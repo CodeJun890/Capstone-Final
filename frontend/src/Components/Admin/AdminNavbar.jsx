@@ -1070,7 +1070,10 @@ function GenerateGoodMoral(props) {
                         return loading ? (
                           "Loading document..."
                         ) : (
-                          <div className="btn btn-danger ms-2 text-capitalize btn-sm">
+                          <div
+                            className="btn btn-danger ms-2 text-capitalize btn-sm"
+                            ref={pdfButtonRef}
+                          >
                             Goodmoral.pdf
                           </div>
                         );
@@ -1108,7 +1111,10 @@ function GenerateGoodMoral(props) {
                         return loading ? (
                           "Loading document..."
                         ) : (
-                          <div className="btn btn-danger ms-2 text-capitalize btn-sm">
+                          <div
+                            className="btn btn-danger ms-2 text-capitalize btn-sm"
+                            ref={pdfButtonRef}
+                          >
                             Goodmoral.pdf
                           </div>
                         );
@@ -1146,7 +1152,10 @@ function GenerateGoodMoral(props) {
                         return loading ? (
                           "Loading document..."
                         ) : (
-                          <div className="btn btn-danger ms-2 text-capitalize btn-sm">
+                          <div
+                            className="btn btn-danger ms-2 text-capitalize btn-sm"
+                            ref={pdfButtonRef}
+                          >
                             Goodmoral.pdf
                           </div>
                         );
